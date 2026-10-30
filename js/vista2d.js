@@ -3,14 +3,14 @@
    Mismo contenido, mismas etiquetas y popups. Al seleccionar,
    el dibujo se acerca a la zona y marca el punto exacto.
    ============================================================ */
-import { zonaDe } from './zonas.js?v=20261030b';
+import { zonaDe } from './zonas.js?v=20261030c';
 
 const FRENTE = `
 <svg viewBox="0 0 100 205" aria-hidden="true">
   <rect x="2" y="2" width="96" height="201" rx="15" fill="#B9C1CD"/>
   <rect x="4" y="4" width="92" height="197" rx="13" fill="#05070B"/>
   <rect x="7" y="7" width="86" height="191" rx="11" fill="url(#gf)"/>
-  <defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C2E52"/><stop offset=".55" stop-color="#22597A"/><stop offset="1" stop-color="#1A9A93"/></linearGradient></defs>
+  <defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#04B84C"/><stop offset=".5" stop-color="#037A6E"/><stop offset="1" stop-color="#1236D8"/></linearGradient></defs>
   <circle cx="50" cy="12" r="2.6" fill="#0B0E14"/>
   <text x="50" y="44" text-anchor="middle" fill="#fff" font-size="15" font-weight="300" font-family="system-ui,sans-serif">10:08</text>
   <g fill="#fff" opacity=".85">${Array.from({ length: 12 }, (_, i) => `<rect x="${14 + (i % 4) * 19}" y="${72 + Math.floor(i / 4) * 24}" width="13" height="13" rx="3.5"/>`).join('')}</g>
@@ -25,7 +25,7 @@ const FRENTE = `
 const REVERSO = `
 <svg viewBox="0 0 100 205" aria-hidden="true">
   <rect x="2" y="2" width="96" height="201" rx="15" fill="#B9C1CD"/>
-  <rect x="4" y="4" width="92" height="197" rx="13" fill="#31415A"/>
+  <rect x="4" y="4" width="92" height="197" rx="13" fill="#0F3A5C"/>
   <g opacity=".55" fill="none" stroke="#CFE0FF" stroke-width="1" stroke-dasharray="2 2">
     <rect x="9" y="8" width="82" height="70" rx="4"/>
     <rect x="22" y="22" width="22" height="22" rx="2"/>
@@ -34,7 +34,7 @@ const REVERSO = `
     <rect x="9" y="84" width="82" height="112" rx="6"/>
   </g>
   <text x="50" y="146" text-anchor="middle" fill="#CFE0FF" opacity=".7" font-size="7" font-family="system-ui,sans-serif">BATERÍA</text>
-  <rect x="52" y="12" width="38" height="50" rx="10" fill="#26344A"/>
+  <rect x="52" y="12" width="38" height="50" rx="10" fill="#0B2A4A"/>
   <circle cx="71" cy="24" r="8.5" fill="#D3D9E2"/><circle cx="71" cy="24" r="6.6" fill="#141A26"/>
   <circle cx="71" cy="46" r="8.5" fill="#D3D9E2"/><circle cx="71" cy="46" r="6.6" fill="#141A26"/>
   <circle cx="58" cy="35" r="2.6" fill="#FFF3D1"/>

@@ -219,7 +219,7 @@ async function montarVista(modo) {
   };
   if (modo === '3d') {
     try {
-      const { crearEscena3D } = await import('./escena3d.js?v=20261030b');
+      const { crearEscena3D } = await import('./escena3d.js?v=20261030c');
       // Lienzo nuevo en cada montaje (un contexto WebGL liberado no se reutiliza)
       const viejo = $('#lienzo'); const nuevo = viejo.cloneNode(false); viejo.replaceWith(nuevo);
       estado.vista = await crearEscena3D({
@@ -233,7 +233,7 @@ async function montarVista(modo) {
       return montarVista('2d');
     }
   } else {
-    const { crearVista2D } = await import('./vista2d.js?v=20261030b');
+    const { crearVista2D } = await import('./vista2d.js?v=20261030c');
     estado.vista = crearVista2D({ ...comunes, contenedor: $('#vista2d') });
     estado.modo = '2d';
   }
