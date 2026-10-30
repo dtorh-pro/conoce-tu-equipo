@@ -3,7 +3,8 @@
    Mismo contenido, mismas etiquetas y popups. Al seleccionar,
    el dibujo se acerca a la zona y marca el punto exacto.
    ============================================================ */
-import { zonaDe } from './zonas.js?v=20261030h';
+import { zonaDe } from './zonas.js?v=20261030i';
+import { iconoSpec } from './util.js?v=20261030i';
 
 const FRENTE = `
 <svg viewBox="0 0 100 205" aria-hidden="true">
@@ -41,18 +42,33 @@ const REVERSO = `
   <rect x="30" y="0" width="1.6" height="4" fill="#5E6774"/><rect x="68" y="0" width="1.6" height="4" fill="#5E6774"/>
 </svg>`;
 
-export function crearVista2D({ contenedor, cats }) {
+export function crearVista2D({ contenedor, cats, specs = [], alSeleccionar }) {
   contenedor.hidden = false;
   contenedor.innerHTML = `
     <div class="v2-telefonos">
-      <figure class="v2-tel" data-lado="frente">${FRENTE}<span class="v2-punto"></span><figcaption>Frente</figcaption></figure>
-      <figure class="v2-tel" data-lado="reverso">${REVERSO}<span class="v2-punto"></span><figcaption>Reverso (vista interna)</figcaption></figure>
+      <figure class="v2-tel" data-lado="frente"><div class="v2-cuerpo">${FRENTE}<span class="v2-punto"></span></div><figcaption>Frente</figcaption></figure>
+      <figure class="v2-tel" data-lado="reverso"><div class="v2-cuerpo">${REVERSO}<span class="v2-punto"></span></div><figcaption>Reverso (vista interna)</figcaption></figure>
     </div>`;
   const tels = {
     frente: contenedor.querySelector('[data-lado="frente"]'),
     reverso: contenedor.querySelector('[data-lado="reverso"]')
   };
+  // Puntos tocables sobre el dibujo (mismos que en 3D)
+  specs.forEach((s, i) => {
+    const z = zonaDe(s).d2;
+    const t = tels[z.lado] || tels.frente;
+    const p = document.createElement('button');
+    p.type = 'button'; p.className = 'punto visible';
+    p.style.cssText = `left:${z.x}%;top:${z.y}%;--c:${cats[s.categoria].color};--d:${(i * 0.37) % 2.6}s`;
+    const nombre = s.etiqueta.replace(/\u00ad/g, '');
+    p.setAttribute('aria-label', nombre);
+    p.innerHTML = `<span class="punto-nucleo">${iconoSpec(s.id)}</span><span class="punto-txt"></span>`;
+    p.querySelector('.punto-txt').textContent = nombre;
+    p.addEventListener('click', () => alSeleccionar?.(s));
+    t.querySelector('.v2-cuerpo').appendChild(p);
+  });
   function limpiar() {
+    contenedor.classList.remove('enfocado');
     Object.values(tels).forEach((t) => {
       t.style.transform = '';
       t.querySelector('.v2-punto').classList.remove('activo');
@@ -61,11 +77,12 @@ export function crearVista2D({ contenedor, cats }) {
   return {
     enfocar(spec) {
       limpiar();
+      contenedor.classList.add('enfocado');
       const z = zonaDe(spec).d2;
       const t = tels[z.lado] || tels.frente;
       const punto = t.querySelector('.v2-punto');
       punto.style.left = `${z.x}%`;
-      punto.style.top = `${(z.y / 100) * t.offsetWidth * 2.05}px`;
+      punto.style.top = `${z.y}%`;
       punto.style.setProperty('--c', cats[spec.categoria].color);
       punto.classList.add('activo');
       t.style.transformOrigin = `${z.x}% ${z.y}%`;

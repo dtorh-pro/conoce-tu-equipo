@@ -1,7 +1,7 @@
 /* ============================================================
    FRASES DE VENTA · usa las frases de data/especificaciones.json
    ============================================================ */
-import { $, $$, cargarJson, esc, copiar, guardar, iconos, iconoSpec } from './util.js?v=20261030h';
+import { $, $$, cargarJson, esc, copiar, guardar, iconos, iconoSpec } from './util.js?v=20261030i';
 
 let datos = null, raiz = null, montado = null;
 let filtro = null, practica = false;
@@ -21,8 +21,7 @@ function pintar() {
   raiz.innerHTML = `
   <div class="contenedor">
     <header class="h-herr">
-      <span class="eyebrow">Para el cliente</span>
-      <h1>Frases de venta</h1>
+      <h1 class="sr">Frases de venta</h1>
       <p>Una frase corta por especificación, en lenguaje natural. Cópiala o practícala antes de atender.</p>
     </header>
     <div class="frases-filtros" role="group" aria-label="Categoría">

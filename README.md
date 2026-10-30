@@ -6,12 +6,12 @@ Portal de formación comercial. Sitio 100 % estático: sin login, sin instalaci�
 
 | Ruta | Herramienta | Contenido editable |
 |---|---|---|
-| `#/` | Inicio: buscador inteligente, ilustración, accesos directos con íconos y tip del día | — |
-| `#/equipo` | Conoce tu equipo: smartphone 3D (reverso blanco, borde plateado) con puntos sobre el equipo, menú de especificaciones con íconos y recorrido guiado | `data/especificaciones.json` |
+| `#/` | Inicio: herramientas, ilustración, accesos directos con íconos y tip del día (sin cabecera ni barra inferior) | — |
+| `#/equipo` | Conoce tu equipo: pantalla completa con el smartphone 3D (reverso blanco, borde plateado), puntos animados con ícono y recorrido guiado (botón ▶) | `data/especificaciones.json` |
 | `#/mesa` | Cuida la mesa: mesa de exhibición 3D, ¿qué hago si…?, ¿puedo usar esto? y limpieza en 5 pasos | `data/mesa.json` |
 | `#/frases` | Frases de venta con copiar y modo práctica | `data/especificaciones.json` (campo `frase`) |
 
-Cada especificación, zona y situación tiene su propio enlace para compartir, por ejemplo `desarrollador.click/#/equipo/bateria` o `desarrollador.click/#/mesa/derrame`.
+Cada sección muestra solo un botón **Atrás** y su nombre arriba. Cada especificación, zona y situación tiene su propio enlace para compartir, por ejemplo `desarrollador.click/#/equipo/bateria` o `desarrollador.click/#/mesa/derrame`.
 
 ## Estructura
 
@@ -20,7 +20,7 @@ index.html                 estructura del portal
 css/app.css                estilos generales (escala de azules planos, tipografía Geist)
 css/equipo.css             estilos de Conoce tu equipo y popups
 data/*.json                TEXTOS EDITABLES
-js/main.js                 rutas, inicio y buscador inteligente (sinónimos en SINONIMOS)
+js/main.js                 rutas, inicio y barra de sección (Atrás + nombre)
 js/equipo.js · escena3d.js · vista2d.js · zonas.js   Conoce tu equipo
 js/mesa.js · mesa3d.js     Cuida la mesa
 js/frases.js               Frases de venta

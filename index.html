@@ -15,29 +15,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-  <link rel="modulepreload" href="js/main.js?v=20261030h">
-  <link rel="stylesheet" href="css/app.css?v=20261030h">
-  <link rel="stylesheet" href="css/equipo.css?v=20261030h">
+  <link rel="modulepreload" href="js/main.js?v=20261030i">
+  <link rel="stylesheet" href="css/app.css?v=20261030i">
+  <link rel="stylesheet" href="css/equipo.css?v=20261030i">
 </head>
 <body>
   <a class="saltar" href="#vistas">Saltar al contenido</a>
 
-  <header class="cabecera">
-    <a class="logo" href="#/" aria-label="Inicio">
-      <span class="logo-marca" aria-hidden="true"><i></i></span>
-    </a>
-    <nav class="nav-escritorio" aria-label="Herramientas">
-      <a href="#/" data-nav="inicio">Inicio</a>
-      <a href="#/equipo" data-nav="equipo">Conoce tu equipo</a>
-      <a href="#/mesa" data-nav="mesa">Cuida la mesa</a>
-      <a href="#/frases" data-nav="frases">Frases de venta</a>
-    </nav>
-    <button class="btn-buscar" id="abrir-buscador" type="button" aria-label="Buscar en todas las herramientas">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <span class="btn-buscar-txt">Buscar</span>
-      <kbd>Ctrl K</kbd>
+  <!-- Barra de sección (oculta en el inicio): atrás + nombre de la sección -->
+  <header class="barra-sec" id="barra-sec" hidden>
+    <button class="atras" id="btn-atras" type="button" aria-label="Atrás">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      <span>Atrás</span>
     </button>
-    <span class="linea-luz" aria-hidden="true"></span>
+    <p class="barra-titulo" id="barra-titulo" aria-hidden="true"></p>
+    <button id="btn-recorrido" class="btn-recorrido" type="button" aria-label="Recorrido guiado" title="Recorrido guiado" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+    </button>
   </header>
 
   <main id="vistas" class="vistas">
@@ -48,13 +42,6 @@
           <p class="saludo" id="saludo">Hola</p>
           <h1 id="h-inicio" class="sr">Inicio</h1>
 
-          <div class="pregunta" role="search">
-            <label for="pregunta-input" class="sr">¿Qué necesitas resolver?</label>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <input id="pregunta-input" type="search" autocomplete="off" spellcheck="false" placeholder="¿Qué necesitas resolver?" aria-controls="pregunta-resultados" aria-expanded="false">
-            <div id="pregunta-resultados" class="resultados" role="listbox" hidden></div>
-          </div>
-          <div class="sugerencias" id="sugerencias" aria-label="Búsquedas sugeridas"></div>
 
           <nav class="herramientas" aria-label="Herramientas">
             <a class="herr" href="#/equipo" data-tono="azul">
@@ -118,31 +105,14 @@
 
     <!-- ============ CONOCE TU EQUIPO ============ -->
     <section id="vista-equipo" class="vista vista-fija" data-vista="equipo" aria-labelledby="titulo" hidden>
-      <div class="eq-barra">
-        <div class="eq-titulos">
-          <h1 id="titulo" class="vista-titulo">Conoce tu equipo</h1>
-          <p id="subtitulo" class="sub">Especificaciones explicadas para vender mejor</p>
-        </div>
-        <div class="eq-acciones">
-          <button id="btn-vista" class="btn btn-sec btn-icono" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>
-            <span>Vista 2D</span>
-          </button>
-          <button id="btn-recorrido" class="btn btn-primario" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            <span class="largo">Recorrido guiado</span><span class="corto">Recorrido</span>
-          </button>
-        </div>
-      </div>
+      <h1 id="titulo" class="sr">Conoce tu equipo</h1>
       <div class="eq-cuerpo">
-        <nav id="dock" class="dock" aria-label="Especificaciones"></nav>
         <div id="escenario" class="escenario" aria-label="Smartphone interactivo">
           <canvas id="lienzo" aria-hidden="true"></canvas>
-          <svg id="lineas" class="lineas" aria-hidden="true"></svg>
           <div id="marcador" class="marcador" aria-hidden="true"></div>
-          <div id="etiquetas" class="puntos"></div>
+          <div id="etiquetas" class="puntos" role="group" aria-label="Especificaciones del equipo"></div>
           <div id="vista2d" class="vista2d" hidden></div>
-          <p class="eq-ayuda" aria-hidden="true">Gira el equipo · toca un punto o una especificación</p>
+          <p class="eq-ayuda" aria-hidden="true">Gira el equipo · toca un punto</p>
           <div id="cargando" class="cargando" role="status">
             <div class="cargando-tel" aria-hidden="true"></div>
             <p>Cargando el equipo…</p>
@@ -158,12 +128,6 @@
     <section id="vista-frases" class="vista" data-vista="frases" aria-label="Frases de venta" hidden></section>
   </main>
 
-  <nav class="tabbar" aria-label="Herramientas">
-    <a href="#/" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span>Inicio</span></a>
-    <a href="#/equipo" data-nav="equipo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg><span>Equipo</span></a>
-    <a href="#/mesa" data-nav="mesa"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="4" rx="2"/><path d="M6 13v7M18 13v7M10 13h4v5h-4zM10 9V5h4v4"/></svg><span>Mesa</span></a>
-    <a href="#/frases" data-nav="frases"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4 3v-3H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 9h8M8 12h5"/></svg><span>Frases</span></a>
-  </nav>
 
   <!-- Popup de especificación (Conoce tu equipo) -->
   <div id="fondo-popup" class="fondo-popup" hidden></div>
@@ -214,22 +178,11 @@
     <div class="pp-cuerpo" id="panel-cuerpo"></div>
   </section>
 
-  <!-- Buscador -->
-  <div id="buscador" class="buscador" role="dialog" aria-modal="true" aria-label="Buscar" hidden>
-    <div class="buscador-caja">
-      <div class="buscador-campo">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="buscador-input" type="search" autocomplete="off" spellcheck="false" placeholder="Busca una especificación, una situación o un producto" aria-controls="buscador-resultados">
-        <button id="buscador-cerrar" class="btn-texto" type="button">Cerrar</button>
-      </div>
-      <div id="buscador-resultados" class="resultados resultados-dialogo" role="listbox"></div>
-    </div>
-  </div>
 
   <div id="aviso" class="aviso-flotante" role="status" aria-live="polite" hidden></div>
 
   <noscript><p class="sin-js">Esta herramienta necesita JavaScript activado.</p></noscript>
   <script nomodule>document.body.insertAdjacentHTML("afterbegin","<p class=\"sin-js\">Tu navegador es muy antiguo para esta herramienta. Actualízalo o ábrela en Chrome, Safari, Edge o Firefox recientes.</p>");</script>
-  <script type="module" src="js/main.js?v=20261030h"></script>
+  <script type="module" src="js/main.js?v=20261030i"></script>
 </body>
 </html>

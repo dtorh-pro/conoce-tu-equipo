@@ -3,7 +3,7 @@
    selección de vista (3D con Three.js o respaldo 2D).
    Los textos se editan en data/especificaciones.json
    ============================================================ */
-import { cargarJson, soportaWebGL2, iconoSpec } from './util.js?v=20261030h';
+import { cargarJson, soportaWebGL2, iconoSpec } from './util.js?v=20261030i';
 const $ = (s) => document.querySelector(s);
 
 const estado = {
@@ -19,10 +19,10 @@ const estado = {
 };
 
 const el = {
-  escenario: $('#escenario'), etiquetas: $('#etiquetas'), dock: $('#dock'),
+  escenario: $('#escenario'), etiquetas: $('#etiquetas'),
   cargando: $('#cargando'), popup: $('#popup'), fondo: $('#fondo-popup'),
   cerrar: $('#pp-cerrar'), nav: $('#pp-nav'), ant: $('#pp-ant'), sig: $('#pp-sig'), paso: $('#pp-paso'),
-  btnTour: $('#btn-recorrido'), btnVista: $('#btn-vista')
+  btnTour: $('#btn-recorrido')
 };
 
 /* ---------- Utilidades ---------- */
@@ -40,43 +40,12 @@ async function cargarDatos() {
     .filter((s) => estado.cats[s.categoria])
     .map((s, i) => ({ ...s, _i: i }))
     .sort((a, b) => (estado.cats[a.categoria].orden - estado.cats[b.categoria].orden) || (a._i - b._i));
-  if (datos.meta) {
-    texto($('#titulo'), datos.meta.titulo);
-    texto($('#subtitulo'), datos.meta.subtitulo);
-  }
-}
-
-/* ---------- Menú de especificaciones (con íconos) ---------- */
-function construirEtiquetas() {
-  el.dock.innerHTML = '';
-  let catActual = null;
-  estado.specs.forEach((s) => {
-    const cat = estado.cats[s.categoria];
-    if (s.categoria !== catActual) {
-      catActual = s.categoria;
-      const g = document.createElement('p');
-      g.className = 'dock-grupo'; g.textContent = cat.nombre;
-      el.dock.appendChild(g);
-    }
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'etiqueta';
-    b.dataset.id = s.id;
-    b.style.setProperty('--c', cat.color);
-    b.setAttribute('aria-label', `${s.etiqueta} (${cat.nombre})`);
-    b.innerHTML = `<span class="eti-ico">${iconoSpec(s.id)}</span><span class="txt"></span>`;
-    b.querySelector('.txt').textContent = s.etiqueta;
-    b.addEventListener('click', () => { estado.tour = false; abrir(s); });
-    s._boton = b;
-    el.dock.appendChild(b);
-  });
 }
 
 function aplicarFiltro() {
   estado.specs.forEach((s) => {
     const visible = !estado.filtro || s.categoria === estado.filtro;
     s._oculta = !visible;
-    s._boton.classList.toggle('oculta', !visible);
   });
   estado.vista?.filtrar?.(estado.filtro);
 }
@@ -142,8 +111,6 @@ function abrir(s, desdeHistorial) {
   el.popup.hidden = false;
   el.fondo.hidden = false;
   document.body.classList.add('popup-abierto');
-  estado.specs.forEach((x) => x._boton.classList.toggle('activa', x === s));
-  s._boton.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
   // Espera un cuadro para medir el popup y luego acerca la cámara
   requestAnimationFrame(() => estado.vista?.enfocar(s, regionLibre()));
   el.cerrar.focus({ preventScroll: true });
@@ -164,7 +131,6 @@ function cerrar(desdeHistorial) {
   el.fondo.hidden = true;
   el.popup.style.transform = '';
   document.body.classList.remove('popup-abierto');
-  estado.specs.forEach((x) => x._boton.classList.remove('activa'));
   estado.vista?.desenfocar();
   if (estado.ultimoFoco && document.contains(estado.ultimoFoco)) estado.ultimoFoco.focus({ preventScroll: true });
 }
@@ -195,11 +161,11 @@ async function montarVista(modo) {
   };
   if (modo === '3d') {
     try {
-      const { crearEscena3D } = await import('./escena3d.js?v=20261030h');
+      const { crearEscena3D } = await import('./escena3d.js?v=20261030i');
       // Lienzo nuevo en cada montaje (un contexto WebGL liberado no se reutiliza)
       const viejo = $('#lienzo'); const nuevo = viejo.cloneNode(false); viejo.replaceWith(nuevo);
       estado.vista = await crearEscena3D({
-        ...comunes, lienzo: $('#lienzo'), lineas: $('#lineas'), marcador: $('#marcador'), capa: el.etiquetas,
+        ...comunes, lienzo: $('#lienzo'), marcador: $('#marcador'), capa: el.etiquetas,
         // Si el sistema libera la GPU (app en segundo plano, poca memoria), se reconstruye la escena
         alPerderContexto: () => setTimeout(() => cambiarVista(++estado.reintentos3d > 2 ? '2d' : '3d'), 400)
       });
@@ -209,13 +175,11 @@ async function montarVista(modo) {
       return montarVista('2d');
     }
   } else {
-    const { crearVista2D } = await import('./vista2d.js?v=20261030h');
+    const { crearVista2D } = await import('./vista2d.js?v=20261030i');
     estado.vista = crearVista2D({ ...comunes, contenedor: $('#vista2d') });
     estado.modo = '2d';
   }
   document.body.classList.toggle('modo-2d', estado.modo === '2d');
-  el.btnVista.querySelector('span').textContent = estado.modo === '2d' ? 'Ver en 3D' : 'Vista 2D';
-  el.btnVista.hidden = estado.modo === '2d' && !soportaWebGL();
   aplicarFiltro();
 }
 
@@ -230,7 +194,6 @@ async function cambiarVista(modo) {
   cerrar();
   await montarVista(modo);
 }
-el.btnVista.addEventListener('click', () => cambiarVista(estado.modo === '3d' ? '2d' : '3d'));
 
 // Deslizar hacia abajo el popup (celular) para cerrarlo
 (() => {
@@ -285,7 +248,6 @@ export function iniciar() {
       el.cargando.innerHTML = '<p class="aviso" style="position:static">No se pudo cargar el contenido. Revisa tu conexión y recarga la página.</p>';
       throw e;
     }
-    construirEtiquetas();
     const pedido = new URLSearchParams(location.search).get('modo');
     const modo = pedido === '2d' || !soportaWebGL() ? '2d' : '3d';
     await montarVista(modo);

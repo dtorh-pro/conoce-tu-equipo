@@ -9,8 +9,9 @@ import {
   ExtrudeGeometry, ShapeGeometry, BoxGeometry, CylinderGeometry, PlaneGeometry,
   MeshStandardMaterial, MeshBasicMaterial, HemisphereLight, DirectionalLight,
   CanvasTexture, SRGBColorSpace, Vector3, Matrix4, Euler, Quaternion, MathUtils
-} from './vendor/three.min.js?v=20261030h';
-import { zonaDe } from './zonas.js?v=20261030h';
+} from './vendor/three.min.js?v=20261030i';
+import { zonaDe } from './zonas.js?v=20261030i';
+import { iconoSpec } from './util.js?v=20261030i';
 
 const FOV = 32;
 const T = Math.tan(MathUtils.degToRad(FOV / 2));
@@ -191,7 +192,7 @@ function construirTelefono() {
 }
 
 /* ============================================================ */
-export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa, specs, cats, alSeleccionar, alPerderContexto }) {
+export async function crearEscena3D({ escenario, lienzo, marcador, capa, specs, cats, alSeleccionar, alPerderContexto }) {
   const esTactil = matchMedia('(pointer: coarse)').matches;
   const reduceMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let dprMax = esTactil ? 1.75 : 2;
@@ -221,35 +222,21 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
   sombra.rotation.x = -Math.PI / 2; sombra.position.y = -2.65; escena.add(sombra);
 
   /* ---------- Puntos sobre el equipo (uno por especificación) ---------- */
-  lineas.innerHTML = '';
   capa.innerHTML = '';
-  specs.forEach((s) => {
+  specs.forEach((s, i) => {
     const z = zonaDe(s);
     s._ancla = new Vector3(...z.ancla);
     s._normal = new Vector3(...z.normal).normalize();
     const p = document.createElement('button');
     p.type = 'button'; p.className = 'punto'; p.tabIndex = -1;
     p.style.setProperty('--c', cats[s.categoria].color);
-    p.setAttribute('aria-hidden', 'true');
-    p.innerHTML = `<span class="punto-txt"></span>`;
-    p.querySelector('.punto-txt').textContent = s.etiqueta;
+    p.style.setProperty('--d', `${(i * 0.37) % 2.6}s`);
+    p.setAttribute('aria-label', s.etiqueta.replace(/\u00ad/g, ''));
+    p.innerHTML = `<span class="punto-nucleo">${iconoSpec(s.id)}</span><span class="punto-txt"></span>`;
+    p.querySelector('.punto-txt').textContent = s.etiqueta.replace(/\u00ad/g, '');
     p.addEventListener('click', () => alSeleccionar(s));
     capa.appendChild(p);
     s._punto = p;
-    // Etiqueta con nombre y cifra clave
-    const t = document.createElement('button');
-    t.type = 'button'; t.className = 'tag'; t.tabIndex = -1; t.setAttribute('aria-hidden', 'true');
-    t.style.setProperty('--c', cats[s.categoria].color);
-    t.innerHTML = '<span class="tag-nom"></span><span class="tag-val"></span>';
-    t.querySelector('.tag-nom').textContent = s.etiqueta.replace(/\u00ad/g, '');
-    t.querySelector('.tag-val').textContent = s.dato || '';
-    if (!s.dato) t.querySelector('.tag-val').remove();
-    t.addEventListener('click', () => alSeleccionar(s));
-    capa.appendChild(t);
-    s._tag = t;
-    const l = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    l.setAttribute('class', 'guia'); lineas.appendChild(l);
-    s._guia = l;
   });
 
   /* ---------- Estado de animación ---------- */
@@ -282,8 +269,6 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     ancho = Math.max(1, r.width); alto = Math.max(1, r.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, dprMax));
     renderer.setSize(ancho, alto, false);
-    lineas.setAttribute('viewBox', `0 0 ${ancho} ${alto}`);
-    specs.forEach((s) => { s._ancho = 0; });
     camara.aspect = ancho / alto; camara.updateProjectionMatrix();
     if (!foco) encuadreGeneral();
   }
@@ -406,46 +391,10 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     actualizarEtiquetas();
   }
 
-  // Etiquetas inteligentes: siguen su punto, se ubican fuera del equipo cuando hay espacio
-  // y se reacomodan para no taparse entre sí.
-  const SEP = 6;
-  let ALTO_TAG = 32;
-  function anchoTag(s) { return s._ancho || (s._ancho = s._tag.offsetWidth || 110); }
-  function ubicarTags(visibles) {
-    ALTO_TAG = ancho <= 420 ? 28 : 32;
-    const centroPx = proyectar(tmpV.set(0, 0, 0).applyMatrix4(raiz.matrixWorld));
-    const cx = centroPx[0];
-    const medioAncho = ANCHO_TEL * pxGeneral;
-    const anchoMax = Math.max(...visibles.map((v) => anchoTag(v.s)), 0);
-    const exterior = (ancho / 2 - medioAncho) > anchoMax + 40;
-    [visibles.filter((v) => v.ax < cx), visibles.filter((v) => v.ax >= cx)].forEach((grupo, lado) => {
-      grupo.sort((a, b) => a.ay - b.ay);
-      let tope = 8;
-      grupo.forEach((v) => {
-        const w = anchoTag(v.s);
-        let x;
-        if (exterior) x = lado === 0 ? cx - medioAncho - 34 - w : cx + medioAncho + 34;
-        else x = lado === 0 ? v.ax - 16 - w : v.ax + 16;
-        x = Math.max(6, Math.min(ancho - w - 6, x));
-        let y = Math.max(tope, v.ay - ALTO_TAG / 2);
-        y = Math.min(y, alto - ALTO_TAG - 28);
-        tope = y + ALTO_TAG + SEP;
-        v.s._tag.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-        v.s._tag.classList.add('visible');
-        // Línea guía del punto a la etiqueta
-        const ex = lado === 0 ? x + w : x, ey = y + ALTO_TAG / 2;
-        const codo = lado === 0 ? ex + 10 : ex - 10;
-        v.s._guia.setAttribute('d', `M${v.ax.toFixed(1)},${v.ay.toFixed(1)} L${codo.toFixed(1)},${ey.toFixed(1)} L${ex.toFixed(1)},${ey.toFixed(1)}`);
-        v.s._guia.classList.add('visible');
-      });
-    });
-  }
-
   function actualizarEtiquetas() {
     capa.classList.add('lista');
     camDir.copy(camara.position);
     tel.getWorldQuaternion(q);
-    const visibles = [];
     specs.forEach((s) => {
       const aW = tmpV.copy(s._ancla).applyMatrix4(tel.matrixWorld);
       const [ax, ay] = proyectar(aW);
@@ -454,11 +403,12 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
       // Solo se ven los puntos de la cara que mira al usuario
       const visible = !foco && !s._oculta && (s.zona === 'cuerpo' || haciaCam > 0.12);
       s._punto.style.transform = `translate(${ax.toFixed(1)}px, ${ay.toFixed(1)}px)`;
-      s._punto.classList.toggle('visible', visible);
-      if (visible) visibles.push({ s, ax, ay });
-      else { s._tag.classList.remove('visible'); s._guia.classList.remove('visible'); }
+      if (s._visible !== visible) {
+        s._visible = visible;
+        s._punto.classList.toggle('visible', visible);
+        s._punto.tabIndex = visible ? 0 : -1;
+      }
     });
-    ubicarTags(visibles);
     if (foco) {
       const aW = tmpV.copy(foco.spec._ancla).applyMatrix4(tel.matrixWorld);
       const [ax, ay] = proyectar(aW);
@@ -492,7 +442,6 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
       capa.innerHTML = '';
       ro?.disconnect();
       window.removeEventListener('resize', redimensionar);
-      lineas.innerHTML = '';
       marcador.classList.remove('activo');
       renderer.dispose();
       renderer.forceContextLoss?.();

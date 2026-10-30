@@ -2,7 +2,7 @@
    CUIDA LA MESA · lo esencial para cuidar el mueble
    Textos en data/mesa.json
    ============================================================ */
-import { V, $, $$, cargarJson, esc, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030h';
+import { V, $, $$, cargarJson, esc, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030i';
 
 let datos = null, raiz = null, escena3d = null, montado = null;
 let paso = 0, empujado = false, abiertoId = null, ultimoFoco = null;
@@ -57,8 +57,7 @@ function pintar() {
   raiz.innerHTML = `
   <div class="contenedor">
     <header class="h-herr">
-      <span class="eyebrow">Mesa de exhibición</span>
-      <h1>${esc(m.titulo)}</h1>
+      <h1 class="sr">${esc(m.titulo)}</h1>
       <p>${esc(m.subtitulo)}</p>
     </header>
 

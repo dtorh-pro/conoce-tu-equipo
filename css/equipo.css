@@ -1,62 +1,60 @@
 /* ============================================================
-   CONOCE TU EQUIPO · teléfono grande, puntos sobre el equipo,
-   menú de especificaciones con íconos y popup
+   CONOCE TU EQUIPO · solo el teléfono con puntos animados
+   y popup de cada especificación
    ============================================================ */
 .vista-fija { display: flex; flex-direction: column; overflow: hidden; }
-.eq-barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px 4px; }
-.eq-titulos { min-width: 0; }
-.vista-titulo { font-weight: 700; font-size: 1.2rem; letter-spacing: -.035em; line-height: 1.1; margin: 0; }
-.sub { margin: 2px 0 0; font-size: .78rem; color: var(--texto-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.eq-acciones { display: flex; gap: 8px; flex: none; }
-.btn-icono svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
-
-/* Cuerpo: escenario arriba, menú abajo (celular) */
 .eq-cuerpo { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.escenario { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-user-select: none; user-select: none; order: 1; }
+.escenario { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-user-select: none; user-select: none; }
 #lienzo { position: absolute; top: 0; left: 0; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; -webkit-touch-callout: none; }
 #lienzo:active { cursor: grabbing; }
-.lineas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
-.guia { fill: none; stroke: rgba(10, 26, 63, .35); stroke-width: 1.2; stroke-dasharray: 3 3; opacity: 0; transition: opacity .25s; }
-.guia.visible { opacity: 1; }
-
-/* Etiquetas inteligentes: nombre + cifra clave, siguen su punto sin taparse */
-.tag {
-  --c: #1E5EFF;
-  position: absolute; left: 0; top: 0; height: 32px; display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 10px 0 8px; border: 0; border-radius: 10px; white-space: nowrap;
-  background: rgba(10, 26, 63, .9); color: #fff; box-shadow: 0 8px 20px -10px rgba(10, 26, 63, .6);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  font-size: .74rem; line-height: 1; opacity: 0; pointer-events: none; transition: opacity .25s ease;
-  will-change: transform;
+.eq-ayuda {
+  position: absolute; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); translate: -50% 0; margin: 0;
+  padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .8); border: 1px solid var(--borde);
+  font-size: .76rem; font-weight: 500; color: var(--texto-2); white-space: nowrap; pointer-events: none;
+  transition: opacity .3s; animation: ayuda 5s ease 2.5s both;
 }
-.tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px rgba(255, 255, 255, .9); }
-.tag.visible { opacity: 1; pointer-events: auto; }
-.tag-nom { font-weight: 600; letter-spacing: -.01em; }
-.tag-val { font-weight: 500; color: #8FD3FF; font-variant-numeric: tabular-nums; padding-left: 7px; border-left: 1px solid rgba(255, 255, 255, .18); }
-@media (hover: hover) { .tag:hover { background: var(--azul); } .tag:hover .tag-val { color: #fff; } }
-body.modo-2d .lineas { display: none; }
-.eq-ayuda { position: absolute; left: 0; right: 0; bottom: 8px; margin: 0; text-align: center; font-size: .74rem; color: var(--texto-3); pointer-events: none; transition: opacity .3s; }
+@keyframes ayuda { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: .55; } }
 body.popup-abierto .eq-ayuda { opacity: 0; }
 
-/* Puntos sobre el equipo */
+/* ---------- Puntos sobre el equipo: ícono, ondas y aparición ---------- */
 .puntos { position: absolute; top: 0; left: 0; inset: 0; pointer-events: none; }
 #etiquetas:not(.lista) { visibility: hidden; }
 .punto {
-  --c: #1E5EFF;
-  position: absolute; left: 0; top: 0; width: 36px; height: 36px; margin: -18px 0 0 -18px; padding: 0;
-  border: 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .25s ease;
-  display: grid; place-items: center;
+  --c: #1E5EFF; --d: 0s;
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0;
+  border: 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .3s ease;
+  display: grid; place-items: center; -webkit-tap-highlight-color: transparent; will-change: transform;
 }
 .punto.visible { opacity: 1; pointer-events: auto; }
-.punto::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px #fff, 0 4px 10px rgba(10, 26, 63, .35); }
-.punto::after { content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%; animation: onda 2.4s ease-out infinite; }
-@keyframes onda { 0% { box-shadow: 0 0 0 0 rgba(30, 94, 255, .45); } 100% { box-shadow: 0 0 0 14px rgba(30, 94, 255, 0); } }
+.punto-nucleo {
+  position: relative; z-index: 1; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--c); color: #fff;
+  box-shadow: 0 0 0 2.5px #fff, 0 6px 14px -4px rgba(10, 26, 63, .55);
+  transform: scale(.2); transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);
+}
+.punto.visible .punto-nucleo { transform: scale(1); }
+.punto-nucleo svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+/* Dos ondas desfasadas por punto (cada punto con su propio ritmo) */
+.punto::before, .punto::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  border-radius: 50%; border: 2px solid var(--c); opacity: 0; pointer-events: none;
+}
+.punto.visible::before { animation: onda 2.8s cubic-bezier(.2, .6, .3, 1) var(--d) infinite; }
+.punto.visible::after { animation: onda 2.8s cubic-bezier(.2, .6, .3, 1) calc(var(--d) + 1.4s) infinite; }
+@keyframes onda { 0% { transform: scale(1); opacity: .75; } 100% { transform: scale(2.4); opacity: 0; } }
+.punto:active .punto-nucleo { transform: scale(.88); transition-duration: .12s; }
+.punto:focus-visible { outline: none; }
+.punto:focus-visible .punto-nucleo { box-shadow: 0 0 0 2.5px #fff, 0 0 0 5px var(--c); }
+/* Nombre al pasar el mouse (escritorio) */
 .punto-txt {
-  position: absolute; bottom: calc(100% - 2px); left: 50%; translate: -50% 4px; opacity: 0; pointer-events: none;
+  position: absolute; bottom: calc(100% - 4px); left: 50%; translate: -50% 4px; opacity: 0; pointer-events: none; z-index: 2;
   background: var(--tinta); color: #fff; font-size: .74rem; font-weight: 600; padding: 5px 9px; border-radius: 8px; white-space: nowrap;
   transition: opacity .2s, translate .2s var(--curva);
 }
-@media (hover: hover) { .punto:hover .punto-txt, .punto:focus-visible .punto-txt { opacity: 1; translate: -50% 0; } .punto:hover::before { transform: scale(1.15); } }
+@media (hover: hover) {
+  .punto:hover .punto-txt, .punto:focus-visible .punto-txt { opacity: 1; translate: -50% 0; }
+  .punto.visible:hover .punto-nucleo { transform: scale(1.18); }
+}
 
 .marcador {
   position: absolute; left: 0; top: 0; width: 28px; height: 28px; margin: -14px 0 0 -14px;
@@ -64,26 +62,6 @@ body.popup-abierto .eq-ayuda { opacity: 0; }
 }
 .marcador.activo { opacity: 1; animation: pulso 1.6s ease-out infinite; }
 @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(30, 94, 255, .45); } 100% { box-shadow: 0 0 0 16px rgba(30, 94, 255, 0); } }
-
-/* Menú de especificaciones */
-.dock {
-  order: 2; flex: none; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
-  padding: 8px 16px 12px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
-}
-.dock::-webkit-scrollbar { display: none; }
-.dock-grupo { display: none; }
-.etiqueta {
-  --c: #1E5EFF;
-  flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; gap: 9px;
-  min-height: 48px; padding: 0 14px 0 6px; border-radius: 999px; border: 1px solid var(--borde); background: var(--superficie);
-  font-size: .86rem; font-weight: 500; letter-spacing: -.01em; color: var(--texto); white-space: nowrap;
-  transition: border-color .2s, background-color .2s, transform .15s;
-}
-.eti-ico { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: #fff; }
-.eti-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.etiqueta:active { transform: scale(.97); }
-.etiqueta.activa { border-color: var(--c); background: var(--hielo); font-weight: 600; }
-@media (hover: hover) { .etiqueta:hover { border-color: var(--c); } }
 
 /* Carga */
 .cargando { position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: grid; place-content: center; justify-items: center; gap: 14px; color: var(--texto-2); font-size: .9rem; transition: opacity .35s; background: var(--papel); }
@@ -134,36 +112,25 @@ body.popup-abierto .eq-ayuda { opacity: 0; }
 /* ============ Vista 2D ============ */
 .vista2d { position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: grid; place-items: center; padding: 8px 12px 30px; }
 .v2-telefonos { display: flex; justify-content: center; align-items: center; gap: 28px; }
-.v2-tel { position: relative; width: min(38vw, 160px); margin: 0; transition: transform .45s var(--curva); }
+.v2-tel { position: relative; width: min(40vw, 190px); margin: 0; transition: transform .45s var(--curva); }
 .v2-tel svg { width: 100%; height: auto; display: block; overflow: visible; }
+.v2-cuerpo { position: relative; }
+.vista2d .punto { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+.vista2d .punto-nucleo, .vista2d .punto::before, .vista2d .punto::after { width: 22px; height: 22px; }
+.vista2d .punto::before, .vista2d .punto::after { margin: -11px 0 0 -11px; }
+.vista2d .punto-nucleo svg { width: 12px; height: 12px; }
+body.modo-2d .eq-ayuda { display: none; }
+.vista2d.enfocado .punto { opacity: 0; pointer-events: none; }
 .v2-tel figcaption { text-align: center; font-size: .74rem; color: var(--texto-2); margin-top: 6px; }
 .v2-punto { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; border: 3px solid var(--c); opacity: 0; pointer-events: none; }
 .v2-punto.activo { opacity: 1; animation: pulso 1.6s ease-out infinite; }
-body.modo-2d #lienzo, body.modo-2d .marcador, body.modo-2d #etiquetas, body.modo-2d .lineas { display: none; }
+body.modo-2d #lienzo, body.modo-2d .marcador, body.modo-2d #etiquetas { display: none; }
 .aviso { position: relative; }
-
-/* ============ Pantallas angostas ============ */
-@media (max-width: 420px) {
-  .tag { height: 28px; font-size: .68rem; padding: 0 8px 0 7px; gap: 6px; }
-  .eq-barra { padding: 10px 12px 2px; }
-  .vista-titulo { font-size: 1.08rem; }
-  .sub { font-size: .72rem; }
-  #btn-recorrido { padding: 0 14px; }
-  #btn-recorrido .largo { display: none; }
-  #btn-vista { width: 46px; padding: 0; }
-  #btn-vista span { display: none; }
-}
-@media (min-width: 421px) { #btn-recorrido .corto { display: none; } }
 
 /* Celular en horizontal */
 @media (orientation: landscape) and (max-height: 520px) and (min-width: 560px) and (max-width: 899px) {
-  .eq-barra { padding-top: 4px; padding-bottom: 0; }
-  .sub, .eq-ayuda { display: none; }
+  .eq-ayuda { display: none; }
   .btn { min-height: 38px; }
-  .eq-cuerpo { flex-direction: row; }
-  .dock { order: 0; flex-direction: column; overflow-x: hidden; overflow-y: auto; width: 210px; padding: 6px 8px 10px 16px; gap: 6px; }
-  .etiqueta { min-height: 40px; }
-  .eti-ico { width: 30px; height: 30px; }
   .popup {
     left: auto; top: max(8px, env(safe-area-inset-top)); bottom: max(8px, env(safe-area-inset-bottom)); right: max(8px, env(safe-area-inset-right));
     width: min(380px, 50vw); max-height: none; border-radius: 20px; animation-name: entrar;
@@ -175,16 +142,9 @@ body.modo-2d #lienzo, body.modo-2d .marcador, body.modo-2d #etiquetas, body.modo
 
 /* ============ Escritorio: menú lateral agrupado ============ */
 @media (min-width: 900px) {
-  .eq-barra { padding: 20px 28px 8px; }
-  .vista-titulo { font-size: 1.6rem; }
-  .sub { font-size: .9rem; }
-  .eq-cuerpo { display: grid; grid-template-columns: 270px minmax(0, 1fr); }
-  .dock { order: 0; flex-direction: column; overflow-x: hidden; overflow-y: auto; padding: 4px 12px 24px 28px; gap: 4px; scroll-snap-type: none; }
-  .dock-grupo { display: block; margin: 14px 0 4px 6px; font-size: .7rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--texto-3); }
-  .dock-grupo:first-child { margin-top: 4px; }
-  .etiqueta { width: 100%; min-height: 46px; border-radius: 14px; border-color: transparent; background: transparent; padding: 0 12px 0 5px; }
-  .etiqueta.activa { background: var(--superficie); border-color: var(--borde); box-shadow: var(--sombra-suave); }
-  @media (hover: hover) { .etiqueta:hover { background: var(--superficie); border-color: var(--borde); } }
+  .punto-nucleo { width: 30px; height: 30px; }
+  .punto-nucleo svg { width: 16px; height: 16px; }
+  .punto::before, .punto::after { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
   .popup {
     left: auto; right: 24px; top: 84px; bottom: auto; width: 420px; max-height: calc(100dvh - 108px);
     border-radius: 24px; box-shadow: var(--sombra); border: 1px solid var(--borde); animation-name: entrar;
