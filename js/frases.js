@@ -1,7 +1,7 @@
 /* ============================================================
    FRASES DE VENTA · usa las frases de data/especificaciones.json
    ============================================================ */
-import { $, $$, cargarJson, esc, copiar, guardar, iconos, iconoSpec } from './util.js?v=20261030g';
+import { $, $$, cargarJson, esc, copiar, guardar, iconos, iconoSpec } from './util.js?v=20261030h';
 
 let datos = null, raiz = null, montado = null;
 let filtro = null, practica = false;

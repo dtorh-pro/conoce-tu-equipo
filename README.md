@@ -1,6 +1,6 @@
-# Kit del asesor
+# Portal de formación
 
-Portal de formación para asesores comerciales. Sitio 100 % estático: sin login, sin instalación, sin backend. Publicado en https://desarrollador.click (GitHub Pages).
+Portal de formación comercial. Sitio 100 % estático: sin login, sin instalación, sin backend. Publicado en https://desarrollador.click (GitHub Pages).
 
 ## Herramientas
 

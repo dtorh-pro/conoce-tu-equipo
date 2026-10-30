@@ -1,5 +1,5 @@
 /* Utilidades compartidas */
-export const V = '20261030g';
+export const V = '20261030h';
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 

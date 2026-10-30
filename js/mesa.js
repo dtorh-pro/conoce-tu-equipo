@@ -1,8 +1,8 @@
 /* ============================================================
-   CUIDA LA MESA · lo que el asesor necesita saber del mueble
+   CUIDA LA MESA · lo esencial para cuidar el mueble
    Textos en data/mesa.json
    ============================================================ */
-import { V, $, $$, cargarJson, esc, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030g';
+import { V, $, $$, cargarJson, esc, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030h';
 
 let datos = null, raiz = null, escena3d = null, montado = null;
 let paso = 0, empujado = false, abiertoId = null, ultimoFoco = null;

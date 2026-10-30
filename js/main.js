@@ -1,15 +1,15 @@
 /* ============================================================
-   KIT DEL ASESOR · núcleo del portal
+   Núcleo del portal
    Rutas (#/equipo, #/mesa, #/frases), inicio,
    buscador inteligente y navegación.
    ============================================================ */
-import { V, $, $$, cargarJson, esc, normalizar, guardar, reduceMovimiento, iconoSpec } from './util.js?v=20261030g';
+import { V, $, $$, cargarJson, esc, normalizar, guardar, reduceMovimiento, iconoSpec } from './util.js?v=20261030h';
 
 const VISTAS = {
-  inicio: { titulo: 'Kit del asesor' },
-  equipo: { titulo: 'Conoce tu equipo · Kit del asesor', modulo: () => import(`./equipo.js?v=${V}`) },
-  mesa: { titulo: 'Cuida la mesa · Kit del asesor', modulo: () => import(`./mesa.js?v=${V}`) },
-  frases: { titulo: 'Frases de venta · Kit del asesor', modulo: () => import(`./frases.js?v=${V}`) }
+  inicio: { titulo: 'Inicio' },
+  equipo: { titulo: 'Conoce tu equipo', modulo: () => import(`./equipo.js?v=${V}`) },
+  mesa: { titulo: 'Cuida la mesa', modulo: () => import(`./mesa.js?v=${V}`) },
+  frases: { titulo: 'Frases de venta', modulo: () => import(`./frases.js?v=${V}`) }
 };
 let actual = null;
 const modulos = {};

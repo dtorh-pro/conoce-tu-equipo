@@ -8,7 +8,7 @@ import {
   ExtrudeGeometry, BoxGeometry, PlaneGeometry, SphereGeometry,
   MeshStandardMaterial, MeshBasicMaterial, HemisphereLight, DirectionalLight,
   CanvasTexture, SRGBColorSpace, Vector3, MathUtils, AdditiveBlending
-} from './vendor/three.min.js?v=20261030g';
+} from './vendor/three.min.js?v=20261030h';
 
 const FOV = 34;
 const T = Math.tan(MathUtils.degToRad(FOV / 2));
