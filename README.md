@@ -6,7 +6,7 @@ Portal de formación comercial. Sitio 100 % estático: sin login, sin instalaci�
 
 | Ruta | Herramienta | Contenido editable |
 |---|---|---|
-| `#/` | Inicio: herramientas, ilustración, accesos directos con íconos y tip del día (sin cabecera ni barra inferior) | — |
+| `#/` | Inicio: solo las tres herramientas | — |
 | `#/equipo` | Conoce tu equipo: pantalla completa con el smartphone 3D (reverso blanco, borde plateado), puntos animados con ícono y recorrido guiado (botón ▶) | `data/especificaciones.json` |
 | `#/mesa` | Cuida la mesa: mesa de exhibición 3D, ¿qué hago si…?, ¿puedo usar esto? y limpieza en 5 pasos | `data/mesa.json` |
 | `#/frases` | Frases de venta con copiar y modo práctica | `data/especificaciones.json` (campo `frase`) |

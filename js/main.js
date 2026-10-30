@@ -3,7 +3,7 @@
    Rutas (#/equipo, #/mesa, #/frases), inicio
    y barra de sección con botón Atrás.
    ============================================================ */
-import { V, $, $$, cargarJson, esc, guardar, reduceMovimiento, iconoSpec } from './util.js?v=20261030i';
+import { V, $, $$, guardar, reduceMovimiento } from './util.js?v=20261030j';
 
 const VISTAS = {
   inicio: { titulo: 'Inicio' },
@@ -64,7 +64,6 @@ async function enrutar() {
       v.setAttribute('tabindex', '-1');
       v.focus({ preventScroll: true });
     }
-    if (nombre === 'inicio') refrescarInicio();
   }
 
   const m = await obtenerModulo(nombre);
@@ -109,37 +108,6 @@ function pintarBarra(nombre) {
 /* ============================================================
    INICIO
    ============================================================ */
-function saludo() {
-  const h = new Date().getHours();
-  return h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches';
-}
-
-const ATAJOS = ['bateria', 'camara-principal', 'ram', 'almacenamiento', 'pantalla', 'conectividad', 'resistencia', 'seguridad'];
-let inicioListo = false;
-async function refrescarInicio() {
-  $('#saludo').textContent = saludo();
-  try {
-    const [eq, mesa] = await Promise.all([cargarJson('data/especificaciones.json'), cargarJson('data/mesa.json')]);
-    const cats = Object.fromEntries(eq.categorias.map((c) => [c.id, c]));
-    if (!inicioListo) {
-      // Accesos directos con íconos a las especificaciones más consultadas
-      $('#atajos').innerHTML = ATAJOS.map((id) => eq.especificaciones.find((s) => s.id === id)).filter(Boolean).map((s, k) =>
-        `<a class="atajo" href="#/equipo/${s.id}" style="--c:${cats[s.categoria]?.color};--i:${k}"><span class="atajo-ico">${iconoSpec(s.id)}</span><span>${esc(s.etiqueta)}</span></a>`).join('');
-      inicioListo = true;
-    }
-    // Tip del día (cambia cada día)
-    const tips = [
-      ...mesa.situaciones.map((s) => ({ t: `${s.titulo}: ${s.haz[0].charAt(0).toLowerCase()}${s.haz[0].slice(1)}`, r: `#/mesa/${s.id}` })),
-      ...eq.especificaciones.map((s) => ({ t: `${s.etiqueta}: ${s.beneficio}`, r: `#/equipo/${s.id}` })),
-      ...mesa.productos.filter((p) => !p.ok).map((p) => ({ t: `No uses ${p.nombre.toLowerCase()} en la mesa: ${p.por.charAt(0).toLowerCase()}${p.por.slice(1)}`, r: `#/mesa/producto-${mesa.productos.indexOf(p)}` }))
-    ];
-    const d = new Date(); const dia = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5);
-    const tip = tips[dia % tips.length];
-    $('#tip-texto').textContent = tip.t;
-    $('#tip-enlace').href = tip.r;
-  } catch { /* el inicio funciona sin estos extras */ }
-}
-
 /* ============================================================
    ARRANQUE
    ============================================================ */

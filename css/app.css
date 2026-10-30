@@ -347,3 +347,8 @@ body.en-inicio .vistas { padding-top: env(safe-area-inset-top); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
+
+/* Inicio: solo las tres herramientas, centradas */
+#vista-inicio .inicio { min-height: 100%; display: flex; flex-direction: column; justify-content: center; max-width: 560px; padding-top: 24px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+#vista-inicio .ini-texto { padding-top: 0; }
+#vista-inicio .herramientas { margin-top: 0; }

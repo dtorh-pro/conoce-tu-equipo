@@ -3,7 +3,7 @@
    selección de vista (3D con Three.js o respaldo 2D).
    Los textos se editan en data/especificaciones.json
    ============================================================ */
-import { cargarJson, soportaWebGL2, iconoSpec } from './util.js?v=20261030i';
+import { cargarJson, soportaWebGL2, iconoSpec } from './util.js?v=20261030j';
 const $ = (s) => document.querySelector(s);
 
 const estado = {
@@ -161,7 +161,7 @@ async function montarVista(modo) {
   };
   if (modo === '3d') {
     try {
-      const { crearEscena3D } = await import('./escena3d.js?v=20261030i');
+      const { crearEscena3D } = await import('./escena3d.js?v=20261030j');
       // Lienzo nuevo en cada montaje (un contexto WebGL liberado no se reutiliza)
       const viejo = $('#lienzo'); const nuevo = viejo.cloneNode(false); viejo.replaceWith(nuevo);
       estado.vista = await crearEscena3D({
@@ -175,7 +175,7 @@ async function montarVista(modo) {
       return montarVista('2d');
     }
   } else {
-    const { crearVista2D } = await import('./vista2d.js?v=20261030i');
+    const { crearVista2D } = await import('./vista2d.js?v=20261030j');
     estado.vista = crearVista2D({ ...comunes, contenedor: $('#vista2d') });
     estado.modo = '2d';
   }
