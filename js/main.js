@@ -1,15 +1,14 @@
 /* ============================================================
    KIT DEL ASESOR · núcleo del portal
-   Rutas (#/equipo, #/mesa, #/prueba, #/frases), inicio,
+   Rutas (#/equipo, #/mesa, #/frases), inicio,
    buscador inteligente y navegación.
    ============================================================ */
-import { V, $, $$, cargarJson, esc, normalizar, guardar, reduceMovimiento } from './util.js?v=20261030d';
+import { V, $, $$, cargarJson, esc, normalizar, guardar, reduceMovimiento, iconoSpec } from './util.js?v=20261030g';
 
 const VISTAS = {
   inicio: { titulo: 'Kit del asesor' },
   equipo: { titulo: 'Conoce tu equipo · Kit del asesor', modulo: () => import(`./equipo.js?v=${V}`) },
   mesa: { titulo: 'Cuida la mesa · Kit del asesor', modulo: () => import(`./mesa.js?v=${V}`) },
-  prueba: { titulo: 'Ponte a prueba · Kit del asesor', modulo: () => import(`./prueba.js?v=${V}`) },
   frases: { titulo: 'Frases de venta · Kit del asesor', modulo: () => import(`./frases.js?v=${V}`) }
 };
 let actual = null;
@@ -45,11 +44,14 @@ async function enrutar() {
       m.salir?.();
       if (actual === 'equipo') { m.cerrarDesdeRuta(); m.pausar(); }
     }
-    $$('.vista').forEach((v) => {
+    const cambiar = () => $$('.vista').forEach((v) => {
       const activa = v.dataset.vista === nombre;
       v.hidden = !activa;
-      v.classList.toggle('entrando', activa && actual !== null && !reduceMovimiento());
+      v.classList.toggle('entrando', activa && actual !== null && !reduceMovimiento() && !document.startViewTransition);
     });
+    if (document.startViewTransition && actual !== null && !reduceMovimiento()) {
+      try { await document.startViewTransition(cambiar).updateCallbackDone; } catch { cambiar(); }
+    } else cambiar();
     $$('[data-nav]').forEach((a) => {
       if (a.dataset.nav === nombre) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
@@ -111,7 +113,7 @@ const SINONIMOS = {
   apagada: 'luz', apago: 'luz', prende: 'luz', enciende: 'luz', led: 'luz',
   reportar: 'reporte novedad', reporto: 'reporte', novedad: 'reporte', avisar: 'reporte', whatsapp: 'reporte',
   mesa: 'mesa', mueble: 'mesa', vitrina: 'mesa',
-  quiz: 'prueba', practicar: 'prueba frases', examen: 'prueba', evaluacion: 'prueba',
+  practicar: 'frases',
   frase: 'frases', decir: 'frases', argumento: 'frases', vender: 'frases'
 };
 const VACIAS = new Set('el la los las un una unos unas de del al a en y o que se me mi mis tu su sus con sin por para es son como cual cuanta cuanto cuantos cuantas donde puedo hago hacer hay le lo si no cliente clientes celular mucho muy bien quiere necesita tiene mas ej'.split(' '));
@@ -123,19 +125,17 @@ async function construirIndice() {
   const cats = Object.fromEntries(eq.categorias.map((c) => [c.id, c]));
   const items = [
     { tipo: 'Herramienta', titulo: 'Conoce tu equipo', sub: 'Las especificaciones del celular en 3D', ruta: '#/equipo', claves: 'equipo celular smartphone especificaciones 3d recorrido', ico: '3D', c: '#1E5EFF' },
-    { tipo: 'Herramienta', titulo: 'Cuida la mesa', sub: 'Qué hacer y qué evitar con la mesa de exhibición', ruta: '#/mesa', claves: 'mesa mueble exhibicion vitrina cuidado mantenimiento', ico: 'ME', c: '#0B1530' },
-    { tipo: 'Herramienta', titulo: 'Ponte a prueba', sub: 'Diez preguntas con explicación', ruta: '#/prueba', claves: 'prueba quiz preguntas practicar examen', ico: '✓', c: '#008743' },
-    { tipo: 'Herramienta', titulo: 'Frases de venta', sub: 'Todas las frases para el cliente', ruta: '#/frases', claves: 'frases venta decir cliente argumento practicar', ico: '“”', c: '#8A4CFF' },
-    { tipo: 'Mesa', titulo: 'Reportar una novedad', sub: 'Arma el mensaje para el encargado en un minuto', ruta: '#/mesa/reporte', claves: 'reporte reportar novedad avisar encargado whatsapp foto', ico: '!', c: '#CC4A00' },
-    { tipo: 'Mesa', titulo: 'Limpieza segura en 5 pasos', sub: 'Si te toca limpiar la mesa', ruta: '#/mesa/pasos', claves: 'limpieza limpiar pasos jabon agua paño', ico: '5', c: '#0B1530' }
+    { tipo: 'Herramienta', titulo: 'Cuida la mesa', sub: 'Qué hacer y qué evitar con la mesa de exhibición', ruta: '#/mesa', claves: 'mesa mueble exhibicion vitrina cuidado mantenimiento', ico: 'ME', c: '#0A1A3F' },
+    { tipo: 'Herramienta', titulo: 'Frases de venta', sub: 'Todas las frases para el cliente', ruta: '#/frases', claves: 'frases venta decir cliente argumento practicar', ico: '“”', c: '#4F46E5' },
+    { tipo: 'Mesa', titulo: 'Limpieza segura en 5 pasos', sub: 'Si te toca limpiar la mesa', ruta: '#/mesa/pasos', claves: 'limpieza limpiar pasos jabon agua paño', ico: '5', c: '#0A1A3F' }
   ];
   eq.especificaciones.forEach((s) => items.push({
-    tipo: 'Equipo', titulo: s.titulo, sub: s.que_es, ruta: `#/equipo/${s.id}`, ico: s.etiqueta.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ]/g, '').slice(0, 2).toUpperCase(),
+    tipo: 'Equipo', titulo: s.titulo, sub: s.que_es, ruta: `#/equipo/${s.id}`, svg: iconoSpec(s.id), ico: s.etiqueta.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ]/g, '').slice(0, 2).toUpperCase(),
     c: cats[s.categoria]?.color, claves: `${s.id} ${s.etiqueta} ${cats[s.categoria]?.nombre}`, texto: `${s.que_es} ${Object.values(s.clave || {}).join(' ')} ${s.beneficio} ${s.frase}`
   }));
-  mesa.zonas.forEach((z) => items.push({ tipo: 'Mesa', titulo: z.nombre, sub: z.rol, ruta: `#/mesa/${z.id}`, ico: z.corto.slice(0, 2).toUpperCase(), c: '#0B1530', claves: `${z.id} ${z.corto} mesa`, texto: [...z.cuidar, ...z.evitar, z.si_pasa].join(' ') }));
-  mesa.situaciones.forEach((s) => items.push({ tipo: 'Situación', titulo: s.titulo, sub: s.haz[0], ruta: `#/mesa/${s.id}`, ico: '?', c: '#008743', claves: `${s.id} ${s.claves}`, texto: [...s.haz, ...s.no_hagas, s.avisa].join(' ') }));
-  mesa.productos.forEach((p, i) => items.push({ tipo: p.ok ? 'Sí se puede' : 'No usar', titulo: p.nombre, sub: p.por, ruta: `#/mesa/producto-${i}`, ico: p.ok ? '✓' : '✕', c: p.ok ? '#008743' : '#E0244D', claves: `${p.nombre} producto limpiar usar`, texto: p.por }));
+  mesa.zonas.forEach((z) => items.push({ tipo: 'Mesa', titulo: z.nombre, sub: z.rol, ruta: `#/mesa/${z.id}`, ico: z.corto.slice(0, 2).toUpperCase(), c: '#0A1A3F', claves: `${z.id} ${z.corto} mesa`, texto: [...z.cuidar, ...z.evitar, z.si_pasa].join(' ') }));
+  mesa.situaciones.forEach((s) => items.push({ tipo: 'Situación', titulo: s.titulo, sub: s.haz[0], ruta: `#/mesa/${s.id}`, ico: '?', c: '#0077C8', claves: `${s.id} ${s.claves}`, texto: [...s.haz, ...s.no_hagas, s.avisa].join(' ') }));
+  mesa.productos.forEach((p, i) => items.push({ tipo: p.ok ? 'Sí se puede' : 'No usar', titulo: p.nombre, sub: p.por, ruta: `#/mesa/producto-${i}`, ico: p.ok ? '✓' : '✕', c: p.ok ? '#0077C8' : '#0A1A3F', claves: `${p.nombre} producto limpiar usar`, texto: p.por }));
   indice = items.map((it) => ({ ...it, _t: normalizar(it.titulo), _k: normalizar(it.claves || ''), _x: normalizar(`${it.sub || ''} ${it.texto || ''}`) }));
   return indice;
 }
@@ -190,7 +190,7 @@ function pintarResultados(cont, q) {
   }
   cont.innerHTML = res.map((it, i) => `
     <a class="res" role="option" id="${cont.id}-${i}" href="${it.ruta}" aria-selected="${i === 0}" style="--c:${it.c || '#1E5EFF'}">
-      <span class="res-icono" aria-hidden="true">${esc(it.ico || '')}</span>
+      <span class="res-icono" aria-hidden="true">${it.svg || esc(it.ico || '')}</span>
       <span><span class="res-titulo">${resaltar(it.titulo, q)}</span><span class="res-sub">${esc(it.sub || '')}</span></span>
       <span class="res-tipo">${esc(it.tipo)}</span>
     </a>`).join('');
@@ -276,30 +276,24 @@ function saludo() {
   return h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches';
 }
 
-let tickerInt;
+const ATAJOS = ['bateria', 'camara-principal', 'ram', 'almacenamiento', 'pantalla', 'conectividad', 'resistencia', 'seguridad'];
+let inicioListo = false;
 async function refrescarInicio() {
   $('#saludo').textContent = saludo();
-  // Puntaje guardado de "Ponte a prueba"
-  const mejor = guardar.leer('mejor');
-  const anillo = $('#anillo-inicio');
-  if (mejor && mejor.total) {
-    const pct = Math.round((mejor.aciertos / mejor.total) * 100);
-    $('#puntaje-inicio').textContent = `${mejor.aciertos}/${mejor.total}`;
-    $('#meta-prueba').textContent = `Tu mejor puntaje: ${mejor.aciertos} de ${mejor.total}`;
-    requestAnimationFrame(() => anillo.style.strokeDasharray = `${pct} 100`);
-  }
   try {
     const [eq, mesa] = await Promise.all([cargarJson('data/especificaciones.json'), cargarJson('data/mesa.json')]);
-    // Frases que van rotando en la tarjeta
-    const frases = eq.especificaciones.map((s) => s.frase).filter(Boolean);
-    const t = $('#ticker'); let i = Math.floor(Math.random() * frases.length);
-    const poner = () => { t.classList.add('cambiando'); setTimeout(() => { t.textContent = `“${frases[i % frases.length]}”`; t.classList.remove('cambiando'); i++; }, 380); };
-    poner(); clearInterval(tickerInt); if (!reduceMovimiento()) tickerInt = setInterval(() => actual === 'inicio' && poner(), 4200);
+    const cats = Object.fromEntries(eq.categorias.map((c) => [c.id, c]));
+    if (!inicioListo) {
+      // Accesos directos con íconos a las especificaciones más consultadas
+      $('#atajos').innerHTML = ATAJOS.map((id) => eq.especificaciones.find((s) => s.id === id)).filter(Boolean).map((s, k) =>
+        `<a class="atajo" href="#/equipo/${s.id}" style="--c:${cats[s.categoria]?.color};--i:${k}"><span class="atajo-ico">${iconoSpec(s.id)}</span><span>${esc(s.etiqueta)}</span></a>`).join('');
+      inicioListo = true;
+    }
     // Tip del día (cambia cada día)
     const tips = [
       ...mesa.situaciones.map((s) => ({ t: `${s.titulo}: ${s.haz[0].charAt(0).toLowerCase()}${s.haz[0].slice(1)}`, r: `#/mesa/${s.id}` })),
       ...eq.especificaciones.map((s) => ({ t: `${s.etiqueta}: ${s.beneficio}`, r: `#/equipo/${s.id}` })),
-      ...mesa.productos.filter((p) => !p.ok).map((p, k) => ({ t: `No uses ${p.nombre.toLowerCase()} en la mesa: ${p.por.charAt(0).toLowerCase()}${p.por.slice(1)}`, r: `#/mesa/producto-${mesa.productos.indexOf(p)}` }))
+      ...mesa.productos.filter((p) => !p.ok).map((p) => ({ t: `No uses ${p.nombre.toLowerCase()} en la mesa: ${p.por.charAt(0).toLowerCase()}${p.por.slice(1)}`, r: `#/mesa/producto-${mesa.productos.indexOf(p)}` }))
     ];
     const d = new Date(); const dia = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5);
     const tip = tips[dia % tips.length];
@@ -314,4 +308,9 @@ async function refrescarInicio() {
 enrutar();
 // Prepara el índice y precarga la herramienta más usada sin bloquear
 const ocioso = window.requestIdleCallback || ((f) => setTimeout(f, 1200));
-ocioso(() => { construirIndice().catch(() => {}); });
+ocioso(() => {
+  construirIndice().catch(() => {});
+  // Precarga las herramientas para que abrir cada una sea inmediato
+  ['equipo', 'mesa', 'frases'].forEach((n) => obtenerModulo(n).catch(() => {}));
+  import(`./vendor/three.min.js?v=${V}`).catch(() => {});
+});

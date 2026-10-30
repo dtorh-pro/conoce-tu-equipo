@@ -1,7 +1,7 @@
 /* ============================================================
    FRASES DE VENTA · usa las frases de data/especificaciones.json
    ============================================================ */
-import { $, $$, cargarJson, esc, copiar, guardar, iconos } from './util.js?v=20261030d';
+import { $, $$, cargarJson, esc, copiar, guardar, iconos, iconoSpec } from './util.js?v=20261030g';
 
 let datos = null, raiz = null, montado = null;
 let filtro = null, practica = false;
@@ -54,6 +54,8 @@ function lista() {
   $('#f-lista', raiz).innerHTML = specs.map((s, k) => {
     const oculta = practica && !reveladas.has(s.id);
     return `<article class="f-tarjeta" style="--c:${cats[s.categoria]?.color};animation-delay:${Math.min(k, 8) * 35}ms">
+      <span class="f-ico">${iconoSpec(s.id)}</span>
+      <div>
       <div class="f-cabeza">
         <span class="f-spec">${esc(s.etiqueta)}</span>
         <div class="f-acciones">
@@ -61,7 +63,8 @@ function lista() {
           <a class="icono-btn" href="#/equipo/${s.id}" aria-label="Ver ${esc(s.etiqueta)} en el equipo 3D">${iconos.ver}</a>
         </div>
       </div>
-      ${oculta ? `<button type="button" class="f-oculta" data-revelar="${s.id}">Di la frase para “${esc(s.etiqueta)}” y toca para comparar</button>` : `<p class="f-texto">“${esc(s.frase)}”</p>`}
+      ${oculta ? `<button type="button" class="f-oculta" data-revelar="${s.id}">Di la frase y toca para comparar</button>` : `<p class="f-texto">“${esc(s.frase)}”</p>`}
+      </div>
     </article>`;
   }).join('');
   $$('[data-copiar]', raiz).forEach((b) => b.addEventListener('click', () => {

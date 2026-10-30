@@ -6,10 +6,9 @@ Portal de formación para asesores comerciales. Sitio 100 % estático: sin login
 
 | Ruta | Herramienta | Contenido editable |
 |---|---|---|
-| `#/` | Inicio: buscador inteligente, menú y tip del día | — |
-| `#/equipo` | Conoce tu equipo: smartphone 3D con 13 especificaciones y recorrido guiado | `data/especificaciones.json` |
-| `#/mesa` | Cuida la mesa: mesa de exhibición 3D, ¿qué hago si…?, ¿puedo usar esto?, 5 pasos, quién hace qué y reporte de novedades | `data/mesa.json` |
-| `#/prueba` | Ponte a prueba: 10 preguntas al azar con explicación y récord | `data/prueba.json` |
+| `#/` | Inicio: buscador inteligente, ilustración, accesos directos con íconos y tip del día | — |
+| `#/equipo` | Conoce tu equipo: smartphone 3D (reverso blanco, borde plateado) con puntos sobre el equipo, menú de especificaciones con íconos y recorrido guiado | `data/especificaciones.json` |
+| `#/mesa` | Cuida la mesa: mesa de exhibición 3D, ¿qué hago si…?, ¿puedo usar esto? y limpieza en 5 pasos | `data/mesa.json` |
 | `#/frases` | Frases de venta con copiar y modo práctica | `data/especificaciones.json` (campo `frase`) |
 
 Cada especificación, zona y situación tiene su propio enlace para compartir, por ejemplo `desarrollador.click/#/equipo/bateria` o `desarrollador.click/#/mesa/derrame`.
@@ -18,13 +17,13 @@ Cada especificación, zona y situación tiene su propio enlace para compartir, p
 
 ```
 index.html                 estructura del portal
-css/app.css                estilos generales (paleta plana: azul #1E5EFF, verde #00D68F, cian, amarillo, tinta)
+css/app.css                estilos generales (escala de azules planos, tipografía Geist)
 css/equipo.css             estilos de Conoce tu equipo y popups
 data/*.json                TEXTOS EDITABLES
 js/main.js                 rutas, inicio y buscador inteligente (sinónimos en SINONIMOS)
 js/equipo.js · escena3d.js · vista2d.js · zonas.js   Conoce tu equipo
 js/mesa.js · mesa3d.js     Cuida la mesa
-js/prueba.js · frases.js   Ponte a prueba y Frases de venta
+js/frases.js               Frases de venta
 js/util.js                 utilidades compartidas
 js/vendor/three.min.js     Three.js r187 (solo los módulos usados)
 scripts/three-entrada.js   para regenerar el bundle de Three.js
@@ -32,7 +31,7 @@ scripts/three-entrada.js   para regenerar el bundle de Three.js
 
 ## Editar textos
 
-Abre el JSON en GitHub, toca el lápiz, cambia solo lo que está entre comillas y guarda. No cambies los campos `id`, `categoria` ni `zona`. En `prueba.json`, `correcta` es la posición de la respuesta correcta empezando en 0. El cambio se ve al recargar la página.
+Abre el JSON en GitHub, toca el lápiz, cambia solo lo que está entre comillas y guarda. No cambies los campos `id`, `categoria` ni `zona`. El cambio se ve al recargar la página.
 
 ## Probar en tu computador
 

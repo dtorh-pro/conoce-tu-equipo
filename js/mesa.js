@@ -2,7 +2,7 @@
    CUIDA LA MESA · lo que el asesor necesita saber del mueble
    Textos en data/mesa.json
    ============================================================ */
-import { V, $, $$, cargarJson, esc, guardar, copiar, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030d';
+import { V, $, $$, cargarJson, esc, soportaWebGL2, reduceMovimiento } from './util.js?v=20261030g';
 
 let datos = null, raiz = null, escena3d = null, montado = null;
 let paso = 0, empujado = false, abiertoId = null, ultimoFoco = null;
@@ -29,11 +29,11 @@ export function salir() {
   escena3d?.pausar();
 }
 
-/** Ruta: #/mesa/<zona | situación | pasos | reporte | producto-n> */
+/** Ruta: #/mesa/<zona | situación | pasos | producto-n> */
 export async function ruta(sub) {
   await montado;
   if (!sub) { if (abiertoId) cerrarPanel(true); return; }
-  if (sub === 'pasos' || sub === 'reporte' || sub === 'situaciones') {
+  if (sub === 'pasos' || sub === 'situaciones') {
     if (abiertoId) cerrarPanel(true);
     irA(`m-${sub}`);
     return;
@@ -115,43 +115,6 @@ function pintar() {
       </div>
     </section>
 
-    <section class="seccion" id="m-rutina" aria-labelledby="h-rut">
-      <h2 id="h-rut">Quién hace qué</h2>
-      <p class="sec-sub">Para que sepas a quién acudir.</p>
-      <ol class="rutina">
-        ${datos.rutina.map((r) => `<li><span></span><div><div class="r-cuando">${esc(r.cuando)}</div><p class="r-que">${esc(r.que)}</p><span class="r-quien">${esc(r.quien)}</span></div></li>`).join('')}
-      </ol>
-    </section>
-
-    <section class="seccion" id="m-reporte" aria-labelledby="h-rep">
-      <h2 id="h-rep">Reporta una novedad</h2>
-      <p class="sec-sub">Llena lo básico y envía el mensaje al encargado, con tus fotos.</p>
-      <div class="reporte">
-        <form class="form" id="form-reporte" autocomplete="on">
-          <div class="fila-2">
-            <div class="campo"><label for="r-sede">Tienda o sede</label><input id="r-sede" name="sede" placeholder="Ej.: Centro comercial Norte"></div>
-            <div class="campo"><label for="r-nombre">Tu nombre</label><input id="r-nombre" name="nombre" autocomplete="name"></div>
-          </div>
-          <div class="fila-2">
-            <div class="campo"><label for="r-zona">Zona de la mesa</label>
-              <select id="r-zona">${datos.zonas.map((z) => `<option value="${z.id}">${esc(z.nombre)}</option>`).join('')}</select></div>
-            <div class="campo"><label for="r-que">Qué pasó</label>
-              <select id="r-que">${datos.situaciones.map((s) => `<option value="${s.id}">${esc(s.titulo)}</option>`).join('')}<option value="otro">Otra novedad</option></select></div>
-          </div>
-          <div class="campo"><label for="r-detalle">Detalle</label><textarea id="r-detalle" placeholder="Qué viste, desde cuándo, si hay riesgo…"></textarea></div>
-          <div class="campo"><label for="r-producto">Producto que se usó (si aplica)</label><input id="r-producto" placeholder="Ej.: agua con jabón suave"></div>
-        </form>
-        <div class="mensaje">
-          <span class="mensaje-et">Mensaje listo para enviar</span>
-          <pre id="r-mensaje"></pre>
-          <p class="nota-foto">Adjunta en el chat una foto general y otra de cerca.</p>
-          <div class="mensaje-acciones">
-            <button type="button" class="btn btn-primario" id="r-copiar">Copiar mensaje</button>
-            <a class="btn btn-claro" id="r-whatsapp" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>`;
 
   // Eventos
@@ -163,15 +126,6 @@ function pintar() {
   $('#paso-sig', raiz).addEventListener('click', () => mostrarPaso(paso + 1 >= datos.pasos.length ? 0 : paso + 1));
   mostrarPaso(0, true);
 
-  // Reporte: recuerda sede y nombre en este dispositivo
-  const f = $('#form-reporte', raiz);
-  $('#r-sede', f).value = guardar.leer('sede', '');
-  $('#r-nombre', f).value = guardar.leer('nombre', '');
-  f.addEventListener('input', actualizarMensaje);
-  f.addEventListener('change', actualizarMensaje);
-  f.addEventListener('submit', (e) => e.preventDefault());
-  $('#r-copiar', raiz).addEventListener('click', () => copiar(textoMensaje()));
-  actualizarMensaje();
 }
 
 const zona = (id) => datos.zonas.find((z) => z.id === id);
@@ -195,39 +149,6 @@ function mostrarPaso(i, inicial) {
   if (!inicial) { c.classList.remove('cambio'); void c.offsetWidth; c.classList.add('cambio'); }
   $('#paso-ant', raiz).disabled = paso === 0;
   $('#paso-sig', raiz).textContent = paso === datos.pasos.length - 1 ? 'Volver al inicio ↺' : 'Siguiente →';
-}
-
-function textoMensaje() {
-  const f = $('#form-reporte', raiz);
-  const val = (id) => $(id, f).value.trim();
-  const z = zona(val('#r-zona'));
-  const s = situacion(val('#r-que'));
-  const fecha = new Date().toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' });
-  return [
-    'NOVEDAD EN MESA DE EXHIBICIÓN',
-    `Sede: ${val('#r-sede') || '(por completar)'}`,
-    `Fecha: ${fecha}`,
-    `Zona: ${z ? z.nombre : ''}`,
-    `Qué pasó: ${s ? s.titulo : 'Otra novedad'}`,
-    val('#r-detalle') ? `Detalle: ${val('#r-detalle')}` : null,
-    val('#r-producto') ? `Producto usado: ${val('#r-producto')}` : null,
-    `Reporta: ${val('#r-nombre') || '(por completar)'}`,
-    'Adjunto fotos (general y de cerca).'
-  ].filter(Boolean).join('\n');
-}
-function actualizarMensaje() {
-  const f = $('#form-reporte', raiz);
-  guardar.escribir('sede', $('#r-sede', f).value.trim());
-  guardar.escribir('nombre', $('#r-nombre', f).value.trim());
-  const t = textoMensaje();
-  $('#r-mensaje', raiz).textContent = t;
-  $('#r-whatsapp', raiz).href = 'https://wa.me/?text=' + encodeURIComponent(t);
-}
-function prepararReporte(zonaId, sitId) {
-  const f = $('#form-reporte', raiz);
-  if (zonaId) $('#r-zona', f).value = zonaId;
-  if (sitId) $('#r-que', f).value = sitId;
-  actualizarMensaje();
 }
 
 /* ---------------- Panel de zona / situación ---------------- */
@@ -255,23 +176,15 @@ function abrirPanel(id, desdeRuta) {
       <p class="z-rol">${esc(z.rol)}</p>
       <h3>Cuídala así</h3><ul class="lista ok">${z.cuidar.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       <h3>Evita</h3><ul class="lista no">${z.evitar.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <div class="caja-avisa"><strong>Si pasa algo:</strong> ${esc(z.si_pasa)}</div>
-      <div class="panel-acciones"><button type="button" class="btn btn-primario" data-reportar="${z.id}">Reportar una novedad</button></div>`;
+      <div class="caja-avisa"><strong>Si pasa algo:</strong> ${esc(z.si_pasa)}</div>`;
   } else {
     $('#panel-cat').textContent = '¿Qué hago si…?';
     $('#panel-titulo').textContent = s.titulo;
     cuerpo.innerHTML = `
       <h3>Haz esto</h3><ul class="lista ok">${s.haz.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       <h3>No hagas</h3><ul class="lista no">${s.no_hagas.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <div class="caja-avisa"><strong>Avisa:</strong> ${esc(s.avisa)}</div>
-      <div class="panel-acciones"><button type="button" class="btn btn-primario" data-reportar="${s.zona}" data-sit="${s.id}">Reportar esta novedad</button></div>`;
+      <div class="caja-avisa"><strong>Avisa:</strong> ${esc(s.avisa)}</div>`;
   }
-  $('[data-reportar]', cuerpo).addEventListener('click', (e) => {
-    const b = e.currentTarget;
-    prepararReporte(b.dataset.reportar, b.dataset.sit);
-    cerrarPanel();
-    setTimeout(() => irA('m-reporte'), 250);
-  });
   $$('.zchip', raiz).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.zona === (z ? z.id : s.zona))));
   panel.hidden = false; fondo.hidden = false;
   cuerpo.scrollTop = 0;
@@ -320,8 +233,8 @@ function pintar2D(cont) {
   d.innerHTML = `<svg viewBox="0 0 400 200" aria-hidden="true">
     <rect x="150" y="20" width="100" height="44" rx="6" fill="#1E5EFF"/><rect x="190" y="64" width="20" height="10" fill="#E9EEF0"/>
     <path d="M40 74 H360 a14 14 0 0 1 0 28 H40 a14 14 0 0 1 0 -28 Z" fill="#F6F8F8"/>
-    <path d="M44 104 H356" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
-    <rect x="148" y="106" width="104" height="70" rx="3" fill="#E3B26A"/>
+    <path d="M44 104 H356" stroke="#28B4FF" stroke-width="4" stroke-linecap="round"/>
+    <rect x="148" y="106" width="104" height="70" rx="3" fill="#CDB89A"/>
     <rect x="62" y="106" width="12" height="72" rx="2" fill="#E9EEF0"/><rect x="326" y="106" width="12" height="72" rx="2" fill="#E9EEF0"/>
     ${[80, 110, 290, 320].map((x) => `<rect x="${x - 10}" y="78" width="20" height="10" rx="2" fill="#13407A"/><rect x="${x - 8}" y="66" width="16" height="10" rx="2" fill="#fff" stroke="#9FB0BC"/>`).join('')}
   </svg>`;

@@ -6,12 +6,12 @@
     "nota_edicion": "Edita solo los textos entre comillas. No cambies los campos 'id', 'categoria' ni 'zona'. Máximo 80 palabras por popup (qué es + gamas + beneficio + frase)."
   },
   "categorias": [
-    { "id": "rendimiento", "nombre": "Rendimiento", "color": "#1E6AFF" },
-    { "id": "fotografia", "nombre": "Fotografía", "color": "#8A4CFF" },
-    { "id": "energia", "nombre": "Energía", "color": "#008743" },
-    { "id": "pantalla", "nombre": "Pantalla", "color": "#007FA1" },
-    { "id": "conectividad", "nombre": "Conectividad", "color": "#DF0093" },
-    { "id": "seguridad", "nombre": "Seguridad y durabilidad", "color": "#CC4A00" }
+    { "id": "rendimiento", "nombre": "Rendimiento", "color": "#1E5EFF" },
+    { "id": "fotografia", "nombre": "Fotografía", "color": "#4F46E5" },
+    { "id": "energia", "nombre": "Energía", "color": "#0077C8" },
+    { "id": "pantalla", "nombre": "Pantalla", "color": "#0F2C6E" },
+    { "id": "conectividad", "nombre": "Conectividad", "color": "#0E7490" },
+    { "id": "seguridad", "nombre": "Seguridad y durabilidad", "color": "#3B5BA9" }
   ],
   "especificaciones": [
     {
@@ -27,7 +27,7 @@
         "alta": "8 núcleos de 3 GHz o más, con IA"
       },
       "beneficio": "Apps que abren al instante, juegos sin trabarse y un equipo que sigue rápido con los años.",
-      "frase": "Con este procesador todo le abre de una, sin esperar."
+      "frase": "Este equipo responde al instante: abre apps y juegos sin hacerlo esperar."
     },
     {
       "id": "ram",
@@ -42,7 +42,7 @@
         "alta": "12 a 16 GB"
       },
       "beneficio": "Pasar de WhatsApp a la cámara y al banco sin que las apps se recarguen ni se pierda lo que estaba haciendo.",
-      "frase": "Con esta RAM usted salta entre apps sin que nada se le cierre."
+      "frase": "Puede tener WhatsApp, el banco y la cámara abiertos a la vez sin que nada se le cierre."
     },
     {
       "id": "almacenamiento",
@@ -57,7 +57,7 @@
         "alta": "256 GB a 1 TB, sin microSD, apoyo en nube"
       },
       "beneficio": "Guardar años de fotos y audios sin el aviso de “memoria llena”.",
-      "frase": "Aquí le caben todas sus fotos sin borrar nada."
+      "frase": "Aquí le caben años de fotos y videos sin ver el aviso de memoria llena."
     },
     {
       "id": "sistema",
@@ -72,7 +72,7 @@
         "alta": "6 a 7 años"
       },
       "beneficio": "Un celular seguro para el banco y las apps por más tiempo: la inversión dura más.",
-      "frase": "Este equipo recibe actualizaciones por años: le dura y lo protege."
+      "frase": "Recibe actualizaciones por varios años: se mantiene seguro y al día."
     },
     {
       "id": "camara-principal",
@@ -87,7 +87,7 @@
         "alta": "50 MP o más, estabilización óptica, video 4K"
       },
       "beneficio": "Fotos nítidas de noche y videos sin temblor en fiestas y paseos.",
-      "frase": "Con esta cámara sus fotos de noche salen claritas."
+      "frase": "Tome fotos de noche y videos en movimiento: salen nítidos y sin temblor."
     },
     {
       "id": "camara-frontal",
@@ -102,7 +102,7 @@
         "alta": "12 a 50 MP, video 4K y enfoque automático"
       },
       "beneficio": "Verse bien en videollamadas de trabajo, con la familia y en las selfies para redes.",
-      "frase": "En sus videollamadas lo van a ver nítido."
+      "frase": "En sus videollamadas y selfies se va a ver nítido y con buen color."
     },
     {
       "id": "bateria",
@@ -117,7 +117,7 @@
         "alta": "carga de 45 W o más e inalámbrica"
       },
       "beneficio": "Llegar a la noche con batería y recargar en minutos antes de salir.",
-      "frase": "Esta batería le aguanta todo el día y carga rapidísimo."
+      "frase": "Le dura todo el día y con unos minutos de carga vuelve a salir con batería."
     },
     {
       "id": "pantalla",
@@ -132,7 +132,7 @@
         "alta": "AMOLED 6,8\", muy brillante, 120 Hz"
       },
       "beneficio": "Ver bien incluso a pleno sol y moverse por redes con suavidad.",
-      "frase": "Mire qué colores y cómo se ve bajo el sol."
+      "frase": "Mire lo fluida y brillante que se ve, incluso bajo el sol."
     },
     {
       "id": "audio",
@@ -147,7 +147,7 @@
         "alta": "Estéreo con sonido envolvente, audífonos Bluetooth"
       },
       "beneficio": "Disfrutar series, música y videos con buen volumen sin parlante externo.",
-      "frase": "Escuche este sonido: es como tener un parlantico incluido."
+      "frase": "Suena fuerte y claro: sus series y su música sin necesidad de parlante."
     },
     {
       "id": "conectividad",
@@ -162,7 +162,7 @@
         "alta": "5G, Wi-Fi 7, NFC"
       },
       "beneficio": "Navegar más rápido y pagar en tiendas y transporte sin sacar la tarjeta.",
-      "frase": "Con NFC paga solo acercando el celular, sin sacar la billetera."
+      "frase": "Pague acercando el celular, sin sacar la billetera, y navegue más rápido."
     },
     {
       "id": "sim",
@@ -177,7 +177,7 @@
         "alta": "SIM física + eSIM, o solo eSIM"
       },
       "beneficio": "Tener la línea personal y la del trabajo en un solo equipo.",
-      "frase": "Lleve sus dos líneas en un solo celular; la eSIM se la activo ya."
+      "frase": "Lleve su línea personal y la del trabajo en un solo equipo; la eSIM se la activo aquí."
     },
     {
       "id": "seguridad",
@@ -192,7 +192,7 @@
         "alta": "Huella ultrasónica o rostro 3D, aptos para pagos"
       },
       "beneficio": "Abrir el celular y las apps del banco en un segundo, sin claves, y proteger sus datos si se pierde.",
-      "frase": "Solo usted lo abre, con su huella, en un segundo."
+      "frase": "Solo usted lo desbloquea, con su huella o su rostro, en un segundo."
     },
     {
       "id": "resistencia",
@@ -207,7 +207,7 @@
         "alta": "IP68 (sumergible)"
       },
       "beneficio": "Tranquilidad ante lluvia, playa o un vaso regado. Ojo: no cubre agua salada.",
-      "frase": "Si le cae agua, tranquilo: está protegido."
+      "frase": "Si le cae agua o lo moja la lluvia, tranquilo: está protegido."
     }
   ]
 }

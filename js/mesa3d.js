@@ -8,7 +8,7 @@ import {
   ExtrudeGeometry, BoxGeometry, PlaneGeometry, SphereGeometry,
   MeshStandardMaterial, MeshBasicMaterial, HemisphereLight, DirectionalLight,
   CanvasTexture, SRGBColorSpace, Vector3, MathUtils, AdditiveBlending
-} from './vendor/three.min.js?v=20261030d';
+} from './vendor/three.min.js?v=20261030g';
 
 const FOV = 34;
 const T = Math.tan(MathUtils.degToRad(FOV / 2));
@@ -37,14 +37,14 @@ function texturaPanel() {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 340;
   const g = c.getContext('2d');
   g.fillStyle = '#1E5EFF'; g.fillRect(0, 0, c.width, c.height);
-  g.fillStyle = '#00D68F'; g.beginPath(); g.arc(960, 40, 150, 0, Math.PI * 2); g.fill();
-  g.fillStyle = '#FFC93C'; g.beginPath(); g.arc(40, 320, 90, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#28B4FF'; g.beginPath(); g.arc(960, 40, 150, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#BFD6FF'; g.beginPath(); g.arc(40, 320, 90, 0, Math.PI * 2); g.fill();
   g.fillStyle = '#fff'; g.font = '700 74px system-ui, sans-serif'; g.textAlign = 'center';
   g.fillText('Equipos a cuotas', c.width / 2, 130);
-  ['#FFFFFF', '#00D68F', '#FFC93C'].forEach((col, i) => {
+  ['#FFFFFF', '#28B4FF', '#BFD6FF'].forEach((col, i) => {
     g.fillStyle = col; const x = 180 + i * 240;
     g.beginPath(); g.roundRect ? g.roundRect(x, 180, 200, 100, 22) : g.rect(x, 180, 200, 100); g.fill();
-    g.fillStyle = '#0B1530'; g.font = '700 46px system-ui, sans-serif'; g.fillText(['$', '%', '+'][i], x + 100, 248);
+    g.fillStyle = '#0A1A3F'; g.font = '700 46px system-ui, sans-serif'; g.fillText(['$', '%', '+'][i], x + 100, 248);
   });
   const t = new CanvasTexture(c); t.colorSpace = SRGBColorSpace; return t;
 }
@@ -69,9 +69,9 @@ function construirMesa() {
   const mesa = new Group();
   const blanco = new MeshStandardMaterial({ color: 0xF6F8F8, roughness: .22, metalness: .05 });
   const blancoMate = new MeshStandardMaterial({ color: 0xE9EEF0, roughness: .5 });
-  const madera = new MeshStandardMaterial({ color: 0xE3B26A, roughness: .62 });
+  const madera = new MeshStandardMaterial({ color: 0xCDB89A, roughness: .62 });
   const oscuro = new MeshStandardMaterial({ color: 0x0E1520, roughness: .3, metalness: .4 });
-  const luzMat = new MeshBasicMaterial({ color: 0x22D3EE });
+  const luzMat = new MeshBasicMaterial({ color: 0x28B4FF });
 
   // Superficie (estadio extruido)
   const tapa = new Mesh(new ExtrudeGeometry(estadio(L, W), { depth: 0.1, bevelEnabled: true, bevelThickness: 0.015, bevelSize: 0.015, bevelSegments: 2, curveSegments: 24 }), blanco);
@@ -103,7 +103,7 @@ function construirMesa() {
   });
 
   // Puestos de exhibición: marcos de luz, equipos y habladores
-  const marcoLuz = new MeshBasicMaterial({ color: 0x22D3EE });
+  const marcoLuz = new MeshBasicMaterial({ color: 0x28B4FF });
   const acrilico = new MeshStandardMaterial({ color: 0xDDEBFF, roughness: .05, transparent: true, opacity: .35 });
   const texHab = texturaHablador();
   const habMat = new MeshBasicMaterial({ map: texHab });
@@ -116,7 +116,7 @@ function construirMesa() {
     });
     if ((k + (z > 0 ? 1 : 0)) % 3 !== 2) {
       const tel = new Mesh(new BoxGeometry(0.22, 0.018, 0.44), oscuro); tel.position.set(x, ALTO + 0.015, z); tel.rotation.y = (k % 2 ? .06 : -.05); mesa.add(tel);
-      const pant = new Mesh(new PlaneGeometry(0.19, 0.4), new MeshBasicMaterial({ color: [0x1E5EFF, 0x00D68F, 0x8A4CFF, 0xFFC93C][(k + (z > 0 ? 2 : 0)) % 4] }));
+      const pant = new Mesh(new PlaneGeometry(0.19, 0.4), new MeshBasicMaterial({ color: [0x1E5EFF, 0x28B4FF, 0x4F46E5, 0xBFD6FF][(k + (z > 0 ? 2 : 0)) % 4] }));
       pant.rotation.x = -Math.PI / 2; pant.position.set(x, ALTO + 0.025, z); pant.rotation.z = tel.rotation.y; mesa.add(pant);
     }
     // Hablador inclinado hacia el cliente
@@ -128,8 +128,8 @@ function construirMesa() {
   }));
 
   // Punto de luz que recorre el borde (firma visual)
-  const destello = new Mesh(new SphereGeometry(0.08, 16, 12), new MeshBasicMaterial({ color: 0x00D68F }));
-  const halo = new Mesh(new SphereGeometry(0.16, 16, 12), new MeshBasicMaterial({ color: 0x00D68F, transparent: true, opacity: .3, blending: AdditiveBlending, depthWrite: false }));
+  const destello = new Mesh(new SphereGeometry(0.08, 16, 12), new MeshBasicMaterial({ color: 0x28B4FF }));
+  const halo = new Mesh(new SphereGeometry(0.16, 16, 12), new MeshBasicMaterial({ color: 0x28B4FF, transparent: true, opacity: .3, blending: AdditiveBlending, depthWrite: false }));
   destello.add(halo); mesa.add(destello);
 
   return { mesa, luzMat, destello };

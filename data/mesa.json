@@ -5,9 +5,18 @@
     "nota_edicion": "Edita solo los textos entre comillas. No cambies los campos 'id' ni 'zona'."
   },
   "tu_parte": [
-    { "titulo": "Úsala bien", "texto": "Es una vitrina, no una mesa de trabajo: nada caliente, nada cortante, nadie apoyado en el panel." },
-    { "titulo": "Actúa rápido", "texto": "Un derrame atendido en el momento no deja mancha. Seca siempre bordes y uniones." },
-    { "titulo": "Avisa con foto", "texto": "Si algo no sale, se levanta, se mueve o no enciende, no lo arregles: toma foto y reporta." }
+    {
+      "titulo": "Úsala bien",
+      "texto": "Es una vitrina, no una mesa de trabajo: nada caliente, nada cortante, nadie apoyado en el panel."
+    },
+    {
+      "titulo": "Actúa rápido",
+      "texto": "Un derrame atendido en el momento no deja mancha. Seca siempre bordes y uniones."
+    },
+    {
+      "titulo": "Avisa con foto",
+      "texto": "Si algo no sale, se levanta, se mueve o no enciende, no lo arregles: toma foto y reporta."
+    }
   ],
   "zonas": [
     {
@@ -15,8 +24,14 @@
       "nombre": "Superficie de exhibición",
       "corto": "Superficie",
       "rol": "Donde el cliente toca y prueba los equipos.",
-      "cuidar": ["Limpia con paño suave apenas húmedo y seca enseguida.", "Atiende cualquier derrame antes de que se seque."],
-      "evitar": ["Usarla como mesa de trabajo, apoyar cosas calientes o cortar encima.", "Limpiavidrios, alcohol, esponjas o productos abrasivos."],
+      "cuidar": [
+        "Limpia con paño suave apenas húmedo y seca enseguida.",
+        "Atiende cualquier derrame antes de que se seque."
+      ],
+      "evitar": [
+        "Usarla como mesa de trabajo, apoyar cosas calientes o cortar encima.",
+        "Limpiavidrios, alcohol, esponjas o productos abrasivos."
+      ],
       "si_pasa": "Mancha que no sale, rayón o quemadura: no frotes más ni la pulas. Toma foto y reporta."
     },
     {
@@ -24,8 +39,13 @@
       "nombre": "Panel de luz central",
       "corto": "Panel de luz",
       "rol": "La pantalla iluminada con la publicidad, en el centro de la mesa.",
-      "cuidar": ["Limpia solo la cara de afuera y con el panel apagado."],
-      "evitar": ["Halarlo, apoyarse o colgar cosas en él.", "Abrirlo o quitar el acrílico para limpiar por dentro."],
+      "cuidar": [
+        "Limpia solo la cara de afuera y con el panel apagado."
+      ],
+      "evitar": [
+        "Halarlo, apoyarse o colgar cosas en él.",
+        "Abrirlo o quitar el acrílico para limpiar por dentro."
+      ],
       "si_pasa": "Si se apaga, parpadea o ves humedad o suciedad por dentro, repórtalo a mantenimiento."
     },
     {
@@ -33,8 +53,13 @@
       "nombre": "Habladores y acrílicos",
       "corto": "Habladores",
       "rol": "Los avisos de precio y las piezas transparentes junto a cada equipo.",
-      "cuidar": ["Paño suave sin pelusa, agua con un poco de jabón suave y poca presión."],
-      "evitar": ["Frotar en seco, usar papel áspero o alcohol: rayan y empañan el acrílico.", "Halar un hablador o despegar las puntas de un adhesivo."],
+      "cuidar": [
+        "Paño suave sin pelusa, agua con un poco de jabón suave y poca presión."
+      ],
+      "evitar": [
+        "Frotar en seco, usar papel áspero o alcohol: rayan y empañan el acrílico.",
+        "Halar un hablador o despegar las puntas de un adhesivo."
+      ],
       "si_pasa": "Adhesivo levantado o acrílico rajado: no lo pegues con cinta. Reporta con foto."
     },
     {
@@ -42,8 +67,13 @@
       "nombre": "Luz azul del borde",
       "corto": "Luz azul",
       "rol": "La línea de luz que rodea el borde de la mesa.",
-      "cuidar": ["Al abrir la tienda, revisa que encienda completa."],
-      "evitar": ["Mojar cerca de la luz o de los cables.", "Abrir, empalmar o cambiar piezas: es trabajo técnico."],
+      "cuidar": [
+        "Al abrir la tienda, revisa que encienda completa."
+      ],
+      "evitar": [
+        "Mojar cerca de la luz o de los cables.",
+        "Abrir, empalmar o cambiar piezas: es trabajo técnico."
+      ],
       "si_pasa": "Si una parte no enciende o cayó agua cerca, no la reconectes y avisa a mantenimiento."
     },
     {
@@ -51,8 +81,13 @@
       "nombre": "Cajón y bordes de madera",
       "corto": "Madera y bordes",
       "rol": "La parte en madera del centro y los bordes de la mesa.",
-      "cuidar": ["Seca enseguida cualquier humedad, sobre todo en esquinas y uniones."],
-      "evitar": ["Paños empapados, manguera o vapor: el agua hincha la madera.", "Arrancar o pegar un borde que se esté levantando."],
+      "cuidar": [
+        "Seca enseguida cualquier humedad, sobre todo en esquinas y uniones."
+      ],
+      "evitar": [
+        "Paños empapados, manguera o vapor: el agua hincha la madera.",
+        "Arrancar o pegar un borde que se esté levantando."
+      ],
       "si_pasa": "Borde levantado o madera hinchada: mantenla seca, toma foto y reporta."
     },
     {
@@ -60,8 +95,13 @@
       "nombre": "Patas y base",
       "corto": "Patas y base",
       "rol": "Los apoyos de la mesa hasta el piso.",
-      "cuidar": ["Fíjate que la mesa no se mueva ni cojee."],
-      "evitar": ["Empujarla, arrastrarla o inclinarla sobre una pata.", "Golpear la base con el carro de aseo o dejar el trapero mojado contra ella."],
+      "cuidar": [
+        "Fíjate que la mesa no se mueva ni cojee."
+      ],
+      "evitar": [
+        "Empujarla, arrastrarla o inclinarla sobre una pata.",
+        "Golpear la base con el carro de aseo o dejar el trapero mojado contra ella."
+      ],
       "si_pasa": "Si la mesa se mueve o ves una grieta, deja de usarla y avisa al encargado."
     }
   ],
@@ -71,8 +111,14 @@
       "titulo": "Se regó un líquido",
       "zona": "superficie",
       "claves": "derrame regó regar riego cafe café gaseosa agua jugo liquido líquido mojo mojó mojada",
-      "haz": ["Absorbe con un paño seco, sin frotar.", "Pasa un paño apenas húmedo y seca bien, sobre todo bordes y uniones.", "Revisa que no haya llegado a cables o luces."],
-      "no_hagas": ["Echar más agua o dejar que se seque solo."],
+      "haz": [
+        "Absorbe con un paño seco, sin frotar.",
+        "Pasa un paño apenas húmedo y seca bien, sobre todo bordes y uniones.",
+        "Revisa que no haya llegado a cables o luces."
+      ],
+      "no_hagas": [
+        "Echar más agua o dejar que se seque solo."
+      ],
       "avisa": "Si llegó a cables o luces, avisa al encargado antes de volver a conectar."
     },
     {
@@ -80,8 +126,15 @@
       "titulo": "Una mancha no sale",
       "zona": "superficie",
       "claves": "mancha tinta marcador pegante adhesivo sucio no sale persistente velo",
-      "haz": ["Detén la limpieza en ese punto.", "Anota qué se regó y qué usaste.", "Toma una foto general y otra de cerca."],
-      "no_hagas": ["Usar un químico más fuerte o más concentrado.", "Lijar, pulir o raspar la mancha."],
+      "haz": [
+        "Detén la limpieza en ese punto.",
+        "Anota qué se regó y qué usaste.",
+        "Toma una foto general y otra de cerca."
+      ],
+      "no_hagas": [
+        "Usar un químico más fuerte o más concentrado.",
+        "Lijar, pulir o raspar la mancha."
+      ],
       "avisa": "Al encargado: él define el tratamiento con el fabricante."
     },
     {
@@ -89,8 +142,12 @@
       "titulo": "Rayón, quemadura o perdió brillo",
       "zona": "superficie",
       "claves": "rayon rayón rayado quemadura quemado brillo opaco golpe",
-      "haz": ["Toma foto y reporta."],
-      "no_hagas": ["Pulir o lijar: deja una zona que se nota más que el daño."],
+      "haz": [
+        "Toma foto y reporta."
+      ],
+      "no_hagas": [
+        "Pulir o lijar: deja una zona que se nota más que el daño."
+      ],
       "avisa": "Al encargado, para que lo evalúe un especialista."
     },
     {
@@ -98,8 +155,14 @@
       "titulo": "Se levantó un borde o se hinchó la madera",
       "zona": "madera",
       "claves": "borde canto levantado despegado hinchado hinchada madera esquina",
-      "haz": ["Mantén la zona seca.", "Deja de limpiar con paño húmedo en esa parte.", "Toma foto."],
-      "no_hagas": ["Arrancarlo ni pegarlo con pegante o cinta."],
+      "haz": [
+        "Mantén la zona seca.",
+        "Deja de limpiar con paño húmedo en esa parte.",
+        "Toma foto."
+      ],
+      "no_hagas": [
+        "Arrancarlo ni pegarlo con pegante o cinta."
+      ],
       "avisa": "Al encargado del punto."
     },
     {
@@ -107,8 +170,13 @@
       "titulo": "La luz o el panel no encienden",
       "zona": "luz",
       "claves": "luz apagada no enciende parpadea panel bombillo led azul conexion conexión cables",
-      "haz": ["Toma foto de la parte que falla.", "Si cayó agua cerca, deja todo desconectado."],
-      "no_hagas": ["Abrir la luz, empalmar cables o cambiar piezas."],
+      "haz": [
+        "Toma foto de la parte que falla.",
+        "Si cayó agua cerca, deja todo desconectado."
+      ],
+      "no_hagas": [
+        "Abrir la luz, empalmar cables o cambiar piezas."
+      ],
       "avisa": "A mantenimiento, a través del encargado."
     },
     {
@@ -116,8 +184,13 @@
       "titulo": "La mesa se mueve o cojea",
       "zona": "base",
       "claves": "se mueve cojea tambalea inestable grieta fisura pata suelta",
-      "haz": ["Retira los equipos si hay riesgo de que caigan.", "Deja de usar la mesa hasta que la revisen."],
-      "no_hagas": ["Seguir exhibiendo equipos en ella como si nada."],
+      "haz": [
+        "Retira los equipos si hay riesgo de que caigan.",
+        "Deja de usar la mesa hasta que la revisen."
+      ],
+      "no_hagas": [
+        "Seguir exhibiendo equipos en ella como si nada."
+      ],
       "avisa": "Al encargado del punto, de inmediato."
     },
     {
@@ -125,8 +198,14 @@
       "titulo": "Hay que mover la mesa",
       "zona": "base",
       "claves": "mover correr trasladar cambiar de lugar arrastrar empujar levantar",
-      "haz": ["Pide que la mueva personal capacitado.", "Antes: despeja la ruta, retira piezas sueltas y desconecta luz y alarmas."],
-      "no_hagas": ["Empujarla, arrastrarla o inclinarla sobre una pata.", "Levantarla desde los bordes, el panel o los acrílicos."],
+      "haz": [
+        "Pide que la mueva personal capacitado.",
+        "Antes: despeja la ruta, retira piezas sueltas y desconecta luz y alarmas."
+      ],
+      "no_hagas": [
+        "Empujarla, arrastrarla o inclinarla sobre una pata.",
+        "Levantarla desde los bordes, el panel o los acrílicos."
+      ],
       "avisa": "Al encargado, para coordinar el traslado."
     },
     {
@@ -134,8 +213,14 @@
       "titulo": "Viene alguien a trabajar cerca",
       "zona": "superficie",
       "claves": "proveedor obra pintura tecnico técnico arreglo trabajo escalera polvo",
-      "haz": ["Toma fotos de cómo está la mesa antes.", "Cúbrela para protegerla del polvo y las herramientas.", "Al final, compara con las fotos."],
-      "no_hagas": ["Dejar que perforen, peguen cintas o apoyen escaleras en ella."],
+      "haz": [
+        "Toma fotos de cómo está la mesa antes.",
+        "Cúbrela para protegerla del polvo y las herramientas.",
+        "Al final, compara con las fotos."
+      ],
+      "no_hagas": [
+        "Dejar que perforen, peguen cintas o apoyen escaleras en ella."
+      ],
       "avisa": "Al encargado, que registra el antes y el después con el proveedor."
     },
     {
@@ -143,38 +228,103 @@
       "titulo": "Un cliente se apoya o hala el panel",
       "zona": "panel",
       "claves": "cliente apoya hala jala panel hablador niño niños recostado",
-      "haz": ["Con amabilidad, invítalo a probar el equipo sobre la superficie.", "Explica que el panel y los habladores son de exhibición."],
-      "no_hagas": ["Dejar que se usen como agarradera o apoyo."],
+      "haz": [
+        "Con amabilidad, invítalo a probar el equipo sobre la superficie.",
+        "Explica que el panel y los habladores son de exhibición."
+      ],
+      "no_hagas": [
+        "Dejar que se usen como agarradera o apoyo."
+      ],
       "avisa": "Si algo se dañó, repórtalo con foto."
     }
   ],
   "productos": [
-    { "nombre": "Agua tibia con jabón suave", "ok": true, "por": "Es lo indicado. Ponla en el paño, no directo sobre la mesa." },
-    { "nombre": "Paño suave sin pelusa", "ok": true, "por": "No raya la superficie ni los acrílicos." },
-    { "nombre": "Paño seco para terminar", "ok": true, "por": "Secar evita marcas de agua y que la madera se hinche." },
-    { "nombre": "Alcohol", "ok": false, "por": "Empaña y puede rajar los acrílicos." },
-    { "nombre": "Limpiavidrios", "ok": false, "por": "Deja una película opaca en la superficie blanca." },
-    { "nombre": "Cloro", "ok": false, "por": "Daña los acabados." },
-    { "nombre": "Thinner, acetona o removedor", "ok": false, "por": "Disuelven acabados, adhesivos y acrílicos." },
-    { "nombre": "Esponja verde o lana de acero", "ok": false, "por": "Rayan la superficie de forma permanente." },
-    { "nombre": "Polvos abrasivos", "ok": false, "por": "Opacan el brillo y dejan rayas finas." },
-    { "nombre": "Desengrasante fuerte", "ok": false, "por": "Es demasiado agresivo para estos acabados." },
-    { "nombre": "Cera, silicona o brillamuebles", "ok": false, "por": "Dejan residuos y no están autorizados." },
-    { "nombre": "Cuchilla o raspador", "ok": false, "por": "Corta y raya; nunca se usa para quitar manchas." },
-    { "nombre": "Rociar directo sobre la mesa", "ok": false, "por": "El líquido se mete en uniones, cables y madera. Aplícalo siempre en el paño." }
+    {
+      "nombre": "Agua tibia con jabón suave",
+      "ok": true,
+      "por": "Es lo indicado. Ponla en el paño, no directo sobre la mesa."
+    },
+    {
+      "nombre": "Paño suave sin pelusa",
+      "ok": true,
+      "por": "No raya la superficie ni los acrílicos."
+    },
+    {
+      "nombre": "Paño seco para terminar",
+      "ok": true,
+      "por": "Secar evita marcas de agua y que la madera se hinche."
+    },
+    {
+      "nombre": "Alcohol",
+      "ok": false,
+      "por": "Empaña y puede rajar los acrílicos."
+    },
+    {
+      "nombre": "Limpiavidrios",
+      "ok": false,
+      "por": "Deja una película opaca en la superficie blanca."
+    },
+    {
+      "nombre": "Cloro",
+      "ok": false,
+      "por": "Daña los acabados."
+    },
+    {
+      "nombre": "Thinner, acetona o removedor",
+      "ok": false,
+      "por": "Disuelven acabados, adhesivos y acrílicos."
+    },
+    {
+      "nombre": "Esponja verde o lana de acero",
+      "ok": false,
+      "por": "Rayan la superficie de forma permanente."
+    },
+    {
+      "nombre": "Polvos abrasivos",
+      "ok": false,
+      "por": "Opacan el brillo y dejan rayas finas."
+    },
+    {
+      "nombre": "Desengrasante fuerte",
+      "ok": false,
+      "por": "Es demasiado agresivo para estos acabados."
+    },
+    {
+      "nombre": "Cera, silicona o brillamuebles",
+      "ok": false,
+      "por": "Dejan residuos y no están autorizados."
+    },
+    {
+      "nombre": "Cuchilla o raspador",
+      "ok": false,
+      "por": "Corta y raya; nunca se usa para quitar manchas."
+    },
+    {
+      "nombre": "Rociar directo sobre la mesa",
+      "ok": false,
+      "por": "El líquido se mete en uniones, cables y madera. Aplícalo siempre en el paño."
+    }
   ],
   "pasos": [
-    { "titulo": "Prepara", "texto": "Retira objetos sueltos (con autorización), protege equipos y alarmas y apaga la iluminación si vas a limpiar cerca de conexiones." },
-    { "titulo": "Quita el polvo", "texto": "Paño limpio apenas húmedo. Si hay arena o polvo, levántalo sin arrastrar ni presionar." },
-    { "titulo": "Limpia", "texto": "Agua tibia con jabón suave aplicada al paño, nunca rociada sobre la mesa, los acrílicos o los equipos." },
-    { "titulo": "Retira el jabón", "texto": "Otro paño con agua limpia, bien escurrido. Que no quede agua en bordes, uniones ni ranuras." },
-    { "titulo": "Seca y revisa", "texto": "Seca todo y confirma que no queden residuos ni humedad cerca de los equipos." }
-  ],
-  "rutina": [
-    { "cuando": "Cada día", "que": "Limpieza suave, atención de derrames y revisión visual.", "quien": "Aseo · tú avisas lo que veas" },
-    { "cuando": "Cada semana", "que": "Revisión de acrílicos, avisos, bordes y zonas cerca de conexiones.", "quien": "Encargado del punto" },
-    { "cuando": "Cada mes", "que": "Estabilidad, uniones y funcionamiento de las luces.", "quien": "Mantenimiento" },
-    { "cuando": "Después de un proveedor", "que": "Comparar el antes y el después y registrar daños.", "quien": "Encargado y proveedor" },
-    { "cuando": "Ante una falla", "que": "Aislar si hay riesgo, tomar foto y pedir revisión.", "quien": "Encargado del punto" }
+    {
+      "titulo": "Prepara",
+      "texto": "Retira objetos sueltos (con autorización), protege equipos y alarmas y apaga la iluminación si vas a limpiar cerca de conexiones."
+    },
+    {
+      "titulo": "Quita el polvo",
+      "texto": "Paño limpio apenas húmedo. Si hay arena o polvo, levántalo sin arrastrar ni presionar."
+    },
+    {
+      "titulo": "Limpia",
+      "texto": "Agua tibia con jabón suave aplicada al paño, nunca rociada sobre la mesa, los acrílicos o los equipos."
+    },
+    {
+      "titulo": "Retira el jabón",
+      "texto": "Otro paño con agua limpia, bien escurrido. Que no quede agua en bordes, uniones ni ranuras."
+    },
+    {
+      "titulo": "Seca y revisa",
+      "texto": "Seca todo y confirma que no queden residuos ni humedad cerca de los equipos."
+    }
   ]
 }
