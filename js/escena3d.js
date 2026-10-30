@@ -9,8 +9,8 @@ import {
   ExtrudeGeometry, ShapeGeometry, BoxGeometry, CylinderGeometry, PlaneGeometry,
   MeshStandardMaterial, MeshBasicMaterial, HemisphereLight, DirectionalLight,
   CanvasTexture, SRGBColorSpace, Vector3, Matrix4, Euler, Quaternion, MathUtils
-} from './vendor/three.min.js?v=20261030c';
-import { zonaDe } from './zonas.js?v=20261030c';
+} from './vendor/three.min.js?v=20261030d';
+import { zonaDe } from './zonas.js?v=20261030d';
 
 const FOV = 32;
 const T = Math.tan(MathUtils.degToRad(FOV / 2));
@@ -40,18 +40,11 @@ function texturaPantalla() {
   const c = document.createElement('canvas'); c.width = W; c.height = H;
   const g = c.getContext('2d');
   // Fondo de pantalla abstracto
-  const fondo = g.createLinearGradient(0, 0, W, H);
-  fondo.addColorStop(0, '#04B84C'); fondo.addColorStop(.5, '#037A6E'); fondo.addColorStop(1, '#1236D8');
-  g.fillStyle = fondo; g.fillRect(0, 0, W, H);
-  // Velo oscuro superior para que el reloj y la barra de estado se lean bien
-  const velo = g.createLinearGradient(0, 0, 0, H * .45);
-  velo.addColorStop(0, 'rgba(4, 20, 40, .45)'); velo.addColorStop(1, 'rgba(4, 20, 40, 0)');
-  g.fillStyle = velo; g.fillRect(0, 0, W, H * .45);
-  g.globalAlpha = .18; g.fillStyle = '#ffffff';
-  for (let i = 0; i < 3; i++) {
-    g.beginPath(); g.ellipse(W * (.2 + i * .35), H * (.25 + i * .22), 260, 120, -.5, 0, Math.PI * 2); g.fill();
-  }
-  g.globalAlpha = 1;
+  // Fondo de pantalla plano: azul con formas planas de colores vivos
+  g.fillStyle = '#1E5EFF'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#00D68F'; g.beginPath(); g.arc(W * .92, H * .52, 210, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#22D3EE'; g.beginPath(); g.arc(W * .05, H * .78, 150, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#FFC93C'; g.beginPath(); g.arc(W * .12, H * .12, 70, 0, Math.PI * 2); g.fill();
   // Barra de estado
   g.fillStyle = '#fff'; g.font = '600 26px system-ui, sans-serif'; g.fillText('10:08', 40, 58);
   for (let i = 0; i < 4; i++) g.fillRect(372 + i * 11, 54 - (i + 1) * 6, 7, (i + 1) * 6);
@@ -60,21 +53,21 @@ function texturaPantalla() {
   g.textAlign = 'center'; g.font = '300 128px system-ui, sans-serif'; g.fillText('10:08', W / 2, 270);
   g.font = '500 28px system-ui, sans-serif'; g.globalAlpha = .85; g.fillText('Viernes, 30 de octubre', W / 2, 320); g.globalAlpha = 1;
   // Íconos genéricos
-  const colores = ['#FFFFFF', '#7CF0A6', '#5FD3C4', '#7FB2FF', '#B8F5CF', '#FFFFFF', '#9DE7DD', '#A9C4FF', '#5FE38E', '#C9D8FF', '#FFFFFF', '#4FC3B0'];
+  const colores = ['#FFFFFF', '#00D68F', '#FFC93C', '#22D3EE', '#FF5FA2', '#FFFFFF', '#8A4CFF', '#00D68F', '#FFFFFF', '#FFC93C', '#22D3EE', '#0B1530'];
   const tam = 84, gap = (W - 4 * tam) / 5;
   colores.forEach((col, i) => {
     const fx = i % 4, fy = Math.floor(i / 4);
     const x = gap + fx * (tam + gap), y = 470 + fy * (tam + 58);
     g.fillStyle = col; redondo(g, x, y, tam, tam, 22); g.fill();
-    g.fillStyle = 'rgba(4,40,60,.28)';
+    g.fillStyle = 'rgba(11,21,48,.25)';
     if (i % 3 === 0) { g.beginPath(); g.arc(x + tam / 2, y + tam / 2, 20, 0, Math.PI * 2); g.fill(); }
     else if (i % 3 === 1) { redondo(g, x + 24, y + 24, 36, 36, 6); g.fill(); }
     else { g.beginPath(); g.moveTo(x + 42, y + 20); g.lineTo(x + 64, y + 62); g.lineTo(x + 20, y + 62); g.fill(); }
     g.fillStyle = 'rgba(255,255,255,.8)'; redondo(g, x + 14, y + tam + 12, tam - 28, 8, 4); g.fill();
   });
   // Dock
-  g.fillStyle = 'rgba(255,255,255,.18)'; redondo(g, 28, H - 170, W - 56, 120, 40); g.fill();
-  ['#5FE38E', '#5FD3C4', '#7FB2FF', '#FFFFFF'].forEach((col, i) => { g.fillStyle = col; redondo(g, 58 + i * 108, H - 152, 84, 84, 22); g.fill(); });
+  g.fillStyle = 'rgba(11,21,48,.35)'; redondo(g, 28, H - 170, W - 56, 120, 40); g.fill();
+  ['#00D68F', '#FFC93C', '#22D3EE', '#FFFFFF'].forEach((col, i) => { g.fillStyle = col; redondo(g, 58 + i * 108, H - 152, 84, 84, 22); g.fill(); });
   g.fillStyle = 'rgba(255,255,255,.75)'; redondo(g, W / 2 - 70, H - 26, 140, 7, 4); g.fill();
   const t = new CanvasTexture(c);
   t.colorSpace = SRGBColorSpace; t.anisotropy = 4;
@@ -98,11 +91,11 @@ function construirTelefono() {
   const tel = new Group();
   const m = {
     marco: new MeshStandardMaterial({ color: 0xB9C1CD, metalness: .55, roughness: .32 }),
-    tapa: new MeshStandardMaterial({ color: 0x0F3A5C, metalness: .2, roughness: .38, transparent: true, opacity: 1 }),
+    tapa: new MeshStandardMaterial({ color: 0x0B1530, metalness: .2, roughness: .38, transparent: true, opacity: 1 }),
     negro: new MeshStandardMaterial({ color: 0x0B0E14, metalness: .3, roughness: .25 }),
     lente: new MeshStandardMaterial({ color: 0x141A26, metalness: .9, roughness: .12 }),
     aro: new MeshStandardMaterial({ color: 0xD3D9E2, metalness: .8, roughness: .22 }),
-    modulo: new MeshStandardMaterial({ color: 0x0B2A4A, metalness: .35, roughness: .25 }),
+    modulo: new MeshStandardMaterial({ color: 0x1E5EFF, metalness: .35, roughness: .25 }),
     placa: new MeshStandardMaterial({ color: 0x1E4D3D, roughness: .7 }),
     chip: new MeshStandardMaterial({ color: 0x9AA4B2, metalness: .7, roughness: .3 }),
     chipOsc: new MeshStandardMaterial({ color: 0x2A2F38, roughness: .5 }),
@@ -250,7 +243,7 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     const m = window.innerWidth >= 900;
     // Ancho máximo de etiqueta según el espacio lateral disponible
     const lateral = ancho / 2;
-    const max = m ? 180 : Math.max(84, Math.min(130, lateral * 0.47));
+    const max = m ? 180 : Math.max(84, Math.min(ancho > alto ? 160 : 130, lateral * 0.47));
     escenario.style.setProperty('--etq-max', `${Math.round(max)}px`);
     return max;
   }
@@ -473,7 +466,10 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
       capa.style.visibility = 'visible';
       encuadreGeneral();
     },
-    filtrar() { /* las etiquetas se ocultan desde app.js; las líneas leen s._oculta */ },
+    filtrar() { /* las etiquetas se ocultan desde equipo.js; las líneas leen s._oculta */ },
+    // Detiene el dibujo cuando la herramienta no está a la vista (ahorra batería)
+    pausar() { if (rafId) { cancelAnimationFrame(rafId); rafId = 0; } },
+    reanudar() { if (!rafId) { previo = performance.now(); rafId = requestAnimationFrame(cuadro); } },
     destruir() {
       cancelAnimationFrame(rafId);
       capa.classList.remove('lista');

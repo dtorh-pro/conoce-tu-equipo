@@ -6,12 +6,12 @@
     "nota_edicion": "Edita solo los textos entre comillas. No cambies los campos 'id', 'categoria' ni 'zona'. Máximo 80 palabras por popup (qué es + gamas + beneficio + frase)."
   },
   "categorias": [
-    { "id": "rendimiento", "nombre": "Rendimiento", "color": "#008700" },
-    { "id": "fotografia", "nombre": "Fotografía", "color": "#007653" },
-    { "id": "energia", "nombre": "Energía", "color": "#006470" },
-    { "id": "pantalla", "nombre": "Pantalla", "color": "#005182" },
-    { "id": "conectividad", "nombre": "Conectividad", "color": "#006AFD" },
-    { "id": "seguridad", "nombre": "Seguridad y durabilidad", "color": "#001EFB" }
+    { "id": "rendimiento", "nombre": "Rendimiento", "color": "#1E6AFF" },
+    { "id": "fotografia", "nombre": "Fotografía", "color": "#8A4CFF" },
+    { "id": "energia", "nombre": "Energía", "color": "#008743" },
+    { "id": "pantalla", "nombre": "Pantalla", "color": "#007FA1" },
+    { "id": "conectividad", "nombre": "Conectividad", "color": "#DF0093" },
+    { "id": "seguridad", "nombre": "Seguridad y durabilidad", "color": "#CC4A00" }
   ],
   "especificaciones": [
     {

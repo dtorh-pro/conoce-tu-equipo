@@ -1,8 +1,9 @@
 /* ============================================================
-   APP: carga de datos, etiquetas, popup, recorrido guiado y
+   CONOCE TU EQUIPO: etiquetas, popup, recorrido guiado y
    selección de vista (3D con Three.js o respaldo 2D).
    Los textos se editan en data/especificaciones.json
    ============================================================ */
+import { cargarJson, soportaWebGL2 } from './util.js?v=20261030d';
 const $ = (s) => document.querySelector(s);
 
 const estado = {
@@ -25,25 +26,13 @@ const el = {
 };
 
 /* ---------- Utilidades ---------- */
-let _gl2 = null;
-function soportaWebGL() {
-  // La escena usa Three.js r187, que necesita WebGL2 (Safari 15+, Chrome/Edge/Firefox modernos)
-  if (_gl2 !== null) return _gl2;
-  try {
-    const c = document.createElement('canvas');
-    const gl = window.WebGL2RenderingContext && c.getContext('webgl2');
-    _gl2 = !!gl;
-    gl?.getExtension('WEBGL_lose_context')?.loseContext();
-  } catch { _gl2 = false; }
-  return _gl2;
-}
+// La escena usa Three.js r187, que necesita WebGL2 (Safari 15+, Chrome/Edge/Firefox modernos)
+const soportaWebGL = soportaWebGL2;
 function texto(nodo, valor) { nodo.textContent = valor ?? ''; }
 
 /* ---------- Datos ---------- */
 async function cargarDatos() {
-  const r = await fetch('data/especificaciones.json', { cache: 'no-cache' });
-  if (!r.ok) throw new Error('No se pudo leer data/especificaciones.json');
-  const datos = await r.json();
+  const datos = await cargarJson('data/especificaciones.json');
   estado.datos = datos;
   datos.categorias.forEach((c, i) => { estado.cats[c.id] = { ...c, orden: i }; });
   // Orden del recorrido: por categoría y luego por el orden del archivo
@@ -158,8 +147,8 @@ function abrir(s, desdeHistorial) {
   estado.abierta = s;
   if (!desdeHistorial) {
     try {
-      if (!yaAbierta && !historialEmpujado) { history.pushState({ spec: s.id }, '', '#' + s.id); historialEmpujado = true; }
-      else history.replaceState({ spec: s.id }, '', '#' + s.id);
+      if (!yaAbierta && !historialEmpujado) { history.pushState({ spec: s.id }, '', '#/equipo/' + s.id); historialEmpujado = true; }
+      else history.replaceState({ spec: s.id }, '', '#/equipo/' + s.id);
     } catch { /* algunos visores embebidos bloquean el historial */ }
   }
   pintarPopup(s);
@@ -178,7 +167,7 @@ function cerrar(desdeHistorial) {
   if (!desdeHistorial) {
     try {
       if (historialEmpujado) { historialEmpujado = false; history.back(); }
-      else history.replaceState(null, '', location.pathname + location.search);
+      else history.replaceState(null, '', '#/equipo');
     } catch { /* sin historial */ }
   } else historialEmpujado = false;
   estado.abierta = null;
@@ -219,7 +208,7 @@ async function montarVista(modo) {
   };
   if (modo === '3d') {
     try {
-      const { crearEscena3D } = await import('./escena3d.js?v=20261030c');
+      const { crearEscena3D } = await import('./escena3d.js?v=20261030d');
       // Lienzo nuevo en cada montaje (un contexto WebGL liberado no se reutiliza)
       const viejo = $('#lienzo'); const nuevo = viejo.cloneNode(false); viejo.replaceWith(nuevo);
       estado.vista = await crearEscena3D({
@@ -233,7 +222,7 @@ async function montarVista(modo) {
       return montarVista('2d');
     }
   } else {
-    const { crearVista2D } = await import('./vista2d.js?v=20261030c');
+    const { crearVista2D } = await import('./vista2d.js?v=20261030d');
     estado.vista = crearVista2D({ ...comunes, contenedor: $('#vista2d') });
     estado.modo = '2d';
   }
@@ -258,13 +247,6 @@ async function cambiarVista(modo) {
   await montarVista(modo);
 }
 el.btnVista.addEventListener('click', () => cambiarVista(estado.modo === '3d' ? '2d' : '3d'));
-
-// Botón Atrás del celular / navegador: cierra el popup en vez de salir del sitio
-window.addEventListener('popstate', () => {
-  const s = estado.specs.find((x) => x.id === decodeURIComponent(location.hash.slice(1)));
-  if (s) { historialEmpujado = true; abrir(s, true); }
-  else if (estado.abierta) cerrar(true);
-});
 
 // Deslizar hacia abajo el popup (celular) para cerrarlo
 (() => {
@@ -302,31 +284,46 @@ window.addEventListener('resize', () => {
   if (estado.abierta) requestAnimationFrame(() => estado.vista?.enfocar(estado.abierta, regionLibre()));
 });
 
-/* ---------- Inicio ---------- */
-(async function iniciar() {
-  estado.reintentos3d = 0;
-  const vigilante = setTimeout(() => {
-    const c = document.getElementById('cargando');
-    if (c) c.innerHTML = '<p class="aviso" style="position:static">La carga está tardando más de lo normal. <a href="">Reintentar</a> · <a href="?modo=2d">Abrir versión 2D</a></p>';
-  }, 12000);
-  try {
-    await cargarDatos();
-  } catch (e) {
-    el.cargando.innerHTML = '<p class="aviso" style="position:static">No se pudo cargar el contenido. Si abriste el archivo directamente desde tu computador, publícalo en un servidor o usa un servidor local (ver README).</p>';
-    console.error(e);
-    return;
-  }
-  construirEtiquetas();
-  construirLeyenda();
-  const pedido = new URLSearchParams(location.search).get('modo');
-  const modo = pedido === '2d' || !soportaWebGL() ? '2d' : '3d';
-  await montarVista(modo);
-  clearTimeout(vigilante);
-  el.cargando.classList.add('fuera');
-  setTimeout(() => el.cargando.remove(), 400);
-  // Ganchos para pruebas automáticas
-  window.__app = { estado, abrir, cerrar, mover, iniciarRecorrido };
-  // Enlace directo a una especificación: desarrollador.click/#bateria
-  const inicial = estado.specs.find((x) => x.id === decodeURIComponent(location.hash.slice(1)));
-  if (inicial) setTimeout(() => abrir(inicial, true), 300);
-})();
+/* ---------- API para el portal ---------- */
+let listo = null;
+export function iniciar() {
+  if (listo) return listo;
+  listo = (async () => {
+    estado.reintentos3d = 0;
+    const vigilante = setTimeout(() => {
+      const c = document.getElementById('cargando');
+      if (c) c.innerHTML = '<p class="aviso" style="position:static">La carga está tardando más de lo normal. <a href="">Reintentar</a> · <a href="?modo=2d#/equipo">Abrir versión 2D</a></p>';
+    }, 12000);
+    try {
+      await cargarDatos();
+    } catch (e) {
+      clearTimeout(vigilante);
+      el.cargando.innerHTML = '<p class="aviso" style="position:static">No se pudo cargar el contenido. Revisa tu conexión y recarga la página.</p>';
+      throw e;
+    }
+    construirEtiquetas();
+    construirLeyenda();
+    const pedido = new URLSearchParams(location.search).get('modo');
+    const modo = pedido === '2d' || !soportaWebGL() ? '2d' : '3d';
+    await montarVista(modo);
+    clearTimeout(vigilante);
+    el.cargando.classList.add('fuera');
+    setTimeout(() => el.cargando.remove(), 400);
+    window.__app = { estado, abrir, cerrar, mover, iniciarRecorrido };
+  })();
+  return listo;
+}
+/** Abre una especificación desde la dirección (#/equipo/bateria) */
+export async function abrirPorId(id) {
+  await iniciar();
+  const s = estado.specs.find((x) => x.id === id);
+  if (!s) return false;
+  historialEmpujado = false;
+  if (estado.abierta !== s) abrir(s, true);
+  return true;
+}
+/** Cierra sin tocar el historial (la dirección ya cambió) */
+export function cerrarDesdeRuta() { cerrar(true); }
+export function pausar() { estado.vista?.pausar?.(); }
+export function reanudar() { estado.vista?.reanudar?.(); }
+
