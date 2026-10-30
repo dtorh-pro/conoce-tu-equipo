@@ -25,11 +25,17 @@ const el = {
 };
 
 /* ---------- Utilidades ---------- */
+let _gl2 = null;
 function soportaWebGL() {
+  // La escena usa Three.js r187, que necesita WebGL2 (Safari 15+, Chrome/Edge/Firefox modernos)
+  if (_gl2 !== null) return _gl2;
   try {
     const c = document.createElement('canvas');
-    return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
-  } catch { return false; }
+    const gl = window.WebGL2RenderingContext && c.getContext('webgl2');
+    _gl2 = !!gl;
+    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+  } catch { _gl2 = false; }
+  return _gl2;
 }
 function texto(nodo, valor) { nodo.textContent = valor ?? ''; }
 
@@ -105,8 +111,8 @@ function regionLibre() {
   // Área de pantalla que queda visible con el popup abierto (para centrar el acercamiento)
   const r = el.escenario.getBoundingClientRect();
   const p = el.popup.getBoundingClientRect();
-  const escritorio = window.innerWidth >= 900;
-  if (escritorio) {
+  const lateral = p.width < window.innerWidth * 0.7 && p.left > window.innerWidth * 0.3;
+  if (lateral) {
     const ancho = Math.max(200, p.left - r.left);
     return { x: ancho / 2, y: r.height / 2, w: ancho, h: r.height };
   }
@@ -144,9 +150,18 @@ function pintarPopup(s) {
   }
 }
 
-function abrir(s) {
-  if (!estado.abierta) estado.ultimoFoco = document.activeElement;
+let historialEmpujado = false;
+function abrir(s, desdeHistorial) {
+  desdeHistorial = desdeHistorial === true;
+  const yaAbierta = !!estado.abierta;
+  if (!yaAbierta) estado.ultimoFoco = document.activeElement;
   estado.abierta = s;
+  if (!desdeHistorial) {
+    try {
+      if (!yaAbierta && !historialEmpujado) { history.pushState({ spec: s.id }, '', '#' + s.id); historialEmpujado = true; }
+      else history.replaceState({ spec: s.id }, '', '#' + s.id);
+    } catch { /* algunos visores embebidos bloquean el historial */ }
+  }
   pintarPopup(s);
   el.popup.hidden = false;
   el.fondo.hidden = false;
@@ -157,12 +172,20 @@ function abrir(s) {
   el.cerrar.focus({ preventScroll: true });
 }
 
-function cerrar() {
+function cerrar(desdeHistorial) {
+  desdeHistorial = desdeHistorial === true;
   if (!estado.abierta) return;
+  if (!desdeHistorial) {
+    try {
+      if (historialEmpujado) { historialEmpujado = false; history.back(); }
+      else history.replaceState(null, '', location.pathname + location.search);
+    } catch { /* sin historial */ }
+  } else historialEmpujado = false;
   estado.abierta = null;
   estado.tour = false;
   el.popup.hidden = true;
   el.fondo.hidden = true;
+  el.popup.style.transform = '';
   document.body.classList.remove('popup-abierto');
   estado.specs.forEach((x) => x._boton.classList.remove('activa'));
   estado.vista?.desenfocar();
@@ -199,7 +222,11 @@ async function montarVista(modo) {
       const { crearEscena3D } = await import('./escena3d.js');
       // Lienzo nuevo en cada montaje (un contexto WebGL liberado no se reutiliza)
       const viejo = $('#lienzo'); const nuevo = viejo.cloneNode(false); viejo.replaceWith(nuevo);
-      estado.vista = await crearEscena3D({ ...comunes, lienzo: $('#lienzo'), lineas: $('#lineas'), marcador: $('#marcador'), capa: el.etiquetas });
+      estado.vista = await crearEscena3D({
+        ...comunes, lienzo: $('#lienzo'), lineas: $('#lineas'), marcador: $('#marcador'), capa: el.etiquetas,
+        // Si el sistema libera la GPU (app en segundo plano, poca memoria), se reconstruye la escena
+        alPerderContexto: () => setTimeout(() => cambiarVista(++estado.reintentos3d > 2 ? '2d' : '3d'), 400)
+      });
       estado.modo = '3d';
     } catch (e) {
       console.warn('3D no disponible, usando versión 2D:', e);
@@ -218,21 +245,48 @@ async function montarVista(modo) {
 }
 
 /* ---------- Eventos ---------- */
-el.cerrar.addEventListener('click', cerrar);
-el.fondo.addEventListener('click', cerrar);
+el.cerrar.addEventListener('click', () => cerrar());
+el.fondo.addEventListener('click', () => cerrar());
 el.fondo.addEventListener('touchstart', (e) => { e.preventDefault(); cerrar(); }, { passive: false });
 el.ant.addEventListener('click', () => mover(-1));
 el.sig.addEventListener('click', () => mover(1));
 el.btnTour.addEventListener('click', iniciarRecorrido);
-el.btnVista.addEventListener('click', async () => {
+async function cambiarVista(modo) {
   cerrar();
   // Las etiquetas vuelven a la capa principal antes de cambiar de vista
   estado.specs.forEach((s) => el.etiquetas.appendChild(s._boton));
-  await montarVista(estado.modo === '3d' ? '2d' : '3d');
+  await montarVista(modo);
+}
+el.btnVista.addEventListener('click', () => cambiarVista(estado.modo === '3d' ? '2d' : '3d'));
+
+// Botón Atrás del celular / navegador: cierra el popup en vez de salir del sitio
+window.addEventListener('popstate', () => {
+  const s = estado.specs.find((x) => x.id === decodeURIComponent(location.hash.slice(1)));
+  if (s) { historialEmpujado = true; abrir(s, true); }
+  else if (estado.abierta) cerrar(true);
 });
+
+// Deslizar hacia abajo el popup (celular) para cerrarlo
+(() => {
+  let y0 = null, dy = 0;
+  const zona = [el.popup.querySelector('.pp-agarre'), el.popup.querySelector('.pp-cabeza')];
+  zona.forEach((z) => {
+    z.addEventListener('touchstart', (e) => { if (window.innerWidth < 900) { y0 = e.touches[0].clientY; dy = 0; el.popup.style.transition = 'none'; } }, { passive: true });
+    z.addEventListener('touchmove', (e) => {
+      if (y0 === null) return;
+      dy = Math.max(0, e.touches[0].clientY - y0);
+      el.popup.style.transform = `translateY(${dy}px)`;
+    }, { passive: true });
+    z.addEventListener('touchend', () => {
+      if (y0 === null) return;
+      y0 = null; el.popup.style.transition = '';
+      if (dy > 90) cerrar(); else el.popup.style.transform = '';
+    });
+  });
+})();
 document.addEventListener('keydown', (e) => {
   if (!estado.abierta) return;
-  if (e.key === 'Escape') cerrar();
+  if (e.key === 'Escape') cerrar(false);
   else if (estado.tour && e.key === 'ArrowRight') mover(1);
   else if (estado.tour && e.key === 'ArrowLeft') mover(-1);
   else if (e.key === 'Tab') {
@@ -250,6 +304,11 @@ window.addEventListener('resize', () => {
 
 /* ---------- Inicio ---------- */
 (async function iniciar() {
+  estado.reintentos3d = 0;
+  const vigilante = setTimeout(() => {
+    const c = document.getElementById('cargando');
+    if (c) c.innerHTML = '<p class="aviso" style="position:static">La carga está tardando más de lo normal. <a href="">Reintentar</a> · <a href="?modo=2d">Abrir versión 2D</a></p>';
+  }, 12000);
   try {
     await cargarDatos();
   } catch (e) {
@@ -262,8 +321,12 @@ window.addEventListener('resize', () => {
   const pedido = new URLSearchParams(location.search).get('modo');
   const modo = pedido === '2d' || !soportaWebGL() ? '2d' : '3d';
   await montarVista(modo);
+  clearTimeout(vigilante);
   el.cargando.classList.add('fuera');
   setTimeout(() => el.cargando.remove(), 400);
   // Ganchos para pruebas automáticas
   window.__app = { estado, abrir, cerrar, mover, iniciarRecorrido };
+  // Enlace directo a una especificación: desarrollador.click/#bateria
+  const inicial = estado.specs.find((x) => x.id === decodeURIComponent(location.hash.slice(1)));
+  if (inicial) setTimeout(() => abrir(inicial, true), 300);
 })();

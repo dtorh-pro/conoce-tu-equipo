@@ -187,7 +187,7 @@ function construirTelefono() {
 }
 
 /* ============================================================ */
-export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa, specs, cats, alSeleccionar }) {
+export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa, specs, cats, alSeleccionar, alPerderContexto }) {
   const esTactil = matchMedia('(pointer: coarse)').matches;
   const reduceMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let dprMax = esTactil ? 1.75 : 2;
@@ -195,6 +195,13 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
   const renderer = new WebGLRenderer({ canvas: lienzo, antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
+  let perdido = false;
+  lienzo.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault();
+    if (perdido) return;
+    perdido = true;
+    alPerderContexto?.();
+  });
 
   const escena = new Scene();
   const camara = new PerspectiveCamera(FOV, 1, 0.1, 100);
@@ -249,8 +256,10 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     const porAlto = (alto - 24) / 4.7;
     return Math.max(30, Math.min(porAncho, porAlto, 190));
   }
+  let pxGeneral = 50;              // escala del encuadre general (fija para las etiquetas)
   function encuadreGeneral() {
     const p = pxPorUnidadDeseado();
+    pxGeneral = p;
     const d = alto / (2 * T * p);
     objetivo.pos.set(0, 0, d);
     objetivo.mira.set(0, 0, 0);
@@ -265,7 +274,11 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     specs.forEach((s) => { s._ancho = 0; });
     if (!foco) encuadreGeneral();
   }
-  const ro = new ResizeObserver(redimensionar); ro.observe(escenario);
+  // ResizeObserver (Safari 13.1+); si no existe, se usa el evento resize
+  let ro = null;
+  if ('ResizeObserver' in window) { ro = new ResizeObserver(redimensionar); ro.observe(escenario); }
+  else window.addEventListener('resize', redimensionar);
+  window.addEventListener('orientationchange', () => setTimeout(redimensionar, 250));
   redimensionar();
   camara.position.copy(objetivo.pos).add(new Vector3(0, 0, 3));
 
@@ -293,7 +306,10 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
   }
 
   /* ---------- Interacción: girar con dedo o mouse ---------- */
+  const punteros = new Set();
   lienzo.addEventListener('pointerdown', (e) => {
+    punteros.add(e.pointerId);
+    if (punteros.size > 1) { arrastrando = false; return; }
     arrastrando = true; ultimaX = e.clientX; ultimaY = e.clientY; vel.x = vel.y = 0;
     lienzo.setPointerCapture(e.pointerId);
   });
@@ -305,14 +321,15 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     vel.y = dx * 0.009 * 60; vel.x = dy * 0.006 * 60;
     ultimoToque = tiempo;
   });
-  const soltar = () => { arrastrando = false; ultimoToque = tiempo; };
+  const soltar = (e) => { punteros.delete(e.pointerId); arrastrando = false; ultimoToque = tiempo; };
   lienzo.addEventListener('pointerup', soltar);
   lienzo.addEventListener('pointercancel', soltar);
+  lienzo.addEventListener('lostpointercapture', soltar);
 
   /* ---------- Bucle ---------- */
   const v = new Vector3(), centro = new Vector3(), unidad = new Vector3(), camDir = new Vector3(), nW = new Vector3();
   const q = new Quaternion();
-  let medFps = { n: 0, t: 0, ajustado: false };
+  let medFps = { n: 0, t: 0, etapa: 0 };
   let rafId = 0;
 
   function proyectar(vec) {
@@ -326,12 +343,15 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     const k = 1 - Math.exp(-dt * 5.5);
 
     // Rendimiento adaptativo: si va lento, baja la resolución
-    if (!medFps.ajustado) {
+    // Mide cada 2 s y baja la resolución por escalones (2 → 1,25 → 1 → 0,75) hasta ir fluido
+    if (medFps.etapa < 3) {
       medFps.n++; medFps.t += dt;
-      if (medFps.t > 2.5) {
+      if (medFps.t > 2) {
         const fps = medFps.n / medFps.t;
-        if (fps < 45 && dprMax > 1.25) { dprMax = 1.25; redimensionar(); }
-        medFps.ajustado = true;
+        const escalones = [1.25, 1, 0.75];
+        if (fps < 40 && dprMax > escalones[medFps.etapa]) { dprMax = escalones[medFps.etapa]; redimensionar(); medFps.etapa++; }
+        else medFps.etapa = 3;
+        medFps.n = 0; medFps.t = 0;
       }
     }
 
@@ -377,16 +397,16 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     visiblesEtq += ((foco ? 0 : 1) - visiblesEtq) * Math.min(1, k * 3);
     const opEtq = visiblesEtq;
     capa.style.opacity = opEtq.toFixed(3);
-    capa.style.visibility = opEtq < 0.02 ? 'hidden' : 'visible';
+    // Al cerrar el popup las etiquetas responden al toque de inmediato, aunque sigan apareciendo
+    capa.style.visibility = foco && opEtq < 0.02 ? 'hidden' : 'visible';
     lineas.style.opacity = opEtq.toFixed(3);
     capa.classList.add('lista');
 
-    // Centro del teléfono y escala actual en pantalla
-    centro.set(0, 0, 0).applyMatrix4(raiz.matrixWorld);
-    const [cx, cy] = proyectar(centro);
-    unidad.set(1, 0, 0).applyMatrix4(raiz.matrixWorld);
-    const [ux] = proyectar(unidad);
-    const pxU = Math.abs(ux - cx);
+    // Las etiquetas se ubican según el encuadre general (no la cámara animada):
+    // así quedan quietas y se pueden tocar apenas se cierra un popup.
+    const cx = ancho / 2;
+    const cy = alto / 2 - raiz.position.y * pxGeneral;
+    const pxU = pxGeneral;
     const gap = Math.max(10, pxU * 0.18);
 
     const izq = specs.filter((s) => s._lado === 'izq'), der = specs.filter((s) => s._lado === 'der');
@@ -439,18 +459,22 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
       ultimoToque = tiempo;
       marcador.style.setProperty('--c', cats[spec.categoria].color);
       marcador.classList.add('activo');
+      capa.style.pointerEvents = 'none';
     },
     desenfocar() {
       foco = null;
       ultimoToque = tiempo;
       marcador.classList.remove('activo');
+      capa.style.pointerEvents = '';
+      capa.style.visibility = 'visible';
       encuadreGeneral();
     },
     filtrar() { /* las etiquetas se ocultan desde app.js; las líneas leen s._oculta */ },
     destruir() {
       cancelAnimationFrame(rafId);
       capa.classList.remove('lista');
-      ro.disconnect();
+      ro?.disconnect();
+      window.removeEventListener('resize', redimensionar);
       lineas.innerHTML = '';
       marcador.classList.remove('activo');
       renderer.dispose();

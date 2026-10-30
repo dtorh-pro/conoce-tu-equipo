@@ -38,7 +38,7 @@ Abre http://localhost:8000 (abrir el index.html con doble clic no carga el JSON)
 
 ```
 npm install three esbuild
-npx esbuild scripts/three-entrada.js --bundle --format=esm --minify --outfile=js/vendor/three.min.js
+npx esbuild scripts/three-entrada.js --bundle --format=esm --minify --target=es2020,safari15,chrome90,firefox90,edge90 --outfile=js/vendor/three.min.js
 ```
 
 ## Publicar gratis con tu dominio (GitHub Pages + DNS en Hostinger)
