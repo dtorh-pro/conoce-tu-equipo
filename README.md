@@ -54,3 +54,7 @@ npx esbuild scripts/three-entrada.js --bundle --format=esm --minify --target=es2
 6. Comparte el enlace `https://desarrollador.click` por WhatsApp o correo.
 
 Alternativa sin GitHub: Netlify → "Add new site → Deploy manually" y arrastra la carpeta del proyecto; luego en Domain settings agrega `desarrollador.click` y sigue los registros DNS que indique.
+
+## Versiones y caché
+
+GitHub Pages guarda los archivos hasta 10 minutos en el navegador. Cada archivo de código se carga con `?v=AAAAMMDDx`; al cambiar código, actualiza ese número en `index.html`, `js/app.js`, `js/escena3d.js` y `js/vista2d.js` para que todos reciban la versión nueva de inmediato. El JSON de textos siempre se pide fresco (no necesita versión).

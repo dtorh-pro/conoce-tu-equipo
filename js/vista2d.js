@@ -3,7 +3,7 @@
    Mismo contenido, mismas etiquetas y popups. Al seleccionar,
    el dibujo se acerca a la zona y marca el punto exacto.
    ============================================================ */
-import { zonaDe } from './zonas.js';
+import { zonaDe } from './zonas.js?v=20261030b';
 
 const FRENTE = `
 <svg viewBox="0 0 100 205" aria-hidden="true">
