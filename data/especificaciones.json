@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "titulo": "Conoce tu equipo",
+    "subtitulo": "Especificaciones explicadas para vender mejor",
+    "version": "1.0",
+    "nota_edicion": "Edita solo los textos entre comillas. No cambies los campos 'id', 'categoria' ni 'zona'. Máximo 80 palabras por popup (qué es + gamas + beneficio + frase)."
+  },
+  "categorias": [
+    { "id": "rendimiento", "nombre": "Rendimiento", "color": "#2457D6" },
+    { "id": "fotografia", "nombre": "Fotografía", "color": "#8B3FD1" },
+    { "id": "energia", "nombre": "Energía", "color": "#A85208" },
+    { "id": "pantalla", "nombre": "Pantalla", "color": "#0E7C86" },
+    { "id": "conectividad", "nombre": "Conectividad", "color": "#1B7A43" },
+    { "id": "seguridad", "nombre": "Seguridad y durabilidad", "color": "#C42B4B" }
+  ],
+  "especificaciones": [
+    {
+      "id": "procesador",
+      "categoria": "rendimiento",
+      "etiqueta": "Procesador",
+      "titulo": "Procesador",
+      "zona": "interior-procesador",
+      "que_es": "El cerebro del celular: hace todos los cálculos. Más núcleos y más GHz significan más rapidez.",
+      "clave": {
+        "baja": "8 núcleos hasta 2,0 GHz",
+        "media": "8 núcleos de 2,2 a 2,6 GHz",
+        "alta": "8 núcleos de 3 GHz o más, con IA"
+      },
+      "beneficio": "Apps que abren al instante, juegos sin trabarse y un equipo que sigue rápido con los años.",
+      "frase": "Con este procesador todo le abre de una, sin esperar."
+    },
+    {
+      "id": "ram",
+      "categoria": "rendimiento",
+      "etiqueta": "Memoria RAM",
+      "titulo": "Memoria RAM",
+      "zona": "interior-ram",
+      "que_es": "La mesa de trabajo del celular: guarda abiertas las apps que se están usando. Más RAM, más apps abiertas a la vez.",
+      "clave": {
+        "baja": "4 GB",
+        "media": "6 a 8 GB",
+        "alta": "12 a 16 GB"
+      },
+      "beneficio": "Pasar de WhatsApp a la cámara y al banco sin que las apps se recarguen ni se pierda lo que estaba haciendo.",
+      "frase": "Con esta RAM usted salta entre apps sin que nada se le cierre."
+    },
+    {
+      "id": "almacenamiento",
+      "categoria": "rendimiento",
+      "etiqueta": "Almacena\u00admiento",
+      "titulo": "Almacenamiento interno",
+      "zona": "interior-almacenamiento",
+      "que_es": "El clóset del celular: donde quedan fotos, videos, apps y mensajes. Se puede ampliar con microSD o la nube.",
+      "clave": {
+        "baja": "64 a 128 GB, con microSD",
+        "media": "128 a 256 GB, microSD en algunos",
+        "alta": "256 GB a 1 TB, sin microSD, apoyo en nube"
+      },
+      "beneficio": "Guardar años de fotos y audios sin el aviso de “memoria llena”.",
+      "frase": "Aquí le caben todas sus fotos sin borrar nada."
+    },
+    {
+      "id": "sistema",
+      "categoria": "rendimiento",
+      "etiqueta": "Sistema operativo",
+      "titulo": "Sistema operativo y actualizaciones",
+      "zona": "pantalla-sistema",
+      "que_es": "El programa que hace funcionar todo. Las actualizaciones traen mejoras y protegen contra fallas de seguridad.",
+      "clave": {
+        "baja": "2 a 4 años de actualizaciones",
+        "media": "4 a 5 años",
+        "alta": "6 a 7 años"
+      },
+      "beneficio": "Un celular seguro para el banco y las apps por más tiempo: la inversión dura más.",
+      "frase": "Este equipo recibe actualizaciones por años: le dura y lo protege."
+    },
+    {
+      "id": "camara-principal",
+      "categoria": "fotografia",
+      "etiqueta": "Cámara principal",
+      "titulo": "Cámara principal",
+      "zona": "camara-trasera",
+      "que_es": "La cámara de atrás. Importan los megapíxeles (MP), la estabilización (evita fotos movidas), el modo nocturno y la calidad de video.",
+      "clave": {
+        "baja": "13 a 50 MP, video Full HD",
+        "media": "50 a 108 MP, modo nocturno, 4K en algunos",
+        "alta": "50 MP o más, estabilización óptica, video 4K"
+      },
+      "beneficio": "Fotos nítidas de noche y videos sin temblor en fiestas y paseos.",
+      "frase": "Con esta cámara sus fotos de noche salen claritas."
+    },
+    {
+      "id": "camara-frontal",
+      "categoria": "fotografia",
+      "etiqueta": "Cámara frontal",
+      "titulo": "Cámara frontal",
+      "zona": "camara-frontal",
+      "que_es": "La cámara de adelante, para selfies y videollamadas. Más megapíxeles y buen video dan una imagen más clara.",
+      "clave": {
+        "baja": "5 a 8 MP, video HD",
+        "media": "13 a 32 MP, Full HD",
+        "alta": "12 a 50 MP, video 4K y enfoque automático"
+      },
+      "beneficio": "Verse bien en videollamadas de trabajo, con la familia y en las selfies para redes.",
+      "frase": "En sus videollamadas lo van a ver nítido."
+    },
+    {
+      "id": "bateria",
+      "categoria": "energia",
+      "etiqueta": "Batería",
+      "titulo": "Batería y carga",
+      "zona": "interior-bateria",
+      "que_es": "El tanque de energía. Se mide en mAh: más mAh, más duración. Los vatios (W) indican qué tan rápido carga.",
+      "clave": {
+        "baja": "5.000 mAh, carga 10 a 18 W",
+        "media": "5.000 a 6.000 mAh, carga 33 a 67 W",
+        "alta": "carga de 45 W o más e inalámbrica"
+      },
+      "beneficio": "Llegar a la noche con batería y recargar en minutos antes de salir.",
+      "frase": "Esta batería le aguanta todo el día y carga rapidísimo."
+    },
+    {
+      "id": "pantalla",
+      "categoria": "pantalla",
+      "etiqueta": "Pantalla",
+      "titulo": "Pantalla",
+      "zona": "pantalla",
+      "que_es": "Se compara por tipo (LCD básica; OLED o AMOLED con colores más vivos), tamaño en pulgadas, resolución (nitidez) y Hz (fluidez).",
+      "clave": {
+        "baja": "LCD 6,5\", HD+, 90 Hz",
+        "media": "AMOLED 6,7\", Full HD+, 120 Hz",
+        "alta": "AMOLED 6,8\", muy brillante, 120 Hz"
+      },
+      "beneficio": "Ver bien incluso a pleno sol y moverse por redes con suavidad.",
+      "frase": "Mire qué colores y cómo se ve bajo el sol."
+    },
+    {
+      "id": "audio",
+      "categoria": "pantalla",
+      "etiqueta": "Audio",
+      "titulo": "Audio: parlantes y audífonos",
+      "zona": "parlantes",
+      "que_es": "Los parlantes estéreo suenan por dos lados, como un minicine. El conector de 3,5 mm permite usar audífonos con cable.",
+      "clave": {
+        "baja": "Un parlante, con conector 3,5 mm",
+        "media": "Parlantes estéreo, conector en algunos",
+        "alta": "Estéreo con sonido envolvente, audífonos Bluetooth"
+      },
+      "beneficio": "Disfrutar series, música y videos con buen volumen sin parlante externo.",
+      "frase": "Escuche este sonido: es como tener un parlantico incluido."
+    },
+    {
+      "id": "conectividad",
+      "categoria": "conectividad",
+      "etiqueta": "Redes y NFC",
+      "titulo": "Conectividad: 4G/5G, Wi-Fi, Bluetooth y NFC",
+      "zona": "borde-superior",
+      "que_es": "Cómo se conecta: 4G/5G para datos móviles, Wi-Fi en casa, Bluetooth para audífonos y NFC para pagar acercando el celular.",
+      "clave": {
+        "baja": "4G, Wi-Fi 5, NFC en algunos",
+        "media": "5G, Wi-Fi 6, NFC",
+        "alta": "5G, Wi-Fi 7, NFC"
+      },
+      "beneficio": "Navegar más rápido y pagar en tiendas y transporte sin sacar la tarjeta.",
+      "frase": "Con NFC paga solo acercando el celular, sin sacar la billetera."
+    },
+    {
+      "id": "sim",
+      "categoria": "conectividad",
+      "etiqueta": "Dual SIM / eSIM",
+      "titulo": "SIM: dual SIM y eSIM",
+      "zona": "lateral-sim",
+      "que_es": "Dual SIM: dos líneas en un celular. eSIM: una SIM digital que se activa sin chip físico, aquí mismo en la tienda.",
+      "clave": {
+        "baja": "Dual SIM física",
+        "media": "Dual SIM, eSIM en algunos",
+        "alta": "SIM física + eSIM, o solo eSIM"
+      },
+      "beneficio": "Tener la línea personal y la del trabajo en un solo equipo.",
+      "frase": "Lleve sus dos líneas en un solo celular; la eSIM se la activo ya."
+    },
+    {
+      "id": "seguridad",
+      "categoria": "seguridad",
+      "etiqueta": "Huella y rostro",
+      "titulo": "Seguridad: huella y reconocimiento facial",
+      "zona": "lateral-huella",
+      "que_es": "Desbloquear con el dedo o la cara. La huella puede estar en el botón lateral o debajo de la pantalla.",
+      "clave": {
+        "baja": "Huella lateral y rostro básico",
+        "media": "Huella en pantalla y rostro",
+        "alta": "Huella ultrasónica o rostro 3D, aptos para pagos"
+      },
+      "beneficio": "Abrir el celular y las apps del banco en un segundo, sin claves, y proteger sus datos si se pierde.",
+      "frase": "Solo usted lo abre, con su huella, en un segundo."
+    },
+    {
+      "id": "resistencia",
+      "categoria": "seguridad",
+      "etiqueta": "Resistencia IP",
+      "titulo": "Resistencia al agua y al polvo (IP)",
+      "zona": "cuerpo",
+      "que_es": "La certificación IP indica protección: el primer número es contra polvo, el segundo contra agua. IP68 es la más alta.",
+      "clave": {
+        "baja": "Sin certificación o IP52-54 (salpicaduras)",
+        "media": "IP54 a IP67",
+        "alta": "IP68 (sumergible)"
+      },
+      "beneficio": "Tranquilidad ante lluvia, playa o un vaso regado. Ojo: no cubre agua salada.",
+      "frase": "Si le cae agua, tranquilo: está protegido."
+    }
+  ]
+}
