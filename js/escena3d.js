@@ -379,6 +379,7 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     capa.style.opacity = opEtq.toFixed(3);
     capa.style.visibility = opEtq < 0.02 ? 'hidden' : 'visible';
     lineas.style.opacity = opEtq.toFixed(3);
+    capa.classList.add('lista');
 
     // Centro del teléfono y escala actual en pantalla
     centro.set(0, 0, 0).applyMatrix4(raiz.matrixWorld);
@@ -448,6 +449,7 @@ export async function crearEscena3D({ escenario, lienzo, lineas, marcador, capa,
     filtrar() { /* las etiquetas se ocultan desde app.js; las líneas leen s._oculta */ },
     destruir() {
       cancelAnimationFrame(rafId);
+      capa.classList.remove('lista');
       ro.disconnect();
       lineas.innerHTML = '';
       marcador.classList.remove('activo');

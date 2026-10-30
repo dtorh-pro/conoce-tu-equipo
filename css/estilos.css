@@ -69,6 +69,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .lineas circle { transition: opacity .2s; }
 
 .etiquetas { position: absolute; inset: 0; pointer-events: none; }
+#etiquetas:not(.lista) { visibility: hidden; }
 .etiqueta {
   --c: #333;
   position: absolute; left: 0; top: 0;
