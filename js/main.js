@@ -1,13 +1,14 @@
 /* ============================================================
    Núcleo del portal
-   Rutas (#/equipo, #/mesa, #/frases), inicio
+   Rutas (#/equipo, #/catalogo, #/mesa, #/frases), inicio
    y barra de sección con botón Atrás.
    ============================================================ */
-import { V, $, $$, guardar, reduceMovimiento } from './util.js?v=20261030j';
+import { V, $, $$, guardar, reduceMovimiento } from './util.js?v=20261106a';
 
 const VISTAS = {
   inicio: { titulo: 'Inicio' },
   equipo: { titulo: 'Conoce tu equipo', modulo: () => import(`./equipo.js?v=${V}`) },
+  catalogo: { titulo: 'Catálogo de equipos', modulo: () => import(`./catalogo.js?v=${V}`) },
   mesa: { titulo: 'Cuida la mesa', modulo: () => import(`./mesa.js?v=${V}`) },
   frases: { titulo: 'Frases de venta', modulo: () => import(`./frases.js?v=${V}`) }
 };
@@ -23,7 +24,7 @@ function leerRuta() {
   if (/^#[a-z0-9-]+$/i.test(h)) return { nombre: 'equipo', sub: h.slice(1), legado: true };
   const partes = h.replace(/^#\/?/, '').split('/').filter(Boolean);
   const nombre = VISTAS[partes[0]] ? partes[0] : 'inicio';
-  return { nombre, sub: partes[1] || null };
+  return { nombre, sub: partes.slice(1).join('/') || null };
 }
 
 async function obtenerModulo(nombre) {
@@ -91,7 +92,9 @@ window.addEventListener('hashchange', enrutar);
    ============================================================ */
 const barra = $('#barra-sec');
 let vinoDelInicio = false;
-$('#btn-atras').addEventListener('click', () => {
+$('#btn-atras').addEventListener('click', async () => {
+  // La sección puede manejar su propio Atrás (p. ej. ficha → lista del catálogo)
+  if (actual && modulos[actual]) { const m = await modulos[actual]; if (m.atras?.()) return; }
   // Si se llegó desde el inicio y no hay nada abierto encima, se usa el historial del navegador
   // (así el botón Atrás del celular sigue funcionando igual); si no, se va directo al inicio.
   const sinSubruta = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean).length <= 1;

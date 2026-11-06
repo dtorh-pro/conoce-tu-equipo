@@ -9,17 +9,18 @@ Portal de formación publicado en https://desarrollador.click (GitHub Pages, ram
 - No dejar cosas a medias: si se elimina algo de la interfaz, limpiar también su JS, CSS y README.
 
 ## Reglas de diseño (decididas por David)
-- Sin nombre de portal, sin header, sin buscador, sin barra inferior. Inicio = solo 3 opciones (Conoce tu equipo, Cuida la mesa, Frases de venta). Cada sección: botón "‹ Atrás" + nombre.
+- Sin nombre de portal, sin header, sin buscador, sin barra inferior. Inicio = solo las opciones (Conoce tu equipo, Catálogo de equipos, Cuida la mesa, Frases de venta). Cada sección: botón "‹ Atrás" + nombre.
 - Lenguaje neutral: no usar "asesor", "Zona Costa", ni regiones.
 - Colores planos, escala de azules (tokens en `css/app.css`: --azul #1E5EFF, --cielo #28B4FF, --indigo #4F46E5, --tinta #0A1A3F, --papel #F3F7FF). Nada de degradados en botones ni en la interfaz.
 - Fuente Geist, estilo moderno y minimalista, animaciones suaves.
 - Teléfono 3D: reverso blanco brillante, borde plateado, sin logos; fondo de pantalla verde→azul. Solo puntos animados con ícono (sin etiquetas de texto). No cambiar su tamaño ni diseño sin que se pida.
-- Nunca marcas ni modelos reales en textos.
+- "Conoce tu equipo" es genérico: nunca marcas ni modelos reales ahí. El "Catálogo de equipos" (`#/catalogo`) SÍ usa marcas y modelos reales (los que vende Tigo), con fichas en `data/equipos.json` y fotos en `img/equipos/<id>.webp`.
+- Fichas del catálogo: `validado: false` muestra la etiqueta "Ficha por validar" y las notas/fuentes; David las va confirmando para Colombia y se cambian a `true`.
 - Mobile-first: debe verse bien a 360 px.
 
 ## Técnica
 - Sitio estático, sin backend. Three.js r187 recortado en `js/vendor/three.min.js`.
-- Textos editables: `data/especificaciones.json` y `data/mesa.json`.
+- Textos editables: `data/especificaciones.json`, `data/mesa.json` y `data/equipos.json`.
 - Al cambiar CSS o JS, subir la versión `?v=AAAAMMDDx` en `index.html` y en todos los imports de `js/*.js` (evita caché vieja).
 - Antes de publicar: probar con Playwright (Chromium) a 360×740 y 1366×800: sin scroll horizontal, los 13 puntos abren su popup, recorrido guiado funciona, botón Atrás vuelve al inicio, versión 2D (`?modo=2d#/equipo`) funciona.
 - Después de publicar: comprobar en https://desarrollador.click que el cambio está en línea.

@@ -15,9 +15,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-  <link rel="modulepreload" href="js/main.js?v=20261030j">
-  <link rel="stylesheet" href="css/app.css?v=20261030j">
-  <link rel="stylesheet" href="css/equipo.css?v=20261030j">
+  <link rel="modulepreload" href="js/main.js?v=20261106a">
+  <link rel="stylesheet" href="css/app.css?v=20261106a">
+  <link rel="stylesheet" href="css/equipo.css?v=20261106a">
+  <link rel="stylesheet" href="css/catalogo.css?v=20261106a">
 </head>
 <body>
   <a class="saltar" href="#vistas">Saltar al contenido</a>
@@ -46,6 +47,11 @@
             <a class="herr" href="#/equipo" data-tono="azul">
               <span class="herr-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/><circle cx="12" cy="9" r="2.2"/></svg></span>
               <span class="herr-txt"><b>Conoce tu equipo</b><span>13 especificaciones en 3D, con la frase para el cliente</span></span>
+              <span class="herr-ir" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="herr" href="#/catalogo" data-tono="indigo">
+              <span class="herr-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="3" y="13" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13" width="7.5" height="7.5" rx="2"/></svg></span>
+              <span class="herr-txt"><b>Catálogo de equipos</b><span>Fichas reales por marca: cámara, batería, software y actualizaciones</span></span>
               <span class="herr-ir" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </a>
             <a class="herr" href="#/mesa" data-tono="noche">
@@ -86,6 +92,8 @@
     <section id="vista-mesa" class="vista" data-vista="mesa" aria-label="Cuida la mesa" hidden></section>
 
     <!-- ============ FRASES ============ -->
+    <section id="vista-catalogo" class="vista" data-vista="catalogo" aria-label="Catálogo de equipos" hidden></section>
+
     <section id="vista-frases" class="vista" data-vista="frases" aria-label="Frases de venta" hidden></section>
   </main>
 
@@ -144,6 +152,6 @@
 
   <noscript><p class="sin-js">Esta herramienta necesita JavaScript activado.</p></noscript>
   <script nomodule>document.body.insertAdjacentHTML("afterbegin","<p class=\"sin-js\">Tu navegador es muy antiguo para esta herramienta. Actualízalo o ábrela en Chrome, Safari, Edge o Firefox recientes.</p>");</script>
-  <script type="module" src="js/main.js?v=20261030j"></script>
+  <script type="module" src="js/main.js?v=20261106a"></script>
 </body>
 </html>

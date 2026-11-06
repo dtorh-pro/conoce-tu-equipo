@@ -8,6 +8,7 @@ Portal de formación comercial. Sitio 100 % estático: sin login, sin instalaci�
 |---|---|---|
 | `#/` | Inicio: solo las tres herramientas | — |
 | `#/equipo` | Conoce tu equipo: pantalla completa con el smartphone 3D (reverso blanco, borde plateado), puntos animados con ícono y recorrido guiado (botón ▶) | `data/especificaciones.json` |
+| `#/catalogo` | Catálogo de equipos: marcas y modelos reales, ficha interactiva (foto que se inclina, datos clave, software y años de actualizaciones con línea de tiempo), filtro "¿Qué busca el cliente?" y comparador | `data/equipos.json`, fotos en `img/equipos/` |
 | `#/mesa` | Cuida la mesa: mesa de exhibición 3D, ¿qué hago si…?, ¿puedo usar esto? y limpieza en 5 pasos | `data/mesa.json` |
 | `#/frases` | Frases de venta con copiar y modo práctica | `data/especificaciones.json` (campo `frase`) |
 
@@ -23,6 +24,7 @@ data/*.json                TEXTOS EDITABLES
 js/main.js                 rutas, inicio y barra de sección (Atrás + nombre)
 js/equipo.js · escena3d.js · vista2d.js · zonas.js   Conoce tu equipo
 js/mesa.js · mesa3d.js     Cuida la mesa
+js/catalogo.js             Catálogo de equipos
 js/frases.js               Frases de venta
 js/util.js                 utilidades compartidas
 js/vendor/three.min.js     Three.js r187 (solo los módulos usados)

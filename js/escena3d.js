@@ -9,9 +9,9 @@ import {
   ExtrudeGeometry, ShapeGeometry, BoxGeometry, CylinderGeometry, PlaneGeometry,
   MeshStandardMaterial, MeshBasicMaterial, HemisphereLight, DirectionalLight,
   CanvasTexture, SRGBColorSpace, Vector3, Matrix4, Euler, Quaternion, MathUtils
-} from './vendor/three.min.js?v=20261030j';
-import { zonaDe } from './zonas.js?v=20261030j';
-import { iconoSpec } from './util.js?v=20261030j';
+} from './vendor/three.min.js?v=20261106a';
+import { zonaDe } from './zonas.js?v=20261106a';
+import { iconoSpec } from './util.js?v=20261106a';
 
 const FOV = 32;
 const T = Math.tan(MathUtils.degToRad(FOV / 2));

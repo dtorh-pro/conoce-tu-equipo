@@ -136,6 +136,7 @@ body.en-inicio .vistas { padding-top: env(safe-area-inset-top); }
 }
 .herr-ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--azul); color: #fff; }
 .herr[data-tono="noche"] .herr-ico { background: var(--tinta); color: var(--cielo); }
+.herr[data-tono="indigo"] .herr-ico { background: var(--indigo); color: #fff; }
 .herr[data-tono="cielo"] .herr-ico { background: var(--cielo); color: var(--tinta); }
 .herr-ico svg, .herr-ir svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .herr-txt b { display: block; font-weight: 600; font-size: 1.02rem; letter-spacing: -.02em; }

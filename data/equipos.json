@@ -1,0 +1,687 @@
+{
+  "meta": {
+    "nota": "Fichas de los equipos. Cambia 'validado' a true cuando confirmes la ficha para Colombia."
+  },
+  "marcas": [
+    {
+      "id": "samsung",
+      "nombre": "Samsung"
+    },
+    {
+      "id": "motorola",
+      "nombre": "Motorola"
+    },
+    {
+      "id": "xiaomi",
+      "nombre": "Xiaomi"
+    },
+    {
+      "id": "oppo",
+      "nombre": "Oppo"
+    },
+    {
+      "id": "apple",
+      "nombre": "Apple"
+    }
+  ],
+  "equipos": [
+    {
+      "id": "galaxy-a27",
+      "marca": "Samsung",
+      "modelo": "Galaxy A27 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5000
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 5000
+      }
+    },
+    {
+      "id": "galaxy-a37",
+      "marca": "Samsung",
+      "modelo": "Galaxy A37 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5000
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 5000
+      }
+    },
+    {
+      "id": "galaxy-s25-fe",
+      "marca": "Samsung",
+      "modelo": "Galaxy S25 FE",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 4900
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 4900
+      }
+    },
+    {
+      "id": "galaxy-s26",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 4300
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 12,
+        "camara_mp": 50,
+        "bateria_mah": 4300
+      }
+    },
+    {
+      "id": "galaxy-s26-ultra",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26 Ultra",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5000
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 12,
+        "camara_mp": 200,
+        "bateria_mah": 5000
+      }
+    },
+    {
+      "id": "moto-g67",
+      "marca": "Motorola",
+      "modelo": "Moto G67 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5200
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 5200
+      }
+    },
+    {
+      "id": "edge-70-fusion",
+      "marca": "Motorola",
+      "modelo": "Edge 70 Fusion",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5200
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 5200
+      }
+    },
+    {
+      "id": "edge-70",
+      "marca": "Motorola",
+      "modelo": "Edge 70 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 512
+      },
+      "bateria": {
+        "mah": 4800
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 512,
+        "ram_gb": 12,
+        "camara_mp": 50,
+        "bateria_mah": 4800
+      }
+    },
+    {
+      "id": "razr-70",
+      "marca": "Motorola",
+      "modelo": "Razr 70 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 512
+      },
+      "bateria": {
+        "mah": 4800
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 512,
+        "ram_gb": 12,
+        "camara_mp": 50,
+        "bateria_mah": 4800
+      }
+    },
+    {
+      "id": "redmi-note-15",
+      "marca": "Xiaomi",
+      "modelo": "Redmi Note 15 5G",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5520
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 108,
+        "bateria_mah": 5520
+      }
+    },
+    {
+      "id": "redmi-note-15-pro",
+      "marca": "Xiaomi",
+      "modelo": "Redmi Note 15 Pro",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 512
+      },
+      "bateria": {
+        "mah": 6580
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 512,
+        "ram_gb": 8,
+        "camara_mp": 200,
+        "bateria_mah": 6580
+      }
+    },
+    {
+      "id": "xiaomi-17t",
+      "marca": "Xiaomi",
+      "modelo": "Xiaomi 17T",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 512
+      },
+      "bateria": {
+        "mah": 6500
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 512,
+        "ram_gb": 12,
+        "camara_mp": 50,
+        "bateria_mah": 6500
+      }
+    },
+    {
+      "id": "oppo-a6",
+      "marca": "Oppo",
+      "modelo": "A6 5G",
+      "lanzamiento": "Enero 2026",
+      "gama": "Entrada",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 6300",
+        "detalle": "8 núcleos (2× 2,4 GHz + 6× 2,0 GHz), 6 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.75,
+        "tipo": "IPS LCD",
+        "resolucion": "HD+ 1570×720",
+        "hz": 120,
+        "brillo_nits": 1125,
+        "proteccion": null
+      },
+      "memoria": {
+        "ram_gb": 4,
+        "almacenamiento_gb": 256,
+        "microsd": "Sí (microSDXC)"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8",
+        "ultra_gran_angular": null,
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "8 MP f/2.0",
+        "video": "1080p a 30/60 fps",
+        "extras": [
+          "Cámara auxiliar de 2 MP",
+          "HDR",
+          "Panorámica"
+        ]
+      },
+      "bateria": {
+        "mah": 7000,
+        "carga_w": 45,
+        "inalambrica_w": null,
+        "reversa": true,
+        "cargador_en_caja": true
+      },
+      "software": {
+        "so_lanzamiento": "Android 15 · ColorOS 15",
+        "actualizaciones_so": 3,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": []
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 5 (doble banda)",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": false,
+        "sim": "Dual SIM (nano + nano)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "Lateral (botón de encendido)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo"
+      },
+      "diseno": {
+        "peso_g": 216,
+        "grosor_mm": 8.6,
+        "materiales": "Frente de vidrio, marco y reverso plásticos",
+        "colores": [
+          "Oro",
+          "Azul",
+          "Rosado"
+        ]
+      },
+      "destacados": [
+        "Batería de 7.000 mAh para dos días",
+        "Aguanta agua y polvo (IP69)",
+        "256 GB para fotos y apps"
+      ],
+      "para_quien": "Cliente que quiere 5G, mucha batería y un equipo resistente a buen precio, sin uso pesado de juegos.",
+      "frase": "Con 7.000 mAh y protección IP69, este celular te acompaña todo el día aunque llueva o se moje.",
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 4,
+        "camara_mp": 50,
+        "bateria_mah": 7000
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/oppo_a6_5g-14412.php",
+        "https://www.exito.com/a6-5g-256gb-oro-oppo-a6-5g-256-gb-4-gb-ram-cargadorcable-datos-usbherramienta-de-expulsion-de-sim-3251550/p",
+        "https://www.whistleout.com.au/MobilePhones/News/OPPO-A6-5G-A6x-Australia"
+      ],
+      "dudas": [
+        "No se pudo abrir la ficha de oppo.com/co; datos tomados de GSMArena (versión global de enero 2026, 7.000 mAh) y confirmados parcialmente con Éxito Colombia (Dimensity 6300, 6,7\" IPS HD+, 4+256 GB, 50+2 MP, 8 MP frontal, IP69, Android 15, cargador en caja).",
+        "Éxito Colombia solo indica batería 'superior a 4.501 mAh'; los 7.000 mAh coinciden con Tigo y la versión global, pero la versión de Australia trae 6.550 mAh: confirmar con la caja.",
+        "Actualizaciones: 3 versiones de Android y 6 años de parches es la promesa publicada para Australia (WhistleOut); no se encontró promesa oficial para Colombia/Latinoamérica.",
+        "Fecha de lanzamiento en Colombia no confirmada (Enero 2026 es el anuncio global).",
+        "NFC depende del mercado; Éxito no lo menciona. eSIM no aparece en ninguna ficha.",
+        "Carga reversa por cable de 5 W según GSMArena; tipo de vidrio frontal no especificado.",
+        "Colores: Éxito vende 'Oro'; GSMArena lista Azul zafiro y Rosa sakura. Confirmar colores en Tigo.",
+        "Funciones de IA no verificadas para este modelo."
+      ],
+      "validado": false
+    },
+    {
+      "id": "oppo-a6-pro",
+      "marca": "Oppo",
+      "modelo": "A6 Pro 5G",
+      "lanzamiento": "Febrero 2026",
+      "gama": "Media",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 6300",
+        "detalle": "8 núcleos (2× 2,4 GHz + 6× 2,0 GHz), 6 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.57,
+        "tipo": "AMOLED",
+        "resolucion": "FHD+ 2372×1080",
+        "hz": 120,
+        "brillo_nits": 1400,
+        "proteccion": "AGC DT-Star D+ Crystal Shield"
+      },
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256,
+        "microsd": "Sí (microSDXC)"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8",
+        "ultra_gran_angular": null,
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "16 MP f/2.4",
+        "video": "1080p a 30/60/120 fps",
+        "extras": [
+          "Cámara auxiliar de 2 MP",
+          "Editor IA: Borrador IA, Quitar reflejos, Enfocar"
+        ]
+      },
+      "bateria": {
+        "mah": 6500,
+        "carga_w": 80,
+        "inalambrica_w": null,
+        "reversa": null,
+        "cargador_en_caja": null
+      },
+      "software": {
+        "so_lanzamiento": "Android 15 · ColorOS 15",
+        "actualizaciones_so": null,
+        "parches_seguridad_anios": null,
+        "soporte_hasta": "2031",
+        "funciones_ia": [
+          "Borrador IA",
+          "Quitar reflejos",
+          "Enfocar",
+          "One-Tap Refresh (optimización mensual)"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 5 (doble banda)",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": null,
+        "sim": "Dual SIM (nano + nano)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "Sí (ubicación no confirmada)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69 + resistencia de grado militar"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo"
+      },
+      "diseno": {
+        "peso_g": 185,
+        "grosor_mm": 8.0,
+        "materiales": "Marco de aleación de aluminio AM04, vidrio AGC DT-Star D+",
+        "colores": [
+          "Azul Estelar",
+          "Rosa Coral"
+        ]
+      },
+      "destacados": [
+        "Carga completa en unos 60 minutos",
+        "Pantalla AMOLED de 120 Hz",
+        "IP69 y resistencia de grado militar"
+      ],
+      "para_quien": "Cliente que quiere batería que dure años, carga rápida y un equipo delgado y resistente.",
+      "frase": "Lo cargas en una hora con 80 W y su batería está pensada para durarte más de cinco años.",
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 6500
+      },
+      "fuentes": [
+        "https://www.enter.co/?p=581353",
+        "https://www.itsitio.com/co/dispositivos/llega-a-colombia-el-oppo-a6-pro-5g-un-smartphone-disenado-para-durar-con-bateria-de-larga-duracion-y-resistencia-de-grado-militar/",
+        "https://www.o2.co.uk/help/phones-sims-and-devices/oppo/a6-pro-5g-android-16/specifications",
+        "https://www.movistar.es/moviles/oppo-a6-pro-5g-256gb-gris/",
+        "https://www.coolblue.nl/en/product/969966/oppo-a6-pro-256gb-silver-5g.html"
+      ],
+      "dudas": [
+        "Lanzamiento en Colombia el 24 de febrero de 2026 (Enter.co), precio de lanzamiento $1.899.900. La versión colombiana (6.500 mAh, 185 g, 8 mm) coincide con la europea; la versión asiática/India trae Dimensity 7300 y 7.000 mAh: no mezclar.",
+        "Las notas de prensa de Colombia no indican chip, pantalla ni cámaras; esos datos vienen de la ficha europea (O2 UK / Movistar España).",
+        "No se encontró promesa oficial de versiones de Android ni años de parches. 'Soporte hasta 2031' es una estimación de Coolblue (último parche esperado oct. 2031), no promesa de Oppo. La frase 'cinco años' de Oppo se refiere a la vida útil de la batería (1.830 ciclos), no a actualizaciones.",
+        "eSIM: Movistar España dice que es compatible, O2 UK solo lista dual nano SIM; confirmar en la versión colombiana.",
+        "Cargador en caja: Coolblue (Europa) dice que no incluye cargador; en Colombia no confirmado.",
+        "Carga reversa, ubicación del lector de huella y tipo de cámara auxiliar (2 MP) no confirmados para Colombia.",
+        "Video: hasta 1080p según O2 UK; no se confirma 4K."
+      ],
+      "validado": false
+    },
+    {
+      "id": "reno-16f",
+      "marca": "Oppo",
+      "modelo": "Reno16 F 5G",
+      "lanzamiento": "Junio 2026",
+      "gama": "Media alta",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 7300-Energy",
+        "detalle": "8 núcleos (4× 2,5 GHz + 4× 2,0 GHz), 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.57,
+        "tipo": "AMOLED",
+        "resolucion": "FHD+ 2372×1080",
+        "hz": 120,
+        "brillo_nits": 1400,
+        "proteccion": "Crystal Guard"
+      },
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256,
+        "microsd": "Sí (microSDXC)"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "8 MP f/2.2 (116°)",
+        "teleobjetivo": "50 MP f/2.8 con OIS, zoom óptico 3,5x",
+        "macro": null,
+        "frontal": "50 MP f/2.0 gran angular (100°)",
+        "video": "4K a 30 fps (trasera y frontal), cámara lenta 1080p a 120 fps",
+        "extras": [
+          "Estabilización OIS + EIS",
+          "Zoom óptico 3,5x"
+        ]
+      },
+      "bateria": {
+        "mah": 7000,
+        "carga_w": 80,
+        "inalambrica_w": null,
+        "reversa": true,
+        "cargador_en_caja": null
+      },
+      "software": {
+        "so_lanzamiento": "Android 16 · ColorOS 16",
+        "actualizaciones_so": null,
+        "parches_seguridad_anios": 5,
+        "soporte_hasta": "2031",
+        "funciones_ia": []
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + nano o nano + eSIM)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (óptica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69K"
+      },
+      "audio": {
+        "estereo": null,
+        "detalle": null
+      },
+      "diseno": {
+        "peso_g": 197,
+        "grosor_mm": 8.6,
+        "materiales": "Frente de vidrio Crystal Guard, marco plástico, reverso de vidrio o plástico compuesto según color",
+        "colores": [
+          "Blanco",
+          "Violeta",
+          "Morado"
+        ]
+      },
+      "destacados": [
+        "Teleobjetivo 50 MP con zoom 3,5x",
+        "Selfies y video 4K de 50 MP",
+        "7.000 mAh con carga de 80 W"
+      ],
+      "para_quien": "Cliente que se toma muchas fotos y retratos, quiere zoom real y batería grande sin pagar gama alta.",
+      "frase": "Con su teleobjetivo de 50 MP haces retratos y acercamientos nítidos, y la batería te dura todo el día.",
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 50,
+        "bateria_mah": 7000
+      },
+      "fuentes": [
+        "https://www.gsmarena.com/oppo_reno16_f_5g-14751.php",
+        "https://www.oppo.com/vn/smartphones/series-reno/reno16-f/specs/",
+        "https://www.oppostore.pe/products/oppo-reno16-f-5g",
+        "https://mobilemasr.com/en/blogs/european-oppo-reno16-reno16-pro-and-reno16-f-battery-capacities-confirmed",
+        "https://hi-tech.ua/en/oppo-reno16-series-launching-in-europe-with-up-to-6500mah-batteries-ip68-rating-and-5-years-of-updates/",
+        "https://www.notebookcheck.net/Oppo-Reno16-F-5G-Reviews-and-Specs.1390228.0.html"
+      ],
+      "dudas": [
+        "Batería verificada: la versión internacional y la de Latinoamérica (tienda oficial Oppo Perú) traen 7.000 mAh (6.850 mAh nominal) con carga de 80 W; la de Europa trae 6.500 mAh y 45 W. Los 7.000 mAh de Tigo coinciden con la versión latinoamericana, así que la sospecha no se confirma; solo cambiaría si llegara la versión europea.",
+        "No se pudo abrir oppo.com/co; se usó la ficha oficial de Vietnam (CPH2859) y la tienda oficial de Perú como versión latinoamericana.",
+        "Actualizaciones: 5 años de parches de seguridad es la promesa de la serie Reno16 en Europa; no se encontró el número de versiones de Android ni la promesa para Colombia.",
+        "eSIM: la tienda de Perú y GSMArena la confirman, pero la ficha de Vietnam dice que no; varía según el país.",
+        "Parlantes estéreo no confirmados (GSMArena solo dice 'altavoz'). No se encontraron funciones de IA verificadas para este modelo.",
+        "Colores varían por mercado (Perú: Blanco Cósmico y Violeta Crepúsculo); peso 195-197 g y grosor 8,44-8,58 mm según color.",
+        "Cargador en caja y fecha de llegada a Colombia no confirmados (anuncio global 25 de junio de 2026)."
+      ],
+      "validado": false
+    },
+    {
+      "id": "iphone-15",
+      "marca": "Apple",
+      "modelo": "iPhone 15",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 6,
+        "almacenamiento_gb": 128
+      },
+      "bateria": {
+        "mah": 3349
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 128,
+        "ram_gb": 6,
+        "camara_mp": 48,
+        "bateria_mah": 3349
+      }
+    },
+    {
+      "id": "iphone-17",
+      "marca": "Apple",
+      "modelo": "iPhone 17",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 8,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 3692
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 8,
+        "camara_mp": 48,
+        "bateria_mah": 3692
+      }
+    },
+    {
+      "id": "iphone-17-pro-max",
+      "marca": "Apple",
+      "modelo": "iPhone 17 Pro Max",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 4832
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 12,
+        "camara_mp": 48,
+        "bateria_mah": 4832
+      }
+    },
+    {
+      "id": "iphone-18-pro-max",
+      "marca": "Apple",
+      "modelo": "iPhone 18 Pro Max",
+      "validado": false,
+      "memoria": {
+        "ram_gb": 12,
+        "almacenamiento_gb": 256
+      },
+      "bateria": {
+        "mah": 5391
+      },
+      "pantalla": {},
+      "tigo": {
+        "almacenamiento_gb": 256,
+        "ram_gb": 12,
+        "camara_mp": 48,
+        "bateria_mah": 5391
+      }
+    }
+  ]
+}
