@@ -54,47 +54,86 @@ export function salir() { titulo('Catálogo de equipos'); }
 function titulo(t) { const b = $('#barra-titulo'); if (b) b.textContent = t; }
 
 /* ---------------- LISTA ---------------- */
+// Menú fijo arriba: marcas (pestañas) + "ordenar por" en una sola fila deslizable.
+// Debajo, modelos agrupados por marca. Deslizar a los lados cambia de marca.
 function pintarLista() {
   vista = 'lista'; titulo('Catálogo de equipos');
-  const marcas = datos.marcas;
+  const marcas = [{ id: 'todas', nombre: 'Todas' }, ...datos.marcas];
   raiz.innerHTML = `
   <div class="cat">
-    <div class="cat-marcas" role="tablist" aria-label="Marca">
-      <button type="button" class="cat-marca" data-marca="todas" role="tab">Todas<span>${datos.equipos.length}</span></button>
-      ${marcas.map((m) => `<button type="button" class="cat-marca" data-marca="${m.id}" role="tab">${esc(m.nombre)}<span>${datos.equipos.filter((e) => e.marca === m.nombre).length}</span></button>`).join('')}
-    </div>
-    <div class="cat-busca">
-      <p class="cat-etq">¿Qué busca el cliente?</p>
-      <div class="cat-criterios">
+    <div class="cat-menu">
+      <div class="cat-marcas" role="tablist" aria-label="Marca">
+        ${marcas.map((m) => `<button type="button" class="cat-marca" data-marca="${m.id}" role="tab">${esc(m.nombre)}<span>${m.id === 'todas' ? datos.equipos.length : datos.equipos.filter((e) => e.marca === m.nombre).length}</span></button>`).join('')}
+      </div>
+      <div class="cat-criterios" role="group" aria-label="Ordenar por lo que busca el cliente">
+        <span class="cat-orden">Busca</span>
         ${CRITERIOS.map((c) => `<button type="button" class="cat-crit" data-crit="${c.id}" aria-pressed="false">${iconoSpec(c.ico)}${c.nombre}</button>`).join('')}
       </div>
     </div>
     <div class="cat-grid" id="cat-grid" aria-live="polite"></div>
   </div>`;
-  $$('.cat-marca', raiz).forEach((b) => b.addEventListener('click', () => { marca = b.dataset.marca; guardar.escribir('cat-marca', marca); grid(); }));
-  $$('.cat-crit', raiz).forEach((b) => b.addEventListener('click', () => { criterio = criterio === b.dataset.crit ? null : b.dataset.crit; grid(); }));
+  $$('.cat-marca', raiz).forEach((b) => b.addEventListener('click', () => elegirMarca(b.dataset.marca)));
+  $$('.cat-crit', raiz).forEach((b) => b.addEventListener('click', () => { criterio = criterio === b.dataset.crit ? null : b.dataset.crit; grid(); centrar(b); }));
+  // Deslizar sobre los modelos para pasar de marca
+  const g = $('#cat-grid', raiz); let x0 = null, y0 = null;
+  g.addEventListener('touchstart', (ev) => { x0 = ev.touches[0].clientX; y0 = ev.touches[0].clientY; }, { passive: true });
+  g.addEventListener('touchend', (ev) => {
+    if (x0 == null) return;
+    const dx = ev.changedTouches[0].clientX - x0, dy = ev.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
+    const ids = marcas.map((m) => m.id), i = ids.indexOf(marca);
+    const j = i + (dx < 0 ? 1 : -1);
+    if (j >= 0 && j < ids.length) elegirMarca(ids[j], dx < 0 ? 1 : -1);
+  }, { passive: true });
   grid();
 }
 
-function grid() {
+function elegirMarca(id, dir = 0) {
+  if (id === marca) return;
+  marca = id; guardar.escribir('cat-marca', marca);
+  grid(dir);
+  const v = document.getElementById('vista-catalogo');
+  if (v && v.scrollTop > 0) v.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function centrar(b) { b?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' }); }
+
+function tarjeta(e, k, c, max) {
+  return `<a class="cat-card" href="#/catalogo/${e.id}" style="--k:${Math.min(k, 10)}">
+      ${c && k < 3 ? `<span class="cat-top${k === 0 ? ' uno' : ''}">${k === 0 ? 'Mejor opción' : `Top ${k + 1}`}</span>` : ''}
+      <span class="cat-foto">${img(e)}</span>
+      <span class="cat-info">
+        ${marca === 'todas' && c ? `<span class="cat-mar">${esc(e.marca)}</span>` : ''}
+        <b>${esc(e.modelo)}</b>
+        ${c ? `<span class="cat-valor">${c.txt(e)}</span><span class="cat-medida"><span style="width:${Math.max(8, ((c.valor(e) || 0) / max) * 100)}%"></span></span>`
+    : `<span class="cat-mini"><span>${e.memoria?.almacenamiento_gb} GB</span><span>${e.memoria?.ram_gb} GB RAM</span><span>${e.tigo?.camara_mp} MP</span><span>${mil(e.bateria?.mah)} mAh</span></span>`}
+      </span>
+    </a>`;
+}
+
+function grid(dir = 0) {
   $$('.cat-marca', raiz).forEach((b) => b.setAttribute('aria-selected', String(b.dataset.marca === marca)));
   $$('.cat-crit', raiz).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.crit === criterio)));
+  centrar($(`.cat-marca[data-marca="${marca}"]`, raiz));
   const nombreMarca = datos.marcas.find((m) => m.id === marca)?.nombre;
   let lista = datos.equipos.filter((e) => marca === 'todas' || e.marca === nombreMarca);
   const c = CRITERIOS.find((x) => x.id === criterio);
-  if (c) lista = [...lista].sort((a, b) => (c.valor(b) || 0) - (c.valor(a) || 0));
-  const max = c ? Math.max(...lista.map((e) => c.valor(e) || 0)) : 0;
-  $('#cat-grid', raiz).innerHTML = lista.map((e, k) => `
-    <a class="cat-card" href="#/catalogo/${e.id}" style="animation-delay:${Math.min(k, 10) * 30}ms">
-      ${c && k < 3 ? `<span class="cat-top">${k === 0 ? 'Mejor opción' : `Top ${k + 1}`}</span>` : ''}
-      <span class="cat-foto">${img(e)}</span>
-      <span class="cat-info">
-        <span class="cat-mar">${esc(e.marca)}</span>
-        <b>${esc(e.modelo)}</b>
-        ${c ? `<span class="cat-medida"><span style="width:${Math.max(8, ((c.valor(e) || 0) / max) * 100)}%"></span></span><span class="cat-valor">${c.txt(e)}</span>`
-    : `<span class="cat-mini">${e.memoria?.almacenamiento_gb} GB · ${e.memoria?.ram_gb} GB RAM<br>${e.tigo?.camara_mp} MP · ${mil(e.bateria?.mah)} mAh</span>`}
-      </span>
-    </a>`).join('');
+  const g = $('#cat-grid', raiz);
+  g.dataset.dir = dir > 0 ? 'izq' : dir < 0 ? 'der' : '';
+  if (c) {
+    lista = [...lista].sort((a, b) => (c.valor(b) || 0) - (c.valor(a) || 0));
+    const max = Math.max(...lista.map((e) => c.valor(e) || 0));
+    g.innerHTML = `<p class="cat-aviso">${iconoSpec(c.ico)}Ordenado por <b>${c.nombre.toLowerCase()}</b>, de mejor a menor</p><div class="cat-cards">${lista.map((e, k) => tarjeta(e, k, c, max)).join('')}</div>`;
+  } else if (marca === 'todas') {
+    // Agrupado por marca, con encabezado tocable
+    g.innerHTML = datos.marcas.map((m) => {
+      const es = lista.filter((e) => e.marca === m.nombre);
+      return `<section class="cat-grupo"><button type="button" class="cat-grupo-cab" data-ir="${m.id}"><b>${esc(m.nombre)}</b><span>${es.length} modelos</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><div class="cat-cards">${es.map((e, k) => tarjeta(e, k)).join('')}</div></section>`;
+    }).join('');
+    $$('.cat-grupo-cab', g).forEach((b) => b.addEventListener('click', () => elegirMarca(b.dataset.ir, 1)));
+  } else {
+    g.innerHTML = `<div class="cat-cards">${lista.map((e, k) => tarjeta(e, k)).join('')}</div>`;
+  }
+  g.classList.remove('anima'); void g.offsetWidth; g.classList.add('anima');
 }
 
 /* ---------------- FICHA ---------------- */
@@ -109,6 +148,9 @@ function pintarFicha(e) {
   const cam = e.camaras || {}, pan = e.pantalla || {}, bat = e.bateria || {}, sw = e.software || {}, con = e.conectividad || {};
 
   raiz.innerHTML = `
+  <nav class="f-modelos" aria-label="Modelos de ${esc(e.marca)}">
+    ${misma.map((x) => `<a href="#/catalogo/${x.id}" class="f-mod${x === e ? ' activo' : ''}"${x === e ? ' aria-current="page"' : ''} data-reemplazar>${img(x)}<span>${esc(x.modelo)}</span></a>`).join('')}
+  </nav>
   <article class="ficha">
     <section class="f-hero">
       <div class="f-escena" id="f-escena">
@@ -125,11 +167,9 @@ function pintarFicha(e) {
         <p class="f-sub">${v(e.memoria?.almacenamiento_gb, ' GB')} · ${v(e.memoria?.ram_gb, ' GB RAM')} · ${v(con.red)}${e.lanzamiento ? ` · Lanzado en ${esc(e.lanzamiento.toLowerCase())}` : ''}</p>
         ${e.validado ? '' : '<span class="f-validar">Ficha por validar</span>'}
       </div>
-      <nav class="f-nav" aria-label="Otros modelos de ${esc(e.marca)}">
-        ${misma.length > 1 ? `<a href="#/catalogo/${ant.id}" class="f-flecha" aria-label="Anterior: ${esc(ant.modelo)}"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>` : ''}
-        <button type="button" class="f-comparar" id="f-comparar"><svg viewBox="0 0 24 24"><path d="M8 4v16M16 4v16M4 8h8M12 16h8"/></svg>Comparar</button>
-        ${misma.length > 1 ? `<a href="#/catalogo/${sig.id}" class="f-flecha" aria-label="Siguiente: ${esc(sig.modelo)}"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>` : ''}
-      </nav>
+      <div class="f-nav">
+        <button type="button" class="f-comparar" id="f-comparar"><svg viewBox="0 0 24 24"><path d="M8 4v16M16 4v16M4 8h8M12 16h8"/></svg>Comparar con otro equipo</button>
+      </div>
     </section>
 
     ${e.destacados?.length || e.frase ? `
@@ -219,6 +259,8 @@ function pintarFicha(e) {
   $('#f-hoja-cerrar', raiz).addEventListener('click', () => { hoja.hidden = true; });
   hoja.addEventListener('click', (ev) => { if (ev.target === hoja) hoja.hidden = true; });
   inclinar($('#f-escena', raiz), $('#f-tel', raiz));
+  $$('[data-reemplazar]', raiz).forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); location.replace(a.getAttribute('href')); }));
+  const act = $('.f-mod.activo', raiz); if (act) act.parentNode.scrollLeft = act.offsetLeft - (act.parentNode.clientWidth - act.offsetWidth) / 2;
   deslizar($('.f-hero', raiz), ant, sig, misma.length > 1);
 }
 

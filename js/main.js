@@ -8,7 +8,7 @@ import { V, $, $$, guardar, reduceMovimiento } from './util.js?v=20261106a';
 const VISTAS = {
   inicio: { titulo: 'Inicio' },
   equipo: { titulo: 'Conoce tu equipo', modulo: () => import(`./equipo.js?v=${V}`) },
-  catalogo: { titulo: 'Catálogo de equipos', modulo: () => import(`./catalogo.js?v=${V}b`) },
+  catalogo: { titulo: 'Catálogo de equipos', modulo: () => import(`./catalogo.js?v=${V}c`) },
   mesa: { titulo: 'Cuida la mesa', modulo: () => import(`./mesa.js?v=${V}`) },
   frases: { titulo: 'Frases de venta', modulo: () => import(`./frases.js?v=${V}`) }
 };
