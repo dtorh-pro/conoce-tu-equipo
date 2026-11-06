@@ -29,241 +29,1353 @@
       "id": "galaxy-a27",
       "marca": "Samsung",
       "modelo": "Galaxy A27 5G",
-      "validado": false,
+      "lanzamiento": "Junio 2026",
+      "gama": "Media",
+      "procesador": {
+        "nombre": "Snapdragon 6 Gen 3",
+        "detalle": "8 núcleos (hasta 2,4 GHz), 4 nm, GPU Adreno 710"
+      },
+      "pantalla": {
+        "pulgadas": 6.7,
+        "tipo": "Super AMOLED",
+        "resolucion": "FHD+ 2340×1080",
+        "hz": 120,
+        "brillo_nits": null,
+        "proteccion": "Gorilla Glass Victus+"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": "Sí, microSD (bandeja compartida con la SIM)"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "5 MP f/2.2",
+        "teleobjetivo": null,
+        "macro": "2 MP",
+        "frontal": "12 MP f/2.2 con autoenfoque",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Estabilización OIS + EIS",
+          "Cámara lenta 720p a 480 fps"
+        ]
       },
       "bateria": {
-        "mah": 5000
+        "mah": 5000,
+        "carga_w": 25,
+        "inalambrica_w": null,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · One UI 8.5",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Circle to Search",
+          "Gemini",
+          "Borrador de objetos"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 5 (doble banda)",
+        "bluetooth": "5.1",
+        "nfc": null,
+        "esim": true,
+        "sim": "Nano SIM + eSIM o Dual nano SIM (según versión)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "Lateral (en el botón de encendido)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP64"
+      },
+      "audio": {
+        "estereo": false,
+        "detalle": "Un solo parlante"
+      },
+      "diseno": {
+        "peso_g": 200,
+        "grosor_mm": 7.8,
+        "materiales": "Frente y reverso Gorilla Glass Victus+, marco plástico",
+        "colores": [
+          "Negro",
+          "Azul",
+          "Verde claro",
+          "Rosado claro"
+        ]
+      },
+      "destacados": [
+        "Pantalla AMOLED de 120 Hz",
+        "Seis años de actualizaciones de Android",
+        "Batería de 5.000 mAh para todo el día"
+      ],
+      "para_quien": "Cliente que quiere un 5G confiable, buena pantalla y muchos años de actualizaciones sin pagar gama alta.",
+      "frase": "Te dura todo el día, se ve espectacular y te queda actualizado por seis años.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 50,
         "bateria_mah": 5000
-      }
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/samsung_galaxy_a27_5g-14606.php",
+        "https://www.geektopia.es/es/technology/2026/06/26/noticias/samsung-presenta-el-galaxy-a27-5g.html"
+      ],
+      "dudas": [
+        "NFC figura como 'sin especificar' en GSMArena; confirmar con la versión de Colombia (en Latinoamérica la serie A suele traerlo).",
+        "Configuración de SIM para Colombia no confirmada (existen versiones nano SIM + eSIM y dual nano SIM).",
+        "Brillo máximo de pantalla no publicado.",
+        "Parches de seguridad: se asume 6 años, igual que las 6 versiones de Android prometidas; GSMArena no indica la política de seguridad.",
+        "Cámara frontal: GSMArena indica 12 MP; algunas tiendas mencionan 13 MP.",
+        "Fecha: anunciado el 10 de junio de 2026 según GSMArena; llegada a Colombia no confirmada."
+      ],
+      "validado": false
     },
     {
       "id": "galaxy-a37",
       "marca": "Samsung",
       "modelo": "Galaxy A37 5G",
-      "validado": false,
+      "lanzamiento": "Marzo 2026",
+      "gama": "Media alta",
+      "procesador": {
+        "nombre": "Exynos 1480",
+        "detalle": "8 núcleos (hasta 2,75 GHz), 4 nm, GPU Xclipse 530"
+      },
+      "pantalla": {
+        "pulgadas": 6.7,
+        "tipo": "Super AMOLED",
+        "resolucion": "FHD+ 2340×1080",
+        "hz": 120,
+        "brillo_nits": 1900,
+        "proteccion": "Gorilla Glass Victus+"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "8 MP f/2.2",
+        "teleobjetivo": null,
+        "macro": "5 MP f/2.4",
+        "frontal": "12 MP f/2.2 (video 4K)",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Estabilización OIS + EIS",
+          "Video HDR 10 bits en cámara frontal"
+        ]
       },
       "bateria": {
-        "mah": 5000
+        "mah": 5000,
+        "carga_w": 45,
+        "inalambrica_w": null,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · One UI 8.5",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Circle to Search",
+          "Gemini",
+          "Borrador de objetos",
+          "Funciones Awesome Intelligence"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Nano SIM + eSIM o Dual nano SIM + eSIM (según versión)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (óptica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo"
+      },
+      "diseno": {
+        "peso_g": 196,
+        "grosor_mm": 7.4,
+        "materiales": "Frente y reverso Gorilla Glass Victus+, marco plástico",
+        "colores": [
+          "Gris verdoso",
+          "Carbón",
+          "Blanco",
+          "Violeta claro"
+        ]
+      },
+      "destacados": [
+        "Resistente al agua IP68",
+        "Carga rápida de 45 W",
+        "Parlantes estéreo y pantalla 120 Hz"
+      ],
+      "para_quien": "Cliente que quiere sensación de gama alta (agua, carga rápida, estéreo) a precio de gama media.",
+      "frase": "Aguanta agua y polvo, carga rapidísimo y te queda actualizado seis años.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 50,
         "bateria_mah": 5000
-      }
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/_galaxy_a37_5g-14378.php",
+        "https://deviceguides.vodafone.ie/samsung/galaxy-a37-5g-android-16/specifications/"
+      ],
+      "dudas": [
+        "NFC depende del mercado; se asume que la versión de Colombia lo trae (confirmar).",
+        "Sin ranura microSD según GSMArena: confirmar en la versión de Latinoamérica.",
+        "Parches de seguridad: se asume 6 años, igual que las 6 versiones de Android prometidas.",
+        "Nombre de la suite de IA en la serie A (Awesome Intelligence / Galaxy AI) puede variar por mercado."
+      ],
+      "validado": false
     },
     {
       "id": "galaxy-s25-fe",
       "marca": "Samsung",
       "modelo": "Galaxy S25 FE",
-      "validado": false,
+      "lanzamiento": "Septiembre 2025",
+      "gama": "Alta",
+      "procesador": {
+        "nombre": "Exynos 2400",
+        "detalle": "10 núcleos (hasta 3,2 GHz), 4 nm, GPU Xclipse 940"
+      },
+      "pantalla": {
+        "pulgadas": 6.7,
+        "tipo": "Dynamic AMOLED 2X",
+        "resolucion": "FHD+ 2340×1080",
+        "hz": 120,
+        "brillo_nits": 1900,
+        "proteccion": "Gorilla Glass Victus+"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "12 MP f/2.2 (123°)",
+        "teleobjetivo": "8 MP f/2.4 con OIS, zoom óptico 3x",
+        "macro": null,
+        "frontal": "12 MP f/2.2 (video 4K)",
+        "video": "8K a 30 fps / 4K a 60 fps",
+        "extras": [
+          "Modo noche Nightography",
+          "Zoom óptico 3x",
+          "Video HDR10+"
+        ]
       },
       "bateria": {
-        "mah": 4900
+        "mah": 4900,
+        "carga_w": 45,
+        "inalambrica_w": 15,
+        "reversa": true,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · One UI 8",
+        "actualizaciones_so": 7,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Galaxy AI",
+          "Circle to Search",
+          "Traductor en vivo",
+          "Asistente de edición de fotos",
+          "Gemini Live"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Nano SIM + eSIM (según versión)",
+        "usb": "USB-C 3.2",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (óptica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo con Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 190,
+        "grosor_mm": 7.4,
+        "materiales": "Marco de aluminio, frente y reverso Gorilla Glass Victus+",
+        "colores": [
+          "Azul hielo",
+          "Negro",
+          "Azul marino",
+          "Blanco"
+        ]
+      },
+      "destacados": [
+        "Zoom óptico 3x y video 8K",
+        "Siete años de actualizaciones",
+        "Galaxy AI completo con carga inalámbrica"
+      ],
+      "para_quien": "Cliente que quiere experiencia de gama alta Galaxy (IA, zoom, inalámbrica) sin pagar un S26.",
+      "frase": "Es un Galaxy S de verdad, con IA y zoom, a un precio más amable.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 50,
         "bateria_mah": 4900
-      }
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/samsung_galaxy_s25_fe-14042.php"
+      ],
+      "dudas": [
+        "Configuración de SIM en Colombia (nano + eSIM vs dual nano) no confirmada.",
+        "Potencia de carga inalámbrica inversa no publicada (solo se indica que existe).",
+        "Dolby Atmos asumido por práctica habitual de la serie S; GSMArena solo confirma parlantes estéreo.",
+        "Lanzado con One UI 8 sobre Android 16; soporte hasta ≈2032 contando desde 2025."
+      ],
+      "validado": false
     },
     {
       "id": "galaxy-s26",
       "marca": "Samsung",
       "modelo": "Galaxy S26",
-      "validado": false,
+      "lanzamiento": "Febrero 2026",
+      "gama": "Premium",
+      "procesador": {
+        "nombre": "Exynos 2600",
+        "detalle": "10 núcleos (hasta 3,8 GHz), 2 nm, GPU Xclipse 960"
+      },
+      "pantalla": {
+        "pulgadas": 6.3,
+        "tipo": "Dynamic AMOLED 2X (LTPO)",
+        "resolucion": "FHD+ 2340×1080",
+        "hz": 120,
+        "brillo_nits": 2600,
+        "proteccion": "Gorilla Glass Victus 2"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "12 MP f/2.2",
+        "teleobjetivo": "10 MP f/2.4, zoom óptico 3x",
+        "macro": null,
+        "frontal": "12 MP",
+        "video": "8K a 30 fps / 4K a 60 fps",
+        "extras": [
+          "Modo noche Nightography",
+          "Zoom digital hasta 30x",
+          "Video retrato con desenfoque"
+        ]
       },
       "bateria": {
-        "mah": 4300
+        "mah": 4300,
+        "carga_w": 25,
+        "inalambrica_w": 15,
+        "reversa": true,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · One UI 8.5",
+        "actualizaciones_so": 7,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2033",
+        "funciones_ia": [
+          "Galaxy AI",
+          "Circle to Search",
+          "Traductor en vivo",
+          "Now Brief",
+          "Asistente de edición de fotos",
+          "Gemini Live"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + nano/eSIM)",
+        "usb": "USB-C 3.2",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (ultrasónica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo con Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 167,
+        "grosor_mm": 7.2,
+        "materiales": "Marco de aluminio, frente y reverso Gorilla Glass Victus 2",
+        "colores": [
+          "Negro",
+          "Blanco",
+          "Violeta cobalto",
+          "Azul cielo"
+        ]
+      },
+      "destacados": [
+        "Compacto y liviano: solo 167 g",
+        "Chip de 2 nm y 12 GB RAM",
+        "Siete años de actualizaciones"
+      ],
+      "para_quien": "Cliente que quiere un gama alta potente y cómodo de usar con una mano.",
+      "frase": "Toda la potencia de un Galaxy S en un equipo que te cabe cómodo en la mano.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 12,
         "camara_mp": 50,
         "bateria_mah": 4300
-      }
+      },
+      "fuentes": [
+        "https://www.91mobiles.com/samsung-galaxy-s26-price-in-india?ty=specs",
+        "https://www.solotodo.cl/products/382346-samsung-galaxy-s26-s942b-256-gb-12-gb-black-sm-s942bzkkltl"
+      ],
+      "dudas": [
+        "Procesador para Colombia: se asume Exynos 2600 (modelo SM-S942B que se vende en Chile/Latinoamérica); en EE. UU./China usa Snapdragon. Confirmar en la caja.",
+        "Algunas fichas tempranas (PhoneArena) muestran 6,2\" y 4.000 mAh: datos previos al lanzamiento, se usaron 6,3\" y 4.300 mAh.",
+        "Material del marco no confirmado en la ficha consultada (aluminio por práctica de la serie).",
+        "Dolby Atmos y desbloqueo facial 2D asumidos por práctica de la serie S.",
+        "Color Rosa dorado existe como exclusivo de tienda en línea Samsung; no incluido."
+      ],
+      "validado": false
     },
     {
       "id": "galaxy-s26-ultra",
       "marca": "Samsung",
       "modelo": "Galaxy S26 Ultra",
-      "validado": false,
+      "lanzamiento": "Febrero 2026",
+      "gama": "Premium",
+      "procesador": {
+        "nombre": "Snapdragon 8 Elite Gen 5 for Galaxy",
+        "detalle": "8 núcleos (hasta 4,74 GHz), 3 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.9,
+        "tipo": "Dynamic AMOLED 2X con Privacy Display",
+        "resolucion": "QHD+ 3120×1440",
+        "hz": 120,
+        "brillo_nits": 2600,
+        "proteccion": "Corning Gorilla Armor 2"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "200 MP f/1.4 con OIS",
+        "ultra_gran_angular": "50 MP f/1.9",
+        "teleobjetivo": "50 MP f/2.9 zoom óptico 5x con OIS + 10 MP f/2.4 zoom óptico 3x con OIS",
+        "macro": null,
+        "frontal": "12 MP f/2.2 con autoenfoque",
+        "video": "8K a 30 fps / 4K a 120 fps",
+        "extras": [
+          "Space Zoom hasta 100x",
+          "Modo noche Nightography",
+          "S Pen compatible"
+        ]
       },
       "bateria": {
-        "mah": 5000
+        "mah": 5000,
+        "carga_w": 60,
+        "inalambrica_w": 25,
+        "reversa": true,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · One UI 8.5",
+        "actualizaciones_so": 7,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2033",
+        "funciones_ia": [
+          "Galaxy AI",
+          "Circle to Search",
+          "Traductor en vivo",
+          "Now Brief",
+          "Asistente de edición de fotos",
+          "Gemini Live"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + nano/eSIM)",
+        "usb": "USB-C 3.2",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (ultrasónica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo con Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 214,
+        "grosor_mm": 7.9,
+        "materiales": "Marco de aluminio reforzado, frente Gorilla Armor 2, reverso Gorilla Glass Victus 2",
+        "colores": [
+          "Violeta cobalto",
+          "Azul cielo",
+          "Negro",
+          "Blanco"
+        ]
+      },
+      "destacados": [
+        "Cámara de 200 MP y zoom 100x",
+        "Carga de 60 W y pantalla privada",
+        "S Pen y siete años de actualizaciones"
+      ],
+      "para_quien": "Cliente exigente que quiere la mejor cámara, zoom y productividad con S Pen.",
+      "frase": "Es lo más completo de Samsung: cámara de 200 MP, zoom 100x y lápiz incluido.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 12,
         "camara_mp": 200,
         "bateria_mah": 5000
-      }
+      },
+      "fuentes": [
+        "https://www.samsung.com/co/support/mobile-devices/galaxy-s26-ultra-vs-galaxy-s25-ultra/",
+        "https://www.phonearena.com/phones/compare/Samsung-Galaxy-S26-Ultra,Samsung-Galaxy-S26/phones/12802,12804"
+      ],
+      "dudas": [
+        "Brillo máximo (2.600 nits), video 8K/4K120, Wi-Fi 7, Bluetooth 5.4 y USB 3.2 tomados de PhoneArena; Samsung Colombia no los lista en la página consultada.",
+        "El S Pen viene integrado en el equipo (no es un accesorio aparte); confirmar redacción con el material de Tigo.",
+        "Configuración SIM/eSIM en Colombia no confirmada en fuente oficial.",
+        "PhoneArena indica marco de titanio (dato previo al lanzamiento); Samsung Colombia indica aluminio, se usó el dato oficial.",
+        "Pantalla: 6,9\" medida plana (6,7\" con esquinas redondeadas, según Samsung)."
+      ],
+      "validado": false
     },
     {
       "id": "moto-g67",
       "marca": "Motorola",
       "modelo": "Moto G67 5G",
-      "validado": false,
+      "lanzamiento": "Enero 2026",
+      "gama": "Media",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 6300",
+        "detalle": "8 núcleos hasta 2,4 GHz, 6 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.78,
+        "tipo": "AMOLED",
+        "resolucion": "1.5K 2772×1272",
+        "hz": 120,
+        "brillo_nits": 5000,
+        "proteccion": "Gorilla Glass 7i"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": "Sí (capacidad máxima no confirmada)"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 (sensor Sony LYTIA 600)",
+        "ultra_gran_angular": "8 MP f/2.2, 118°",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "32 MP f/2.2",
+        "video": "2K (1440p) a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Cámara lenta a 120 fps"
+        ]
       },
       "bateria": {
-        "mah": 5200
+        "mah": 5200,
+        "carga_w": 30,
+        "inalambrica_w": null,
+        "reversa": false,
+        "cargador_en_caja": null
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · Hello UI",
+        "actualizaciones_so": null,
+        "parches_seguridad_anios": 4,
+        "soporte_hasta": "2030",
+        "funciones_ia": [
+          "Moto AI",
+          "Google Gemini",
+          "Circle to Search"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 5",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM híbrido (nano + eSIM)",
+        "usb": "USB-C",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "Lateral (botón de encendido)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP64 + MIL-STD-810H"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 182,
+        "grosor_mm": 7.3,
+        "materiales": null,
+        "colores": [
+          "Verde lima",
+          "Pantone Nile",
+          "Pantone Arctic Seal"
+        ]
+      },
+      "destacados": [
+        "Pantalla AMOLED de 120 Hz muy brillante",
+        "Batería de 5.200 mAh para todo el día",
+        "Resiste salpicaduras y caídas (MIL-STD)"
+      ],
+      "para_quien": "Cliente que quiere su primer 5G con buena pantalla y batería sin gastar mucho",
+      "frase": "Te llevas 5G, pantalla AMOLED y batería para todo el día a un precio muy cómodo.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 50,
         "bateria_mah": 5200
-      }
+      },
+      "fuentes": [
+        "https://www.phonearena.com/news/motorola-moto-g67-moto-g77-mid-range-phones-official-specs-features-prices-europe_id177795",
+        "https://gadgets.beebom.com/mobile/moto-g67",
+        "https://www.alkosto.com/cel5g-moto-g67-8-256gb-vd/p/840493610658"
+      ],
+      "dudas": [
+        "RAM: en Europa la versión base es 4 GB/128 GB, pero Alkosto/Ktronix Colombia venden la versión 8 GB/256 GB, así que la cifra de Tigo (8 GB) coincide con la versión colombiana.",
+        "Actualizaciones: PhoneArena reporta 4 años de parches de seguridad; Beebom habla de '3 años de SO' y BGR de 2 versiones de Android para la línea Moto G. Número de versiones de Android sin confirmar (null).",
+        "eSIM: Beebom lo reporta (nano + eSIM híbrido); GSMArena lista solo 1 nano-SIM. Confirmar en la versión colombiana.",
+        "Capacidad máxima de microSD, materiales y cargador en caja no confirmados.",
+        "Video máximo 2K a 30 fps (no graba 4K)."
+      ],
+      "validado": false
     },
     {
       "id": "edge-70-fusion",
       "marca": "Motorola",
       "modelo": "Edge 70 Fusion",
-      "validado": false,
+      "lanzamiento": "Marzo 2026",
+      "gama": "Media",
+      "procesador": {
+        "nombre": "Snapdragon 7s Gen 3",
+        "detalle": "8 núcleos, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.78,
+        "tipo": "Extreme AMOLED curva",
+        "resolucion": "1.5K 2772×1272",
+        "hz": 144,
+        "brillo_nits": 5200,
+        "proteccion": "Gorilla Glass 7i"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS (sensor Sony LYTIA 710)",
+        "ultra_gran_angular": "13 MP f/2.2 (también hace macro)",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "32 MP f/2.2",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Macro con el ultra gran angular"
+        ]
       },
       "bateria": {
-        "mah": 5200
+        "mah": 5200,
+        "carga_w": 68,
+        "inalambrica_w": null,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · Hello UI",
+        "actualizaciones_so": 3,
+        "parches_seguridad_anios": 5,
+        "soporte_hasta": "2031",
+        "funciones_ia": [
+          "Moto AI",
+          "Google Gemini",
+          "Copilot",
+          "Perplexity"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6",
+        "bluetooth": "6.0",
+        "nfc": true,
+        "esim": null,
+        "sim": "Dual SIM",
+        "usb": "USB-C",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69 + MIL-STD-810H"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 177,
+        "grosor_mm": 7.2,
+        "materiales": "Reverso con acabado textil (tipo nylon o lino)",
+        "colores": [
+          "Pantone Sporting Green",
+          "Pantone Silhouette",
+          "Pantone Orient Blue",
+          "Pantone Country Air"
+        ]
+      },
+      "destacados": [
+        "Pantalla de 144 Hz súper fluida",
+        "Aguanta agua y polvo (IP68/IP69)",
+        "Carga de 68 W muy rápida"
+      ],
+      "para_quien": "Cliente que quiere un equipo delgado, resistente y fluido en gama media",
+      "frase": "Es delgado, aguanta agua y polvo y en minutos lo tienes cargado otra vez.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 50,
         "bateria_mah": 5200
-      }
+      },
+      "fuentes": [
+        "https://www.phonearena.com/news/motorola-edge-70-fusion-official-specs-features-prices-europe_id178611",
+        "https://www.notebookcheck.net/Motorola-Edge-70-Fusion-Review-A-configurable-mid-range-smartphone-with-broad-appeal.1264811.0.html",
+        "https://www.thetechoutlook.com/new-release/gadgets-release/mobile/motorola-edge-70-fusions-microsite-confirms-3-major-os-upgrades-and-5-years-of-security-updates"
+      ],
+      "dudas": [
+        "Batería: el equipo existe en dos versiones oficiales, 5.200 mAh (177 g, 7,21 mm) y 7.000 mAh silicio-carbono (193 g, 7,99 mm). La cifra de Tigo (5.200 mAh) corresponde a la versión de 5.200; confirmar cuál se vende en Colombia.",
+        "Procesador: PhoneArena y Notebookcheck dicen Snapdragon 7s Gen 3; el micrositio de India citado por TheTechOutlook menciona 7s Gen 4. Se dejó 7s Gen 3.",
+        "Brillo: 5.200 nits es el pico oficial; Notebookcheck midió cerca de 1.500 nits.",
+        "eSIM y microSD no confirmados en las fuentes.",
+        "Peso y grosor corresponden a la versión de 5.200 mAh."
+      ],
+      "validado": false
     },
     {
       "id": "edge-70",
       "marca": "Motorola",
       "modelo": "Edge 70 5G",
-      "validado": false,
+      "lanzamiento": "Noviembre 2025",
+      "gama": "Media alta",
+      "procesador": {
+        "nombre": "Snapdragon 7 Gen 4",
+        "detalle": "8 núcleos hasta 2,8 GHz, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.7,
+        "tipo": "pOLED (AMOLED)",
+        "resolucion": "1.5K 2712×1220",
+        "hz": 120,
+        "brillo_nits": 4500,
+        "proteccion": "Gorilla Glass 7i"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 512
+        "almacenamiento_gb": 512,
+        "microsd": "No"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.8 con OIS",
+        "ultra_gran_angular": "50 MP f/2.0",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "50 MP f/2.0",
+        "video": "4K a 60 fps",
+        "extras": [
+          "Modo noche",
+          "Cámara lenta a 240 fps"
+        ]
       },
       "bateria": {
-        "mah": 4800
+        "mah": 4800,
+        "carga_w": 68,
+        "inalambrica_w": 15,
+        "reversa": true,
+        "cargador_en_caja": null
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · Hello UI",
+        "actualizaciones_so": 4,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2031",
+        "funciones_ia": [
+          "Moto AI",
+          "Google Gemini",
+          "Copilot Vision",
+          "Perplexity",
+          "Tecla dedicada de IA"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": null,
+        "sim": "Dual SIM",
+        "usb": "USB-C",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (óptica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69 + MIL-STD-810H"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 159,
+        "grosor_mm": 6.0,
+        "materiales": null,
+        "colores": [
+          "Verde",
+          "Gris"
+        ]
+      },
+      "destacados": [
+        "Ultradelgado: solo 6 mm y 159 g",
+        "Tres cámaras de 50 MP",
+        "Carga inalámbrica de 15 W"
+      ],
+      "para_quien": "Cliente que busca un celular elegante y liviano sin sacrificar cámara",
+      "frase": "Es de los más delgados del mercado y aun así tiene tres cámaras de 50 MP.",
       "tigo": {
         "almacenamiento_gb": 512,
         "ram_gb": 12,
         "camara_mp": 50,
         "bateria_mah": 4800
-      }
+      },
+      "fuentes": [
+        "https://findaphone-ng.pages.dev/phones/motorola_edge_70_5g-14216",
+        "https://m.gsmarena.com/motorola_edge_70-review-2899p4.php",
+        "https://www.pacifiko.com/compras-en-linea/celular-motorola-edge-70-12gb-ram-512gb-almacenamiento-color-verde-olivo-dual-sim-liberado&pid=ODgxYjgxNz"
+      ],
+      "dudas": [
+        "Memoria: la ficha global base es 8 GB/256 GB; la versión 12 GB/512 GB (cifras de Tigo) existe y se vende en Latinoamérica y Europa.",
+        "Actualizaciones: GSMArena cita '4 años de actualizaciones de Android y 6 de seguridad', pero Motorola ha sido inconsistente entre regiones (9to5Google, jul 2026). Soporte_hasta 2031 es aproximado.",
+        "Resistencia: algunas fichas dicen solo IP68; tiendas europeas listan IP68/IP69.",
+        "Carga inalámbrica reversa reportada en fichas técnicas; potencia no confirmada.",
+        "eSIM, materiales y cargador en caja no confirmados."
+      ],
+      "validado": false
     },
     {
       "id": "razr-70",
       "marca": "Motorola",
       "modelo": "Razr 70 5G",
-      "validado": false,
+      "lanzamiento": "Abril 2026",
+      "gama": "Alta",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 7450X",
+        "detalle": "8 núcleos hasta 2,6 GHz, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.9,
+        "tipo": "pOLED LTPO plegable",
+        "resolucion": "FHD+ 2640×1080 · pantalla externa de 3,6\" AMOLED 1056×1066 a 90 Hz (1.700 nits, Gorilla Glass Victus)",
+        "hz": 120,
+        "brillo_nits": 3000,
+        "proteccion": "Pantalla interna plástica; externa Gorilla Glass Victus"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 512
+        "almacenamiento_gb": 512,
+        "microsd": "No"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.7 con OIS",
+        "ultra_gran_angular": "50 MP f/2.0, 122° (también macro)",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "32 MP f/2.4",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Selfies con la cámara principal usando la pantalla externa",
+          "Modo flex (equipo medio abierto)"
+        ]
       },
       "bateria": {
-        "mah": 4800
+        "mah": 4800,
+        "carga_w": 30,
+        "inalambrica_w": 15,
+        "reversa": false,
+        "cargador_en_caja": null
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · Hello UI",
+        "actualizaciones_so": 3,
+        "parches_seguridad_anios": 4,
+        "soporte_hasta": "2030",
+        "funciones_ia": [
+          "Moto AI",
+          "Google Gemini",
+          "Circle to Search"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + eSIM)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "Lateral (botón de encendido)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP48 + MIL-STD-810H"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 188,
+        "grosor_mm": 7.3,
+        "materiales": "Marco de aluminio, bisagra de titanio; 15,9 mm cerrado",
+        "colores": [
+          "Verde",
+          "Gris",
+          "Blanco",
+          "Rosado"
+        ]
+      },
+      "destacados": [
+        "Plegable tipo concha, cabe en cualquier bolsillo",
+        "Pantalla externa para usar sin abrir",
+        "Dos cámaras de 50 MP"
+      ],
+      "para_quien": "Cliente que quiere un celular diferente, de moda y compacto al doblarlo",
+      "frase": "Lo doblas, lo guardas en el bolsillo y respondes mensajes sin abrirlo.",
       "tigo": {
         "almacenamiento_gb": 512,
         "ram_gb": 12,
         "camara_mp": 50,
         "bateria_mah": 4800
-      }
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/motorola_razr_2026-14640.php",
+        "https://www.pacifiko.com/pid/YmU3NTQxYm",
+        "https://www.ktronix.com/celular-motorola-razr-70-512gb-5g-verde/p/840493612669",
+        "https://www.bgr.com/2242507/2026-motorola-phones-software-updates/"
+      ],
+      "dudas": [
+        "Nombre: el Razr 70 es el mismo equipo que en EE. UU. se llama 'Razr (2026)' (no es el Razr 70 Ultra ni el Razr 70+).",
+        "Memoria: la ficha global (GSMArena) lista 8 GB con 128/256 GB, pero en Latinoamérica (Ktronix/Alkosto Colombia, Ripley Perú, Pacifiko, México) se vende en 12 GB/512 GB, que coincide con la pieza de Tigo.",
+        "Actualizaciones: BGR cita la web de soporte de Motorola con 3 versiones de Android y 4 años de seguridad para el Razr (2026); Pacifiko dice 'hasta 3 años de actualizaciones'. Hay confusión reportada sobre el periodo de seguridad.",
+        "Ultra gran angular: GSMArena dice 50 MP; Pacifiko lista 12,6 MP (probablemente la salida con píxeles agrupados).",
+        "Resistencia IP48: protege contra inmersión pero NO contra polvo fino; aclarárselo al cliente.",
+        "Cargador en caja no confirmado."
+      ],
+      "validado": false
     },
     {
       "id": "redmi-note-15",
       "marca": "Xiaomi",
       "modelo": "Redmi Note 15 5G",
-      "validado": false,
+      "lanzamiento": "Enero 2026",
+      "gama": "Media",
+      "procesador": {
+        "nombre": "Snapdragon 6 Gen 3",
+        "detalle": "8 núcleos hasta 2,4 GHz, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.77,
+        "tipo": "AMOLED curva",
+        "resolucion": "FHD+ 2392×1080",
+        "hz": 120,
+        "brillo_nits": 3200,
+        "proteccion": "Vidrio de alta resistencia (sin modelo confirmado)"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": "Hasta 1 TB (bandeja híbrida)"
+      },
+      "camaras": {
+        "principal": "108 MP f/1.76 (sensor 1/1.67\")",
+        "ultra_gran_angular": "8 MP f/2.2",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "20 MP f/2.24",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche"
+        ]
       },
       "bateria": {
-        "mah": 5520
+        "mah": 5520,
+        "carga_w": 45,
+        "inalambrica_w": null,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 15 · Xiaomi HyperOS 2",
+        "actualizaciones_so": 4,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Xiaomi HyperAI",
+          "Google Gemini",
+          "Circle to Search"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 5",
+        "bluetooth": "5.1",
+        "nfc": true,
+        "esim": false,
+        "sim": "Dual SIM (nano + nano/microSD híbrido)",
+        "usb": "USB-C",
+        "jack_audifonos": null
+      },
+      "seguridad": {
+        "huella": "En pantalla",
+        "rostro": "Desbloqueo facial con IA (2D)"
+      },
+      "resistencia": {
+        "ip": "IP65"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos, Hi-Res Audio"
+      },
+      "diseno": {
+        "peso_g": 178,
+        "grosor_mm": 7.35,
+        "materiales": null,
+        "colores": [
+          "Negro",
+          "Azul glaciar",
+          "Morado niebla"
+        ]
+      },
+      "destacados": [
+        "Cámara de 108 MP con mucho detalle",
+        "Pantalla AMOLED curva de 120 Hz",
+        "Memoria ampliable hasta 1 TB"
+      ],
+      "para_quien": "Cliente de gama media que toma muchas fotos y guarda mucho contenido",
+      "frase": "Con 108 MP tus fotos salen nítidas y si te quedas sin espacio le pones una microSD.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 108,
         "bateria_mah": 5520
-      }
+      },
+      "fuentes": [
+        "https://www.mi.com/uk/product/redmi-note-15-5g/specs/",
+        "https://miuirom.org/phones/redmi-note-15-5g"
+      ],
+      "dudas": [
+        "Lanzamiento: la serie salió en China en agosto de 2025; la versión global llegó hacia enero de 2026. Fecha exacta para Colombia no confirmada.",
+        "Actualizaciones: miuirom (lista EOL de Xiaomi) da soporte hasta enero de 2032 y Android 17-19 esperados; el '4 versiones de Android' sigue la política de la serie Redmi Note 14/15, no se encontró anuncio oficial específico.",
+        "Ficha tomada de la versión global (Xiaomi UK): NFC 'según mercado', cargador no incluido en Reino Unido; confirmar NFC y cargador en caja para Colombia.",
+        "eSIM no listado en la ficha global; jack de audífonos no especificado.",
+        "Protección de pantalla: Xiaomi solo dice 'vidrio de alta durabilidad'; OIS de la cámara principal no confirmado."
+      ],
+      "validado": false
     },
     {
       "id": "redmi-note-15-pro",
       "marca": "Xiaomi",
-      "modelo": "Redmi Note 15 Pro",
-      "validado": false,
+      "modelo": "Redmi Note 15 Pro 5G",
+      "lanzamiento": "Diciembre 2025",
+      "gama": "Media alta",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 7400 Ultra",
+        "detalle": "8 núcleos, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.83,
+        "tipo": "AMOLED",
+        "resolucion": "1.5K 2772×1280",
+        "hz": 120,
+        "brillo_nits": 3200,
+        "proteccion": "Gorilla Glass Victus 2"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 512
+        "almacenamiento_gb": 512,
+        "microsd": "No"
+      },
+      "camaras": {
+        "principal": "200 MP f/1.7 con OIS (sensor 1/1.4\")",
+        "ultra_gran_angular": "8 MP f/2.2, 120°",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "20 MP f/2.2",
+        "video": "4K a 30 fps",
+        "extras": [
+          "Modo noche",
+          "Zoom sin pérdida por recorte del sensor de 200 MP"
+        ]
       },
       "bateria": {
-        "mah": 6580
+        "mah": 6580,
+        "carga_w": 45,
+        "inalambrica_w": null,
+        "reversa": true,
+        "cargador_en_caja": null
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 15 · Xiaomi HyperOS 2",
+        "actualizaciones_so": 4,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Xiaomi HyperAI",
+          "Google Gemini",
+          "Circle to Search"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6",
+        "bluetooth": "5.4",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + eSIM o dos nano, según versión)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla (óptica)",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68 / IP69K"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 210,
+        "grosor_mm": 8.0,
+        "materiales": "Marco plástico, reverso de vidrio o eco-cuero según color",
+        "colores": [
+          "Negro",
+          "Azul glaciar",
+          "Morado niebla",
+          "Titanio"
+        ]
+      },
+      "destacados": [
+        "Cámara de 200 MP con estabilizador",
+        "Batería gigante de 6.580 mAh",
+        "Aguanta agua y polvo (IP68/IP69K)"
+      ],
+      "para_quien": "Cliente que quiere batería de sobra, cámara potente y un equipo resistente",
+      "frase": "Te dura más de un día de batería y con 200 MP puedes recortar la foto sin perder detalle.",
       "tigo": {
         "almacenamiento_gb": 512,
         "ram_gb": 8,
         "camara_mp": 200,
         "bateria_mah": 6580
-      }
+      },
+      "fuentes": [
+        "https://m.gsmarena.com/xiaomi_redmi_note_15_pro-ampp-14327.php",
+        "https://miuirom.org/phones/redmi-note-15-pro-5g",
+        "https://www.alkosto.com/cel4g-redmi-note15pr-256gbti/p/6932554485108"
+      ],
+      "dudas": [
+        "Modelo: las cifras de Tigo (200 MP, 6.580 mAh) corresponden al Redmi Note 15 Pro 5G; existe un Redmi Note 15 Pro 4G distinto (Helio G200, ~6.500 mAh). Verificar que Tigo venda la versión 5G.",
+        "Actualizaciones: GSMArena indica hasta 4 versiones de Android; la lista EOL de Xiaomi (vía miuirom) da soporte hasta enero de 2032.",
+        "Carga reversa: es por cable (22,5 W), no inalámbrica.",
+        "eSIM depende de la versión; NFC 'según mercado'. Confirmar en la unidad colombiana.",
+        "Cargador en caja no confirmado para Colombia."
+      ],
+      "validado": false
     },
     {
       "id": "xiaomi-17t",
       "marca": "Xiaomi",
       "modelo": "Xiaomi 17T",
-      "validado": false,
+      "lanzamiento": "Mayo 2026",
+      "gama": "Alta",
+      "procesador": {
+        "nombre": "MediaTek Dimensity 8500 Ultra",
+        "detalle": "8 núcleos, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.59,
+        "tipo": "AMOLED",
+        "resolucion": "1.5K 2756×1268",
+        "hz": 120,
+        "brillo_nits": 3500,
+        "proteccion": "Gorilla Glass 7i"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 512
+        "almacenamiento_gb": 512,
+        "microsd": "No"
+      },
+      "camaras": {
+        "principal": "50 MP f/1.7 con OIS, óptica Leica",
+        "ultra_gran_angular": "12 MP f/2.2",
+        "teleobjetivo": "50 MP f/3.0, zoom óptico 5x",
+        "macro": null,
+        "frontal": "32 MP con enfoque automático (video 4K)",
+        "video": "4K a 60 fps (HDR 10 bits y LOG)",
+        "extras": [
+          "Modo noche",
+          "Estilos de color Leica",
+          "Zoom digital hasta 120x"
+        ]
       },
       "bateria": {
-        "mah": 6500
+        "mah": 6500,
+        "carga_w": 67,
+        "inalambrica_w": null,
+        "reversa": true,
+        "cargador_en_caja": null
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "Android 16 · Xiaomi HyperOS 3",
+        "actualizaciones_so": 4,
+        "parches_seguridad_anios": 6,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Xiaomi HyperAI",
+          "Google Gemini",
+          "Circle to Search"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "6.0",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano + nano/eSIM)",
+        "usb": "USB-C",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": "En pantalla",
+        "rostro": "Desbloqueo facial 2D"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Dolby Atmos"
+      },
+      "diseno": {
+        "peso_g": 200,
+        "grosor_mm": 8.2,
+        "materiales": "Marco y reverso de plástico",
+        "colores": [
+          "Negro",
+          "Blanco ópalo",
+          "Violeta",
+          "Azul"
+        ]
+      },
+      "destacados": [
+        "Teleobjetivo 5x con óptica Leica",
+        "Batería de 6.500 mAh y carga de 67 W",
+        "Seis años de parches de seguridad"
+      ],
+      "para_quien": "Cliente exigente con la fotografía que quiere gama alta sin pagar un tope de línea",
+      "frase": "Con el zoom 5x de Leica sacas fotos de lejos que otros celulares no alcanzan.",
       "tigo": {
         "almacenamiento_gb": 512,
         "ram_gb": 12,
         "camara_mp": 50,
         "bateria_mah": 6500
-      }
+      },
+      "fuentes": [
+        "https://www.notebookcheck.net/Xiaomi-releases-new-premium-smartphone-with-5x-periscope-camera-and-6-500-mAh-battery.1308051.0.html",
+        "https://www.expertreviews.co.uk/technology/phones/xiaomi-17t-review",
+        "https://www.91mobiles.com/xiaomi-17t-price-in-india?ty=specs"
+      ],
+      "dudas": [
+        "Actualizaciones: Notebookcheck y Expert Reviews indican 4 versiones de Android (17 a 20) y 6 años de seguridad hasta 2032.",
+        "Sistema operativo de lanzamiento: fuentes dicen 'Android 16 con HyperOS'; la versión HyperOS 3 es inferida, no confirmada.",
+        "Carga reversa: es por cable (22,5 W); no tiene carga inalámbrica.",
+        "Ficha de la versión global/europea; disponibilidad de eSIM y cargador en caja para Colombia no confirmados.",
+        "Materiales: Expert Reviews indica marco y reverso plásticos."
+      ],
+      "validado": false
     },
     {
       "id": "oppo-a6",
@@ -607,81 +1719,454 @@
       "id": "iphone-15",
       "marca": "Apple",
       "modelo": "iPhone 15",
-      "validado": false,
+      "lanzamiento": "Septiembre 2023",
+      "gama": "Alta",
+      "procesador": {
+        "nombre": "A16 Bionic",
+        "detalle": "CPU de 6 núcleos, GPU de 5 núcleos, Neural Engine de 16 núcleos, 4 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.1,
+        "tipo": "OLED Super Retina XDR",
+        "resolucion": "2556×1179 (460 ppp)",
+        "hz": 60,
+        "brillo_nits": 2000,
+        "proteccion": "Ceramic Shield"
+      },
       "memoria": {
         "ram_gb": 6,
-        "almacenamiento_gb": 128
+        "almacenamiento_gb": 128,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "48 MP f/1.6 con OIS por desplazamiento de sensor",
+        "ultra_gran_angular": "12 MP f/2.4 (120°)",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "12 MP f/1.9 TrueDepth",
+        "video": "4K Dolby Vision a 60 fps",
+        "extras": [
+          "Zoom 2x con calidad óptica",
+          "Modo noche",
+          "Retratos de nueva generación"
+        ]
       },
       "bateria": {
-        "mah": 3349
+        "mah": 3349,
+        "carga_w": 20,
+        "inalambrica_w": 15,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "iOS 17",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2030",
+        "funciones_ia": []
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 6",
+        "bluetooth": "5.3",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano SIM + eSIM)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": null,
+        "rostro": "Face ID (reconocimiento facial 3D)"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo, audio espacial"
+      },
+      "diseno": {
+        "peso_g": 171,
+        "grosor_mm": 7.8,
+        "materiales": "Marco de aluminio, reverso de vidrio con color infusionado",
+        "colores": [
+          "Negro",
+          "Azul",
+          "Verde",
+          "Amarillo",
+          "Rosa"
+        ]
+      },
+      "destacados": [
+        "Cámara de 48 MP con zoom 2x",
+        "Dynamic Island y USB-C",
+        "Face ID y resistencia IP68"
+      ],
+      "para_quien": "Cliente que quiere entrar a iPhone con buena cámara a un precio más accesible.",
+      "frase": "Es la forma más fácil de tener iPhone, con cámara de 48 MP y USB-C.",
       "tigo": {
         "almacenamiento_gb": 128,
         "ram_gb": 6,
         "camara_mp": 48,
         "bateria_mah": 3349
-      }
+      },
+      "fuentes": [
+        "https://support.apple.com/es-lamr/111831"
+      ],
+      "dudas": [
+        "Apple no publica RAM ni mAh: 6 GB y 3.349 mAh son cifras de registros regulatorios/medios, coinciden con Tigo.",
+        "Años de actualización: Apple no publica un número; se usa la práctica histórica (≈6 versiones de iOS y ≈7 años de seguridad) → soporte aproximado hasta 2030.",
+        "No es compatible con Apple Intelligence (requiere iPhone 15 Pro o posterior); por eso funciones_ia va vacío.",
+        "La ficha de Apple menciona un 'teleobjetivo 12 MP 2x': es un recorte del sensor principal de 48 MP, no un lente aparte.",
+        "Carga cableada: Apple indica 50% en 30 min con adaptador de 20 W o más; potencia máxima real no publicada.",
+        "Carga inalámbrica Qi2 a 15 W llegó por actualización de software."
+      ],
+      "validado": false
     },
     {
       "id": "iphone-17",
       "marca": "Apple",
       "modelo": "iPhone 17",
-      "validado": false,
+      "lanzamiento": "Septiembre 2025",
+      "gama": "Premium",
+      "procesador": {
+        "nombre": "A19",
+        "detalle": "CPU de 6 núcleos, GPU de 5 núcleos con aceleradores neuronales, Neural Engine de 16 núcleos, 3 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.3,
+        "tipo": "OLED Super Retina XDR con ProMotion",
+        "resolucion": "2622×1206 (460 ppp)",
+        "hz": 120,
+        "brillo_nits": 3000,
+        "proteccion": "Ceramic Shield 2"
+      },
       "memoria": {
         "ram_gb": 8,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "48 MP Fusion f/1.6 con OIS por desplazamiento de sensor",
+        "ultra_gran_angular": "48 MP Fusion f/2.2 (120°)",
+        "teleobjetivo": null,
+        "macro": null,
+        "frontal": "18 MP Center Stage f/1.9",
+        "video": "4K Dolby Vision a 60 fps",
+        "extras": [
+          "Zoom 2x con calidad óptica",
+          "Modo noche",
+          "Selfies horizontales sin girar el equipo (Center Stage)"
+        ]
       },
       "bateria": {
-        "mah": 3692
+        "mah": 3692,
+        "carga_w": 40,
+        "inalambrica_w": 25,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "iOS 26",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Apple Intelligence",
+          "Herramientas de escritura",
+          "Inteligencia visual",
+          "Limpiar (borrar objetos en fotos)",
+          "Traducción en vivo"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "6.0",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano SIM + eSIM)",
+        "usb": "USB-C 2.0",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": null,
+        "rostro": "Face ID (reconocimiento facial 3D)"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo, audio espacial"
+      },
+      "diseno": {
+        "peso_g": 177,
+        "grosor_mm": 7.95,
+        "materiales": "Marco de aluminio, reverso de vidrio con color infusionado",
+        "colores": [
+          "Negro",
+          "Blanco",
+          "Azul neblina",
+          "Salvia",
+          "Lavanda"
+        ]
+      },
+      "destacados": [
+        "Pantalla ProMotion de 120 Hz",
+        "256 GB desde la versión base",
+        "Cámara frontal 18 MP Center Stage"
+      ],
+      "para_quien": "Cliente que quiere un iPhone actual, fluido y con Apple Intelligence sin ir a la línea Pro.",
+      "frase": "Trae la pantalla fluida de los Pro y arranca con 256 GB de espacio.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 8,
         "camara_mp": 48,
         "bateria_mah": 3692
-      }
+      },
+      "fuentes": [
+        "https://www.apple.com/lae/iphone-17/specs/"
+      ],
+      "dudas": [
+        "Apple no publica RAM ni mAh: 8 GB y 3.692 mAh son cifras de registros regulatorios/medios, coinciden con Tigo.",
+        "Carga cableada: Apple indica 50% en 20 min con adaptador de 40 W o más; se registra 40 W como referencia, la potencia máxima real no es oficial.",
+        "Años de actualización: Apple no publica un número; se usa la práctica histórica (≈6 versiones de iOS, ≈7 años de seguridad).",
+        "Proceso de 3 nm del A19 tomado de cobertura de medios; Apple no lo indica en la ficha.",
+        "Disponibilidad de algunas funciones de Apple Intelligence en español puede variar."
+      ],
+      "validado": false
     },
     {
       "id": "iphone-17-pro-max",
       "marca": "Apple",
       "modelo": "iPhone 17 Pro Max",
-      "validado": false,
+      "lanzamiento": "Septiembre 2025",
+      "gama": "Premium",
+      "procesador": {
+        "nombre": "A19 Pro",
+        "detalle": "CPU de 6 núcleos, GPU de 6 núcleos con aceleradores neuronales, Neural Engine de 16 núcleos, 3 nm"
+      },
+      "pantalla": {
+        "pulgadas": 6.9,
+        "tipo": "OLED Super Retina XDR con ProMotion",
+        "resolucion": "2868×1320 (460 ppp)",
+        "hz": 120,
+        "brillo_nits": 3000,
+        "proteccion": "Ceramic Shield 2"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "48 MP Fusion f/1.78 con OIS por desplazamiento de sensor",
+        "ultra_gran_angular": "48 MP Fusion f/2.2 (120°)",
+        "teleobjetivo": "48 MP f/2.8 zoom óptico 4x (100 mm) con OIS 3D; 8x con calidad óptica",
+        "macro": "Macro con el ultra gran angular",
+        "frontal": "18 MP Center Stage f/1.9",
+        "video": "4K Dolby Vision a 120 fps",
+        "extras": [
+          "Zoom digital hasta 40x",
+          "Video ProRes y Log",
+          "Modo noche"
+        ]
       },
       "bateria": {
-        "mah": 4832
+        "mah": 4832,
+        "carga_w": 40,
+        "inalambrica_w": 25,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "iOS 26",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2032",
+        "funciones_ia": [
+          "Apple Intelligence",
+          "Herramientas de escritura",
+          "Inteligencia visual",
+          "Limpiar (borrar objetos en fotos)",
+          "Traducción en vivo"
+        ]
+      },
+      "conectividad": {
+        "red": "5G",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "6.0",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano SIM + eSIM)",
+        "usb": "USB-C 3 (hasta 10 Gb/s)",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": null,
+        "rostro": "Face ID (reconocimiento facial 3D)"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo, audio espacial"
+      },
+      "diseno": {
+        "peso_g": 233,
+        "grosor_mm": 8.75,
+        "materiales": "Cuerpo unibody de aluminio, reverso Ceramic Shield",
+        "colores": [
+          "Plata",
+          "Naranja cósmico",
+          "Azul profundo"
+        ]
+      },
+      "destacados": [
+        "Teleobjetivo 48 MP con zoom 8x",
+        "La mayor autonomía de su generación",
+        "Video profesional 4K a 120 fps"
+      ],
+      "para_quien": "Cliente que graba mucho video, quiere el mejor zoom y la batería más grande en iPhone.",
+      "frase": "Es el iPhone para quien quiere la mejor cámara y batería para todo el día y más.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 12,
         "camara_mp": 48,
         "bateria_mah": 4832
-      }
+      },
+      "fuentes": [
+        "https://support.apple.com/125091"
+      ],
+      "dudas": [
+        "La ficha de Apple EE. UU. indica solo eSIM; en Colombia/Latinoamérica se vende con bandeja nano SIM + eSIM (confirmar con el equipo en tienda).",
+        "4.832 mAh corresponde a la versión con bandeja SIM; la versión solo eSIM (EE. UU.) tiene más batería. Apple no publica mAh.",
+        "Apple no publica RAM: 12 GB es cifra de medios, coincide con Tigo.",
+        "Carga cableada: Apple indica 50% en 20 min con adaptador de 40 W o más; potencia máxima real no oficial.",
+        "Años de actualización: se usa la práctica histórica de Apple (≈6 versiones de iOS, ≈7 años de seguridad)."
+      ],
+      "validado": false
     },
     {
       "id": "iphone-18-pro-max",
       "marca": "Apple",
       "modelo": "iPhone 18 Pro Max",
-      "validado": false,
+      "lanzamiento": "Septiembre 2026",
+      "gama": "Premium",
+      "procesador": {
+        "nombre": "A20 Pro",
+        "detalle": "CPU de 6 núcleos, GPU de 7 núcleos con aceleradores neuronales, Neural Engine doble de 16 núcleos"
+      },
+      "pantalla": {
+        "pulgadas": 6.9,
+        "tipo": "OLED Super Retina XDR con ProMotion",
+        "resolucion": "2868×1320 (460 ppp)",
+        "hz": 120,
+        "brillo_nits": 3000,
+        "proteccion": "Ceramic Shield 2"
+      },
       "memoria": {
         "ram_gb": 12,
-        "almacenamiento_gb": 256
+        "almacenamiento_gb": 256,
+        "microsd": null
+      },
+      "camaras": {
+        "principal": "48 MP Fusion con apertura variable (f/1.48 a f/4.0) y OIS por desplazamiento de sensor",
+        "ultra_gran_angular": "48 MP Fusion f/2.2 (120°)",
+        "teleobjetivo": "48 MP f/2.8 zoom óptico 4x (100 mm) con OIS 3D; 8x con calidad óptica",
+        "macro": "Macro con el ultra gran angular",
+        "frontal": "18 MP Center Stage f/1.9",
+        "video": "4K Dolby Vision a 120 fps",
+        "extras": [
+          "Apertura variable en cámara principal",
+          "Video ProRes RAW",
+          "Control de Cámara"
+        ]
       },
       "bateria": {
-        "mah": 5391
+        "mah": 5391,
+        "carga_w": 60,
+        "inalambrica_w": 25,
+        "reversa": false,
+        "cargador_en_caja": false
       },
-      "pantalla": {},
+      "software": {
+        "so_lanzamiento": "iOS 27",
+        "actualizaciones_so": 6,
+        "parches_seguridad_anios": 7,
+        "soporte_hasta": "2033",
+        "funciones_ia": [
+          "Apple Intelligence",
+          "Siri con IA (beta)",
+          "Inteligencia visual",
+          "Herramientas de escritura",
+          "Traducción en vivo"
+        ]
+      },
+      "conectividad": {
+        "red": "5G (módem Apple C2)",
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "6.0",
+        "nfc": true,
+        "esim": true,
+        "sim": "Dual SIM (nano SIM + eSIM)",
+        "usb": "USB-C 3 (hasta 10 Gb/s)",
+        "jack_audifonos": false
+      },
+      "seguridad": {
+        "huella": null,
+        "rostro": "Face ID (reconocimiento facial 3D)"
+      },
+      "resistencia": {
+        "ip": "IP68"
+      },
+      "audio": {
+        "estereo": true,
+        "detalle": "Parlantes estéreo, audio espacial"
+      },
+      "diseno": {
+        "peso_g": 249,
+        "grosor_mm": 8.75,
+        "materiales": "Cuerpo unibody de aluminio, frente Ceramic Shield 2 y reverso Ceramic Shield",
+        "colores": [
+          "Negro",
+          "Plata",
+          "Glaciar",
+          "Burdeos"
+        ]
+      },
+      "destacados": [
+        "Cámara principal con apertura variable",
+        "La batería más grande en un iPhone",
+        "Carga 50% en unos 15 minutos"
+      ],
+      "para_quien": "Cliente que quiere lo último de Apple, con la mejor cámara y batería del mercado iPhone.",
+      "frase": "Es el iPhone más nuevo: mejor cámara, más batería y carga mucho más rápida.",
       "tigo": {
         "almacenamiento_gb": 256,
         "ram_gb": 12,
         "camara_mp": 48,
         "bateria_mah": 5391
-      }
+      },
+      "fuentes": [
+        "https://support.apple.com/en-au/148591",
+        "https://www.apple.com/iphone-18-pro/specs/"
+      ],
+      "dudas": [
+        "Lanzamiento confirmado: Apple publica ficha técnica oficial (año 2026, iOS 27). Fecha exacta del evento (8-9 de sept. 2026) y llegada a Colombia tomadas de fuentes secundarias.",
+        "Apple no publica mAh: 5.391 mAh (dato de Tigo) no se pudo verificar; una fuente secundaria cita 5.567 mAh. Se dejó la cifra de Tigo.",
+        "Apple no publica RAM: 12 GB es cifra de medios, coincide con Tigo.",
+        "Carga: Apple indica 50% en ~15 min con adaptador de 60 W o más; 60 W es la referencia del adaptador, no una potencia máxima oficial.",
+        "SIM: la ficha de EE. UU. indica solo eSIM; la de Australia indica nano SIM + eSIM. Para Colombia se asume nano SIM + eSIM (confirmar).",
+        "Zoom digital máximo difiere entre fichas regionales (24x vs 40x); no se incluyó.",
+        "Proceso de fabricación (2 nm) del A20 Pro no figura en la ficha oficial.",
+        "Siri con IA está en beta, prioriza inglés; disponibilidad en español no confirmada.",
+        "Años de actualización: se usa la práctica histórica de Apple (≈6 versiones de iOS, ≈7 años de seguridad)."
+      ],
+      "validado": false
     }
   ]
 }
